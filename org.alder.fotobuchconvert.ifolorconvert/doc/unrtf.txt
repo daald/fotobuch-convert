@@ -1,0 +1,1 @@
+unrtf  --nopict -t html /media/reverseengineer_ifolor/ifolorFiles/permut2_04_umlaute/permut2\ Data/data/b1cdcebf62be4814b176a7b9a8994cc0

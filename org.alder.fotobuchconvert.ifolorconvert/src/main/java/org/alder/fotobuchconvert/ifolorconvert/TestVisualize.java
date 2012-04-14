@@ -1,6 +1,7 @@
 package org.alder.fotobuchconvert.ifolorconvert;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -62,24 +63,47 @@ public class TestVisualize extends JFrame {
 
 				for (BookPicture pic : page.pics) {
 					g.setTransform(baseTrans);
+					g.translate(pic.left, pic.top);
+
+					int offX = pic.width / 2, offY;
+					switch (pic.dock) {
+					case top:
+						offY = pic.height;
+						break;
+					case middle:
+						offY = pic.height / 2;
+						break;
+					case bottom:
+						offY = 0;
+						break;
+					default:
+						throw new RuntimeException(
+								"This command should never be called");
+					}
+					g.translate(offX, offY);
+					double ang = pic.angleDegrees / 180f * Math.PI;
+					g.rotate(ang);
+					g.translate(-offX, -offY);
 
 					Image img = pic.getImage(book);
 					int w = img.getWidth(null);
 					int h = img.getHeight(null);
 
-					g.translate(w / 2, h);
-					g.translate(pic.left, pic.top);
-					double ang = pic.angleDegrees / 180f * Math.PI;
-					g.rotate(ang);
-					g.translate(-w / 2, -h);
-
 					System.out.println(">" + w + " " + h + " " + pic.cropX
 							+ " " + pic.cropY + " " + pic.cropW + " "
 							+ pic.cropH);
 
-					g.drawImage(img, 0, 0, pic.width, pic.height, r(pic.cropX
-							* w), r(pic.cropY * h), r((pic.cropX + pic.cropW)
-							* w), r((pic.cropY + pic.cropH) * h), null);
+					if (w > 0) {
+						g.drawImage(img, 0, 0, pic.width, pic.height,
+								r(pic.cropX * w), r(pic.cropY * h),
+								r((pic.cropX + pic.cropW) * w),
+								r((pic.cropY + pic.cropH) * h), null);
+					} else {
+						g.setColor(Color.LIGHT_GRAY);
+						g.drawRect(0, 0, pic.width, pic.height);
+						g.drawLine(0, 0, pic.width, pic.height);
+						g.drawLine(0, pic.height, pic.width, 0);
+					}
 					// g.drawImage(img, 0, 0, pic.width, pic.height, null);
 				}
 				g.setTransform(baseTrans);
@@ -87,6 +111,8 @@ public class TestVisualize extends JFrame {
 			}
 
 			private void pageBorders(Graphics2D g) {
+				g.setColor(Color.BLUE);
+
 				// final int ox = 102;
 				// final int oy = 102;
 				// // <Width>7712</Width>

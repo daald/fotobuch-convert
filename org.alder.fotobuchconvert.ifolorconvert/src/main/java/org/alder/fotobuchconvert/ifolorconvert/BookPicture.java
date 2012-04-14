@@ -18,7 +18,7 @@ public class BookPicture {
 	// apImApplyOffset.selectXPath("@applyOffset");// ="0"
 	// apImEditable.selectXPath("@editable");// ="1"
 	final boolean dragable;
-	// apImDock.selectXPath("@dock");// ="middle"
+	final IfolorDock dock;
 	// apImDesigner.selectXPath("@designer");// ="0"
 	final String origFile;// apImOrigFilePath.selectXPath("OrigFilePath");//
 							// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
@@ -27,7 +27,7 @@ public class BookPicture {
 
 	public BookPicture(int left, int top, int width, int height,
 			int angleDegrees, boolean dragable, String origFile, double cropX,
-			double cropY, double cropW, double cropH) {
+			double cropY, double cropW, double cropH, IfolorDock dock) {
 		this.left = left;
 		this.top = top;
 		this.width = width;
@@ -40,6 +40,8 @@ public class BookPicture {
 		this.cropY = cropY;
 		this.cropW = cropW;
 		this.cropH = cropH;
+
+		this.dock = dock;
 	}
 
 	public Image getImage(Book book) {

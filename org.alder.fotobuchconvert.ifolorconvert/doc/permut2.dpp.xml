@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserProject version="1.0" created="20120414T133440">
+	<Product>5201</Product>
+	<LastSelected>
+		<Background></Background>
+	</LastSelected>
+	<View>
+		<Preview>Images::P00_default.png</Preview>
+		<PagesOnSheet>2</PagesOnSheet>
+		<LeftPageOffset>-102</LeftPageOffset>
+		<RightPageOffset>102</RightPageOffset>
+		<CoverPageOffset>0</CoverPageOffset>
+		<GridWidth>100</GridWidth>
+		<GridHeight>100</GridHeight>
+	</View>
+	<Cover>
+		<ProjectPage id="C00">
+			<Sheet>
+				<Width>7666</Width>
+				<Height>2953</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::C00.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\664bdc32c1a748c5a860ad144b94f5ef]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>0</RightSideOffset>
+			<LeftPageOffset>0</LeftPageOffset>
+			<RightPageOffset>0</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>True</IsCover>
+			<Editable>True</Editable>
+			<Style>DESIGN01_Booktext</Style>
+			<Guides>
+				<GuideLine x1="3778" y1="0" x2="3778" y2="2953" />
+				<GuideLine x1="3888" y1="0" x2="3888" y2="2953" />
+				<GuideBox left="220" top="220" width="7226" height="2513" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="0" top="0" width="7666" height="2953" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0"></Image>
+				<Text tooLong="0" style="DESIGN01_CoverHeaderCenter" valign="top"
+					id="T01" left="5691" top="345" width="1550" height="230"
+					rotateAngle="0" applyOffset="0" editable="1" dragable="1" dock="middle"
+					designer="0"></Text>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Logo"
+					left="3067" top="2448" width="576" height="194" rotateAngle="0"
+					applyOffset="1" editable="0" dragable="1" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::logo2.png]]></OrigFilePath>
+					<SourceFilePath>Images::logo2.png</SourceFilePath>
+					<VisiblePart left="0" top="0.09042168" width="100"
+						height="99.63831" />
+				</Image>
+				<Text tooLong="0" style="DESIGN01_CoverSpine" valign="center"
+					id="Spine" left="2633" top="1436" width="2400" height="82"
+					rotateAngle="-90" applyOffset="1" editable="1" dragable="0" dock="top"
+					designer="0"></Text>
+			</GuiObjects>
+		</ProjectPage>
+	</Cover>
+	<Pages>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>False</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco01"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\6e10645ff0f8489cb05548e245e04528]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<ColorRectangle id="0b866515c3e1429a97042909d8c3eb2a"
+					left="254" top="200" width="143" height="1899" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="FF00FFB4" position="0" />
+						<Color value="FF00B4FF" position="0.5" />
+						<Color value="FFFFFDE2" position="1" />
+					</Colors>
+				</ColorRectangle>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="400" top="1500" width="1200" height="199" rotateAngle="5"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<ColorRectangle id="1cf0f919e7cb4a94a7a525a4d24152f0"
+					left="400" top="300" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="600" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="5"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="10"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="15"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="20"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="900" width="1200" height="200" rotateAngle="25"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<Image quality="Unknown" enhancement="1" modified="0" id=""
+					left="400" top="1500" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id=""
+					left="400" top="1500" width="1200" height="199" rotateAngle="10"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id=""
+					left="400" top="1500" width="1200" height="199" rotateAngle="15"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id=""
+					left="4662" top="700" width="547" height="374" rotateAngle="25"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="1200" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="08ccc67cc7c24876ad585e02e19f9c73"
+					left="400" top="1800" width="1200" height="200" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\c4587e7f7b4a475d99871d32807d79cb]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Text tooLong="0" style="" valign="top" id="" left="400" top="235"
+					width="912" height="265" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\3ed31b3417d34346b7b45439eeff9d6a]]></OrigFilePath>
+				</Text>
+				<Text tooLong="0" style="" valign="top" id="" left="388" top="735"
+					width="912" height="265" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\ad4f4f598aae4e8b8d9c810b39762c63]]></OrigFilePath>
+				</Text>
+				<Text tooLong="0" style="" valign="top" id="" left="388" top="1135"
+					width="912" height="265" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\bc828f1f06fe4bd19278dcfd9f7fcfb4]]></OrigFilePath>
+				</Text>
+				<Text tooLong="0" style="" valign="top" id="" left="388" top="1500"
+					width="912" height="265" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\5726dc9fd3de4bd186af4fc2b4b78c16]]></OrigFilePath>
+				</Text>
+				<Text tooLong="0" style="" valign="top" id="" left="388" top="1900"
+					width="912" height="265" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\b9e5c941712a42c69675ca9869849b2a]]></OrigFilePath>
+				</Text>
+				<Text tooLong="0" style="" valign="top" id="" left="4120" top="835"
+					width="942" height="165" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\b1cdcebf62be4814b176a7b9a8994cc0]]></OrigFilePath>
+				</Text>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P00_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>False</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+	</Pages>
+</UserProject>

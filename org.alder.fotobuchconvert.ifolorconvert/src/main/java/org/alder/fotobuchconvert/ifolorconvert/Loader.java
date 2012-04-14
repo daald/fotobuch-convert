@@ -108,6 +108,8 @@ class Loader {
 				boolean dragable = apImDragable.evalXPathToString().equals("1");
 				String origFile = apImOrigFilePath.evalXPathToString();
 
+				IfolorDock dock = s2dock(apImDock.evalXPathToString());
+
 				double cropX = apImVpLeft.evalXPathToNumber() / 100d;
 				double cropY = apImVpTop.evalXPathToNumber() / 100d;
 				double cropW = apImVpWidth.evalXPathToNumber() / 100d;
@@ -120,7 +122,7 @@ class Loader {
 
 				BookPicture pic = new BookPicture(left, top, width, height,
 						angleDegrees, dragable, origFile, cropX, cropY, cropW,
-						cropH);
+						cropH, dock);
 				page.add(pic);
 
 				System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\n", left, top,
@@ -130,6 +132,17 @@ class Loader {
 		apIm.resetXPath();
 
 		return book;
+	}
+
+	private IfolorDock s2dock(String s) {
+		if ("top".equals(s))
+			return IfolorDock.top;
+		else if ("middle".equals(s))
+			return IfolorDock.middle;
+		else if ("bottom".equals(s))
+			return IfolorDock.bottom;
+		else
+			throw new RuntimeException("Invalid value for dock: " + s);
 	}
 
 	private int atoi(String s) {
