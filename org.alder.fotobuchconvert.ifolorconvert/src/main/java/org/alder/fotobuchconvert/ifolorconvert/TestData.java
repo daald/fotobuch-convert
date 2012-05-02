@@ -26,6 +26,11 @@ public class TestData {
 		if (file.exists())
 			return path + name;
 
+		path = "P:\\ifolor\\fb\\Australia2-20120409\\";
+		file = new File(path, name + ".dpp");
+		if (file.exists())
+			return path + name;
+
 		throw new RuntimeException("Unknown environment");
 	}
 }

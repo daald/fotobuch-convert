@@ -1,5 +1,9 @@
 package org.alder.fotobuchconvert.ifolorconvert;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.alder.fotobuchconvert.ifolorencryption.Decryptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -12,6 +16,12 @@ class Loader {
 
 	Book load(ProjectPath path) throws Exception {
 		log.info("Loading Layout for " + path);
+		log.debug("File: " + path.projectFile.getAbsolutePath());
+		log.debug("Extsts: " + path.projectFile.exists());
+
+		/******
+		 * initialization
+		 */
 
 		VTDGen vg = new VTDGen();
 		AutoPilot apPg = new AutoPilot();
@@ -60,11 +70,11 @@ class Loader {
 		apImVpWidth.selectXPath("VisiblePart/@width");// width="100"
 		apImVpHeight.selectXPath("VisiblePart/@height");// height="90.66666"
 
-		System.out.println(path.projectFile.getAbsolutePath());
-		System.out.println(path.projectFile.exists());
-		if (!vg.parseFile(path.projectFile.getAbsolutePath(), false)) {
-			throw new RuntimeException("Invalid XML structure");
-		}
+		/******
+		 * now load the file
+		 */
+		loadFile(vg, path.projectFile);
+		vg.parse(false);
 
 		Book book = new Book(path);
 
@@ -90,16 +100,21 @@ class Loader {
 		apImVpTop.bind(vn);
 		apImVpWidth.bind(vn);
 		apImVpHeight.bind(vn);
-		System.out.println("start Pages");
+
+		/******
+		 * now read the file contents
+		 */
+		log.trace("Doc root");
 		apPg.resetXPath();
 		while (apPg.evalXPath() != -1) {
-			System.out.println("  start Images");
+			System.out.println("  page");
 
 			BookPage page = new BookPage();
 			book.add(page);
 
 			apIm.resetXPath();
 			while (apIm.evalXPath() != -1) {
+				System.out.println("    image");
 				int left = atoi(apImLeft.evalXPathToString());
 				int top = atoi(apImTop.evalXPathToString());
 				int width = atoi(apImWidth.evalXPathToString());
@@ -147,6 +162,13 @@ class Loader {
 
 	private int atoi(String s) {
 		return Integer.valueOf(s);
+	}
+
+	private void loadFile(VTDGen vg, File projectFile) throws IOException {
+		Decryptor decryptor = new Decryptor();
+		byte[] bytes = decryptor.loadBinaryFile(projectFile, "DPP");
+
+		vg.setDoc(bytes);
 	}
 
 }
