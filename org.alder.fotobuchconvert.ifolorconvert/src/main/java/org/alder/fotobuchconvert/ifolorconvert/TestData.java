@@ -7,7 +7,7 @@ public class TestData {
 		String path, name;
 		File file;
 
-		if (true) {
+		if (false) {
 			path = "/media/reverseengineer_ifolor/ifolorFiles/permut2_03_texte/";
 			name = "permut2";
 			file = new File(path, name + ".dpp");

@@ -61,17 +61,17 @@ public class TestVisualize extends JFrame {
 
 				AffineTransform baseTrans = g.getTransform();
 
-				for (BookPicture pic : page.pics) {
+				for (BookElement el : page.pics) {
 					g.setTransform(baseTrans);
-					g.translate(pic.left, pic.top);
+					g.translate(el.left, el.top);
 
-					int offX = pic.width / 2, offY;
-					switch (pic.dock) {
+					int offX = el.width / 2, offY;
+					switch (el.dock) {
 					case top:
-						offY = pic.height;
+						offY = el.height;
 						break;
 					case middle:
-						offY = pic.height / 2;
+						offY = el.height / 2;
 						break;
 					case bottom:
 						offY = 0;
@@ -81,28 +81,35 @@ public class TestVisualize extends JFrame {
 								"This command should never be called");
 					}
 					g.translate(offX, offY);
-					double ang = pic.angleDegrees / 180f * Math.PI;
+					double ang = el.angleDegrees / 180f * Math.PI;
 					g.rotate(ang);
 					g.translate(-offX, -offY);
 
-					Image img = pic.getImage(book);
-					int w = img.getWidth(null);
-					int h = img.getHeight(null);
-
-					System.out.println(">" + w + " " + h + " " + pic.cropX
-							+ " " + pic.cropY + " " + pic.cropW + " "
-							+ pic.cropH);
-
-					if (w > 0) {
-						g.drawImage(img, 0, 0, pic.width, pic.height,
-								r(pic.cropX * w), r(pic.cropY * h),
-								r((pic.cropX + pic.cropW) * w),
-								r((pic.cropY + pic.cropH) * h), null);
+					Image img;
+					if (el instanceof BookPicture) {
+						BookPicture pic = (BookPicture) el;
+						img = pic.getImage(book);
+						int w = img.getWidth(null);
+						int h = img.getHeight(null);
+						System.out.println(">" + w + " " + h + " " + pic.cropX
+								+ " " + pic.cropY + " " + pic.cropW + " "
+								+ pic.cropH);
+						if (w > 0) {
+							g.drawImage(img, 0, 0, el.width, el.height,
+									r(pic.cropX * w), r(pic.cropY * h),
+									r((pic.cropX + pic.cropW) * w),
+									r((pic.cropY + pic.cropH) * h), null);
+						} else
+							img = null;
 					} else {
+						img = null;
+					}
+
+					if (img == null) {
 						g.setColor(Color.LIGHT_GRAY);
-						g.drawRect(0, 0, pic.width, pic.height);
-						g.drawLine(0, 0, pic.width, pic.height);
-						g.drawLine(0, pic.height, pic.width, 0);
+						g.drawRect(0, 0, el.width, el.height);
+						g.drawLine(0, 0, el.width, el.height);
+						g.drawLine(0, el.height, el.width, 0);
 					}
 					// g.drawImage(img, 0, 0, pic.width, pic.height, null);
 				}

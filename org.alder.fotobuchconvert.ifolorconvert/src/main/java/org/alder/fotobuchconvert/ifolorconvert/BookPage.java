@@ -4,9 +4,9 @@ import java.util.Vector;
 
 public class BookPage {
 
-	Vector<BookPicture> pics = new Vector<BookPicture>();
+	Vector<BookElement> pics = new Vector<BookElement>();
 
-	public void add(BookPicture pic) {
+	public void add(BookElement pic) {
 		pics.add(pic);
 	}
 

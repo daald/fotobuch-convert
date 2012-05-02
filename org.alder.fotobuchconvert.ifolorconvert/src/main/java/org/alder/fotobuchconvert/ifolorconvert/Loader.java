@@ -15,6 +15,7 @@ class Loader {
 
 		VTDGen vg = new VTDGen();
 		AutoPilot apPg = new AutoPilot();
+		AutoPilot apGo = new AutoPilot();
 		AutoPilot apIm = new AutoPilot();
 		AutoPilot apImQuality = new AutoPilot();
 		AutoPilot apImEnhancement = new AutoPilot();
@@ -38,6 +39,7 @@ class Loader {
 		AutoPilot apImVpHeight = new AutoPilot();
 
 		apPg.selectXPath("/UserProject/Pages/ProjectPage");
+		apGo.selectXPath("GuiObjects/*"); // Image, ColorRectangle, Text
 		apIm.selectXPath("GuiObjects/Image");
 		apImQuality.selectXPath("@quality");// ="Good"
 		apImEnhancement.selectXPath("@enhancement");// ="1"
@@ -70,7 +72,7 @@ class Loader {
 
 		VTDNav vn = vg.getNav();
 		apPg.bind(vn);
-		apIm.bind(vn);
+		apGo.bind(vn);
 		apImQuality.bind(vn);
 		apImModified.bind(vn);
 		apImId.bind(vn);
@@ -98,35 +100,58 @@ class Loader {
 			BookPage page = new BookPage();
 			book.add(page);
 
-			apIm.resetXPath();
-			while (apIm.evalXPath() != -1) {
+			apGo.resetXPath();
+			while (apGo.evalXPath() != -1) {
+				String type = vn.toString(vn.getCurrentIndex());
+				System.out.printf("    T:%s\n", type);
+
 				int left = atoi(apImLeft.evalXPathToString());
 				int top = atoi(apImTop.evalXPathToString());
 				int width = atoi(apImWidth.evalXPathToString());
 				int height = atoi(apImHeight.evalXPathToString());
 				int angleDegrees = atoi(apImRotateAngle.evalXPathToString());
 				boolean dragable = apImDragable.evalXPathToString().equals("1");
-				String origFile = apImOrigFilePath.evalXPathToString();
 
 				IfolorDock dock = s2dock(apImDock.evalXPathToString());
 
-				double cropX = apImVpLeft.evalXPathToNumber() / 100d;
-				double cropY = apImVpTop.evalXPathToNumber() / 100d;
-				double cropW = apImVpWidth.evalXPathToNumber() / 100d;
-				double cropH = apImVpHeight.evalXPathToNumber() / 100d;
+				if ("Image".equals(type)) {
+					String origFile = apImOrigFilePath.evalXPathToString();
+					double cropX = apImVpLeft.evalXPathToNumber() / 100d;
+					double cropY = apImVpTop.evalXPathToNumber() / 100d;
+					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
+					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
 
-				// cropX = 0;
-				// cropY = 0;
-				// cropW = 1;
-				// cropH = 1;
+					BookPicture pic = new BookPicture(left, top, width, height,
+							angleDegrees, dragable, dock, origFile, cropX,
+							cropY, cropW, cropH);
+					page.add(pic);
 
-				BookPicture pic = new BookPicture(left, top, width, height,
-						angleDegrees, dragable, origFile, cropX, cropY, cropW,
-						cropH, dock);
-				page.add(pic);
+					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\n", left,
+							top, origFile, cropX, cropY, cropW, cropH);
+				} else if ("ColorRectangle".equals(type)) {
+					BookShape pic = new BookShape(left, top, width, height,
+							angleDegrees, dragable, dock);
+					page.add(pic);
 
-				System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\n", left, top,
-						origFile, cropX, cropY, cropW, cropH);
+					System.out.printf("    %d,%d\n", left, top);
+				} else if ("Text".equals(type)) {
+					String origFile = apImOrigFilePath.evalXPathToString();
+					double cropX = apImVpLeft.evalXPathToNumber() / 100d;
+					double cropY = apImVpTop.evalXPathToNumber() / 100d;
+					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
+					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
+
+					BookText pic = new BookText(left, top, width, height,
+							angleDegrees, dragable, dock);
+					page.add(pic);
+
+					System.out.printf("    %d,%d\n", left, top);
+				} else if ("MetaFile".equals(type)) {
+					// keine Ahnung, was das ist. Kommt immer wieder vor
+				} else {
+					throw new RuntimeException("Typ " + type
+							+ " nicht bekannt in XML");
+				}
 			}
 		}
 		apIm.resetXPath();
