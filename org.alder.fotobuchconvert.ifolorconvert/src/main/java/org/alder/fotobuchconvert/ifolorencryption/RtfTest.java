@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.zip.GZIPInputStream;
 
 public class RtfTest {
+	private static final String UNEXPECTED_END_OF_FILE = "Unexpected end of file";
 	private static final String DIGEST_MD52 = "MD5";
 	// private static final String CHARSET_ISO_8859_1 = "ISO_8859_1";
 	private static final String CHARSET_cp1252 = "Windows-1252";
@@ -22,7 +23,7 @@ public class RtfTest {
 		byte[] buf = new byte[3];
 		int l = fis.read(buf, 0, buf.length);
 		if (l != 3)
-			throw new IOException("file too small");
+			throw new IOException(UNEXPECTED_END_OF_FILE);
 
 		String firstChars = new String(buf, Charset.forName(CHARSET_cp1252));
 		if ("DPT".equals(firstChars)) {
@@ -75,17 +76,16 @@ public class RtfTest {
 				byte[] md5 = new byte[md.getDigestLength()];
 				l = fis.read(md5, 0, md5.length);
 				if (l != md.getDigestLength())
-					throw new IOException("file too small");
+					throw new IOException(UNEXPECTED_END_OF_FILE);
 
 				// load size
 				buf = new byte[4];
 				l = fis.read(buf, 0, buf.length);
 				if (l != 4)
-					throw new IOException("file too small");
-				int size = (((int) buf[3] & 0xFF) << 0x1000)
-						| (((int) buf[2] & 0xFF) << 0x100)
-						| (((int) buf[1] & 0xFF) << 0x10)
-						| ((int) buf[0] & 0xFF);
+					throw new IOException(UNEXPECTED_END_OF_FILE);
+				int size = (((int) buf[3] & 0xFF) << 24)
+						| (((int) buf[2] & 0xFF) << 16)
+						| (((int) buf[1] & 0xFF) << 8) | ((int) buf[0] & 0xFF);
 				System.out.println(size);
 
 				GZIPInputStream gzipIs = new GZIPInputStream(fis);
