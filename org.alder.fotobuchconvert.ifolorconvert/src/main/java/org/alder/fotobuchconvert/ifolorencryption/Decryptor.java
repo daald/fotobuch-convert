@@ -19,7 +19,7 @@ public class Decryptor {
 	private static final String UNEXPECTED_END_OF_FILE = "Unexpected end of file";
 	private static final String DIGEST_MD52 = "MD5";
 	// private static final String CHARSET_ISO_8859_1 = "ISO_8859_1";
-	private static final String CHARSET_cp1252 = "Windows-1252";
+	public static final String CHARSET_cp1252 = "Windows-1252";
 
 	private final Log log = LogFactory.getLog(Loader.class);
 

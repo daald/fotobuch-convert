@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Book {
 
-	final Vector<BookPage> pages = new Vector<BookPage>();
+	public final Vector<BookPage> pages = new Vector<BookPage>();
 	final ProjectPath pathInfo;
 
 	public Book(ProjectPath pathInfo) {

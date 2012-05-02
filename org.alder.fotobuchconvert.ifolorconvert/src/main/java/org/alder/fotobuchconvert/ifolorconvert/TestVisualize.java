@@ -3,6 +3,7 @@ package org.alder.fotobuchconvert.ifolorconvert;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -101,6 +102,27 @@ public class TestVisualize extends JFrame {
 									r((pic.cropY + pic.cropH) * h), null);
 						} else
 							img = null;
+					} else if (el instanceof BookText) {
+						BookText text = (BookText) el;
+						String txt = text.getRtfText(book);
+						if (txt != null) {
+							g.setFont(g.getFont().deriveFont(60f));
+							FontMetrics fm = g.getFontMetrics();
+							g.drawString(txt, 0, fm.getHeight());
+						}
+						// int w = img.getWidth(null);
+						// int h = img.getHeight(null);
+						// System.out.println(">" + w + " " + h + " " +
+						// text.cropX
+						// + " " + text.cropY + " " + text.cropW + " "
+						// + text.cropH);
+						// if (w > 0) {
+						// g.drawImage(img, 0, 0, el.width, el.height,
+						// r(text.cropX * w), r(text.cropY * h),
+						// r((text.cropX + text.cropW) * w),
+						// r((text.cropY + text.cropH) * h), null);
+						// } else
+						img = null;
 					} else {
 						img = null;
 					}

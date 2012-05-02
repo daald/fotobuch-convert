@@ -11,10 +11,10 @@ import com.ximpleware.AutoPilot;
 import com.ximpleware.VTDGen;
 import com.ximpleware.VTDNav;
 
-class Loader {
+public class Loader {
 	private final Log log = LogFactory.getLog(Loader.class);
 
-	Book load(ProjectPath path) throws Exception {
+	public Book load(ProjectPath path) throws Exception {
 		log.info("Loading Layout for " + path);
 		log.debug("File: " + path.projectFile.getAbsolutePath());
 		log.debug("Extsts: " + path.projectFile.exists());
@@ -42,7 +42,8 @@ class Loader {
 		AutoPilot apImDock = new AutoPilot();
 		AutoPilot apImDesigner = new AutoPilot();
 		AutoPilot apImOrigFilePath = new AutoPilot();
-		// AutoPilot apImVisiblePart = new AutoPilot();
+		AutoPilot apImPreviewFilePath = new AutoPilot();
+		AutoPilot apImSourceFilePath = new AutoPilot();
 		AutoPilot apImVpLeft = new AutoPilot();
 		AutoPilot apImVpTop = new AutoPilot();
 		AutoPilot apImVpWidth = new AutoPilot();
@@ -66,7 +67,8 @@ class Loader {
 		apImDock.selectXPath("@dock");// ="middle"
 		apImDesigner.selectXPath("@designer");// ="0"
 		apImOrigFilePath.selectXPath("OrigFilePath");// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
-		// apImVisiblePart.selectXPath("VisiblePart"); // <VisiblePart
+		apImPreviewFilePath.selectXPath("PreviewFilePath");// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
+		apImSourceFilePath.selectXPath("SourceFilePath");// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
 		apImVpLeft.selectXPath("VisiblePart/@left");// left="0"
 		apImVpTop.selectXPath("VisiblePart/@top");// top="2.333334"
 		apImVpWidth.selectXPath("VisiblePart/@width");// width="100"
@@ -98,7 +100,8 @@ class Loader {
 		apImDock.bind(vn);
 		apImDesigner.bind(vn);
 		apImOrigFilePath.bind(vn);
-		// apImVisiblePart.bind(vn);
+		apImPreviewFilePath.bind(vn);
+		apImSourceFilePath.bind(vn);
 		apImVpLeft.bind(vn);
 		apImVpTop.bind(vn);
 		apImVpWidth.bind(vn);
@@ -132,14 +135,17 @@ class Loader {
 
 				if ("Image".equals(type)) {
 					String origFile = apImOrigFilePath.evalXPathToString();
+					String previewFile = apImPreviewFilePath
+							.evalXPathToString();
+					String sourceFile = apImSourceFilePath.evalXPathToString();
 					double cropX = apImVpLeft.evalXPathToNumber() / 100d;
 					double cropY = apImVpTop.evalXPathToNumber() / 100d;
 					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
 					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
 
 					BookPicture pic = new BookPicture(left, top, width, height,
-							angleDegrees, dragable, dock, origFile, cropX,
-							cropY, cropW, cropH);
+							angleDegrees, dragable, dock, origFile,
+							previewFile, sourceFile, cropX, cropY, cropW, cropH);
 					page.add(pic);
 
 					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\n", left,
@@ -152,13 +158,9 @@ class Loader {
 					System.out.printf("    %d,%d\n", left, top);
 				} else if ("Text".equals(type)) {
 					String origFile = apImOrigFilePath.evalXPathToString();
-					double cropX = apImVpLeft.evalXPathToNumber() / 100d;
-					double cropY = apImVpTop.evalXPathToNumber() / 100d;
-					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
-					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
 
 					BookText pic = new BookText(left, top, width, height,
-							angleDegrees, dragable, dock);
+							angleDegrees, dragable, dock, origFile);
 					page.add(pic);
 
 					System.out.printf("    %d,%d\n", left, top);
@@ -172,6 +174,7 @@ class Loader {
 		}
 		apIm.resetXPath();
 
+		System.out.println();
 		return book;
 	}
 
