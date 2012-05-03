@@ -1,0 +1,9 @@
+https://de.wikipedia.org/wiki/Extensible_Stylesheet_Language_%E2%80%93_Formatting_Objects
+https://en.wikipedia.org/wiki/XSL_Formatting_Objects
+
+== Tutorials ==
+http://www.w3schools.com/xslfo/default.asp
+
+
+== Samples ==
+http://www.ecrion.com/Products/XFRenderingServer/XSLFOSamples.aspx

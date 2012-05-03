@@ -23,6 +23,8 @@ public class Decryptor {
 
 	private final Log log = LogFactory.getLog(Loader.class);
 
+	private boolean dumpData = false;
+
 	public byte[] loadBinaryFile(File projectFile, String type)
 			throws IOException {
 		assert type != null;
@@ -105,10 +107,12 @@ public class Decryptor {
 		while ((bytesRead = gzipIs.read(buffer)) != -1) {
 			md.update(buffer, 0, bytesRead);
 			output.write(buffer, 0, bytesRead);
-			// System.out.print(new String(buffer, 0, bytesRead,
-			// CHARSET_cp1252));
+			if (dumpData)
+				System.out.print(new String(buffer, 0, bytesRead,
+						CHARSET_cp1252));
 		}
-		// System.out.println();
+		if (dumpData)
+			System.out.println();
 
 		buffer = md.digest();
 		for (int i = 0; i < buffer.length; i++)
