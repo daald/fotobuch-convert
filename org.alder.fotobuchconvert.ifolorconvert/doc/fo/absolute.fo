@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- example for a simple fo file. At the beginning the page layout is set.
+  Below fo:root there is always
+- a single fo:layout-master-set which defines one or more page layouts
+- an optional fo:declarations
+- and a sequence of one or more fo:page-sequences containing the text and formatting instructions
+-->
+
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+  <!-- fo:layout-master-set defines in its children the page layout:
+       the pagination and layout specifications
+      - page-masters: have the role of describing the intended subdivisions
+                       of a page and the geometry of these subdivisions
+                      In this case there is only a simple-page-master which defines the
+                      layout for all pages of the text
+  -->
+    <!-- layout information -->
+    <fo:simple-page-master master-name="simple"
+                  page-height="29.7cm"
+                  page-width="21cm"
+                  margin-top="1cm"
+                  margin-bottom="2cm"
+                  margin-left="2.5cm"
+                  margin-right="2.5cm">
+      <fo:region-body margin-top="3cm"/>
+      <fo:region-before extent="3cm"/>
+      <fo:region-after extent="1.5cm"/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+  <!-- end: defines page layout -->
+
+
+  <!-- start page-sequence
+       here comes the text (contained in flow objects)
+       the page-sequence can contain different fo:flows
+       the attribute value of master-name refers to the page layout
+       which is to be used to layout the text contained in this
+       page-sequence-->
+  <fo:page-sequence master-reference="simple">
+    <fo:flow flow-name="xsl-region-body">
+
+
+
+
+
+
+
+<!--http://stackoverflow.com/questions/198996/absolute-positioning-using-xsl-to-be-transformed-and-rendered-to-pdf-->
+
+<fo:block>
+    <fo:block>
+        BLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLA 
+    </fo:block>
+
+
+
+    <fo:block-container position="absolute" 
+                        top="30pt" left="30pt">
+        <fo:block font="48pt Arial" color="red">absolute dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsaffg dsafgdsfg</fo:block>
+    </fo:block-container>
+    <fo:block-container position="absolute" 
+                        top="55pt" left="40pt" height="16pt" width="100%">
+        <fo:block font="30pt Arial" color="blue">absolute</fo:block>
+    </fo:block-container>
+
+
+<!--
+-->
+    <fo:block keep-with-next.within-column="always">Properties: [none]</fo:block>
+    <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+
+
+    <fo:block-container position="absolute" 
+                        top="75pt" left="10cm" height="16pt" width="100%">
+        <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+    </fo:block-container>
+
+
+
+    <fo:block-container position="absolute" 
+                        top="0pt" left="0pt" height="16pt" width="100%">
+        <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+    </fo:block-container>
+
+
+
+</fo:block>
+
+
+
+
+    </fo:flow> <!-- closes the flow element-->
+  </fo:page-sequence> <!-- closes the page-sequence -->
+</fo:root>
