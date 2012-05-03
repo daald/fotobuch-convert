@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
+
+<!--<fo:simple-page-master master-name="allPages" page-height="297mm" page-width="210mm" margin-top="5mm" margin-bottom="5mm" margin-left="20mm" margin-right="5mm">
+    				<fo:region-body margin-top="5mm"/>
+    			</fo:simple-page-master>
+-->
+
+
+
+
+
 <!-- example for a simple fo file. At the beginning the page layout is set.
   Below fo:root there is always
 - a single fo:layout-master-set which defines one or more page layouts
@@ -70,19 +81,18 @@
 <!--
 -->
     <fo:block keep-with-next.within-column="always">Properties: [none]</fo:block>
-    <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+    <fo:block><fo:external-graphic src="asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
 
 
     <fo:block-container position="absolute" 
                         top="75pt" left="10cm" height="16pt" width="100%">
-        <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+        <fo:block><fo:external-graphic src="asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
     </fo:block-container>
 
 
-
     <fo:block-container position="absolute" 
-                        top="0pt" left="0pt" height="16pt" width="100%">
-        <fo:block><fo:external-graphic src="../graphics/asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
+                        top="0pt" left="0pt" height="16pt" width="100%" >
+        <fo:block><fo:external-graphic src="asf-logo-nt.png" border="solid 0.1pt" background-color="yellow"/></fo:block>
     </fo:block-container>
 
 

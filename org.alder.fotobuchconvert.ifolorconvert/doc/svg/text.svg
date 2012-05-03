@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg width="300" height="300">
+
+  <text x="55" y="105" style="font-family:times">This 
+  <tspan style="font-style:italic">is </tspan>
+  <tspan style="font-style:normal">an </tspan>
+  <tspan style="font-weight:bold">example </tspan>
+  <tspan style="font-style:italic;font-weight:bold">
+  of </tspan>
+  <tspan style="font-family:arial; font-style:normal; 
+  font-weight:normal">tspan.</tspan>
+
+</text>
+
+</svg>
