@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="no"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg" version="1.2"
+  viewBox="0 0 200 200">
+
+    <rect x="25" y="50" width="150" height="100" fill="lightgray" stroke="lightgreen" stroke-width="3" transform="rotate(0 100 100)"/>
+
+    <rect x="25" y="50" width="150" height="100" fill="tomato" stroke="lightgreen" stroke-width="3" transform="rotate(10 25 50)"/>
+
+    <rect x="25" y="50" width="150" height="100" fill="transparent" stroke="lightgreen" stroke-width="3" transform="rotate(20 25 50)"/>
+
+    <rect x="25" y="50" width="150" height="100" fill="transparent" stroke="lightgreen" stroke-width="3" transform="rotate(30 25 50)"/>
+
+
+
+  <text x="55" y="105" width="10" style="font-family:times">
+    This 
+    <tspan style="font-style:italic">is </tspan>
+    <tspan style="font-style:normal">an </tspan>
+    <tspan style="font-weight:bold">example </tspan>
+    <tspan style="font-style:italic;font-weight:bold"> of </tspan>
+    <tspan style="font-family:arial; font-style:normal; font-weight:normal">tspan.</tspan>
+  </text>
+
+
+
+<switch>
+    <g requiredFeatures="http://www.w3.org/Graphics/SVG/feature/1.2/#TextFlow">
+      <textArea width="200" height="auto">
+       A Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin arcu et sem tempus vitae sollicitudin
+      </textArea>
+    </g>
+    <foreignObject width="200" height="200" 
+     requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+      <p xmlns="http://www.w3.org/1999/xhtml">B Text goes here Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin arcu et sem tempus vitae sollicitudin</p>
+    </foreignObject>
+    <text x="20" y="20">C No automatic linewrapping.</text>
+  </switch>
+
+</svg>
