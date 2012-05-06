@@ -4,10 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Vector;
 
 public class ScribusTest {
 
@@ -244,6 +240,11 @@ public class ScribusTest {
 		el = doc.add("PAGEOBJECT")
 				.set("OwnPage", 0)
 				.set("PTYPE", "6")
+
+				// NEXTITEM/BACKITEM important!
+				.set("NEXTITEM", "-1")
+				.set("BACKITEM", "-1")
+
 				.set("XPOS", x)
 				// XPOS achtung: 0=links aussen
 				.set("YPOS", y)
@@ -329,89 +330,38 @@ public class ScribusTest {
 								+ " 0 " + w + " " + h + " " + w + " " + h + " "
 								+ w + " " + h + " " + w + " " + h + " 0 " + h
 								+ " 0 " + h + " 0 " + h + " 0 " + h
-								+ " 0 0 0 0 ")
+								+ " 0 0 0 0 ");
 
-				// unbekannt, bleibt auch in Vorlage konstant:
-				// .set("NUMCO", "16")
-				// .set("COCOOR",
-				// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-				// + " 0 " + w + " " + h + " " + w + " " + h + " "
-				// + w + " " + h + " " + w + " " + h + " 0 " + h
-				// + " 0 " + h + " 0 " + h + " 0 " + h
-				// + " 0 0 0 0 ")
+		// unbekannt, bleibt auch in Vorlage konstant (contour box?):
+		// .set("NUMCO", "16")
+		// .set("COCOOR",
+		// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
+		// + " 0 " + w + " " + h + " " + w + " " + h + " "
+		// + w + " " + h + " " + w + " " + h + " 0 " + h
+		// + " 0 " + h + " 0 " + h + " 0 " + h
+		// + " 0 0 0 0 ")
 
-				// .set("NUMGROUP", "0")
-				// .set("GROUPS", "")
-				// .set("startArrowIndex", "0")
-				// .set("endArrowIndex", "0")
-				// .set("OnMasterPage", "")
-				// .set("ImageClip", "")
-				// .set("ImageRes", "1")
-				// .set("Pagenumber", "0")
-				// .set("isInline", "0")
-				// .set("fillRule", "1")
-				// .set("doOverprint", "0")
-				// .set("gXpos", "0")
-				// .set("gYpos", "0")
-				// .set("gWidth", "0")
-				// .set("gHeight", "0")
-				// .set("LAYER", "0")
-				// .set("BOOKMARK", "0")
+		// .set("startArrowIndex", "0")
+		// .set("endArrowIndex", "0")
+		// .set("OnMasterPage", "")
+		// .set("ImageClip", "")
+		// .set("ImageRes", "1")
+		// .set("Pagenumber", "0")
+		// .set("isInline", "0")
+		// .set("fillRule", "1")
+		// .set("doOverprint", "0")
+		// .set("LAYER", "0")
+		// .set("BOOKMARK", "0")
 
-				// NEXTITEM/BACKITEM important!
-				.set("NEXTITEM", "-1").set("BACKITEM", "-1");
+		// GROUPING:
+		// .set("NUMGROUP", "0")
+		// .set("GROUPS", "")
+		// .set("gXpos", "0")
+		// .set("gYpos", "0")
+		// .set("gWidth", "0")
+		// .set("gHeight", "0")
 
 		// el.add("trail");
 		// el.add("PageItemAttributes");
 	}
-}
-
-class XmlBuilder {
-
-	private final Vector<XmlBuilder> subElements = new Vector<XmlBuilder>();
-	private final String name;
-	private final HashMap<String, String> attributes = new LinkedHashMap<String, String>();
-
-	public XmlBuilder(String name) {
-		this.name = name;
-	}
-
-	public void output(PrintStream out, int indent) {
-		if (indent == 0)
-			out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		for (int i = 0; i < indent; i++)
-			out.print("  ");
-		out.print("<" + name);
-		for (Entry<String, String> kv : attributes.entrySet())
-			out.print(" " + kv.getKey() + "=\"" + kv.getValue() + "\"");
-		if (subElements.isEmpty())
-			out.println("/>");
-		else {
-			out.println(">");
-			for (XmlBuilder el : subElements)
-				el.output(out, indent + 1);
-			for (int i = 0; i < indent; i++)
-				out.print("  ");
-			out.println("</" + name + ">");
-		}
-	}
-
-	public XmlBuilder set(String key, int value) {
-		return set(key, String.valueOf(value));
-	}
-
-	public XmlBuilder set(String key, String value) {
-		if (attributes.containsKey(key))
-			System.err.println("WARN: key " + key + " already used in " + name);
-
-		attributes.put(key, value);
-		return this;
-	}
-
-	public XmlBuilder add(String name) {
-		XmlBuilder e = new XmlBuilder(name);
-		subElements.add(e);
-		return e;
-	}
-
 }

@@ -31,12 +31,17 @@ public class BookPicture extends BookElement {
 
 	}
 
+	public File getImageFile(Book book) {
+		File file = new File(book.pathInfo.projectFolder, previewFile.replace(
+				'\\', '/'));
+		return file;
+	}
+
 	public Image getImage(Book book) {
 		if (image != null)
 			return image;
 
-		File file = new File(book.pathInfo.projectFolder, previewFile.replace(
-				'\\', '/'));
+		File file = getImageFile(book);
 		System.out.println(this + ": " + file);
 		image = new ImageIcon(file.getAbsolutePath()).getImage();
 		return image;
