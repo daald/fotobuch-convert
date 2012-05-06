@@ -1,6 +1,7 @@
 package org.alder.fotobuchconvert.scribus;
 
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -558,6 +559,26 @@ public class ScribusWriter {
 			element.set("PRINTABLE", "1");
 		}
 
+		public final void setPositionCenterRot(double x, double y, double w,
+				double h, double angleDegrees) {
+			double rad = angleDegrees / 180 * Math.PI;
+
+			double cX = x + w / 2, cY = y + h / 2;
+
+			AffineTransform trans = new AffineTransform();
+			trans.translate(cX, cY);
+			trans.rotate(rad);
+			trans.translate(-cX, -cY);
+
+			double[] src = { x, y }, dst = new double[2];
+			trans.transform(src, 0, dst, 0, 1);
+			// TODO geht noch nicht wie gewünscht
+			x = dst[0];
+			y = dst[1];
+
+			setPosition(x, y, w, h, angleDegrees);
+		}
+
 		public void setPosition(double x, double y, double w, double h,
 				double angleDegrees) {
 			element.set("XPOS", x).set("YPOS", y);
@@ -586,6 +607,26 @@ public class ScribusWriter {
 	public class ScribusShape extends ScribusObject {
 		public ScribusShape() {
 			super(6);// auch Rechtecke
+		}
+	}
+
+	public class ScribusText extends ScribusObject {
+		public ScribusText() {
+			super(4);
+		}
+
+		public void text(String text) {
+			element.add("ITEXT").set("CH", "text");
+			element.add("para");
+			element.add("ITEXT").set("FONT", "Arial Bold").set("CH", "fett");
+			element.add("para");
+			element.add("ITEXT").set("FONT", "Arial Italic")
+					.set("CH", "kursiv");
+			element.add("para");
+			element.add("ITEXT").set("FONT", "Arial Bold Italic")
+					.set("CH", "fettkursiv");
+			element.add("para");
+			element.add("ITEXT").set("FONTSIZE", "16").set("CH", "gross");
 		}
 	}
 
@@ -624,16 +665,33 @@ public class ScribusWriter {
 			// SCALETYPE: 0=img-auto-resize, 1=manual
 			element.set("SCALETYPE", "1");
 
-			// LOCALX image offset [pt], wird mit LOCALSCX mult.
-			element.set("LOCALX", (w / imgW * cropX)).set("LOCALY",
-					(h / imgH * cropY));
+			double localscx = w / (imgW * cropW);
+			double localscy = h / (imgH * cropH);
+
+			// ifolor Designer only allows proportionally scaled images.
+			assert localscx / localscy > 0.999d && localscx / localscy < 1.001d;
+			System.out.println("Scale h/v factor: " + localscx / localscy
+					+ "  (1.000 is best)");
+
 			// LOCALSCX: image scale [1/n]
-			element.set("LOCALSCX", (w / imgW * cropW)).set("LOCALSCY",
-					(h / imgH * cropH));
+			element.set("LOCALSCX", localscx);
+			element.set("LOCALSCY", localscy);
+
+			// double locx = -(cropX / cropW * w);
+			// double locy = -(cropY / cropH * h);
+			double locx = -(imgW * cropX);
+			double locy = -(imgH * cropY);
+			// LOCALX image offset [pt], wird mit LOCALSCX mult.
+			element.set("LOCALX", locx);
+			element.set("LOCALY", locy);
+
+			System.out.printf(
+					"CROP: %f/%f\t%f/%f\t%f %f %f %f   -> %f %f %f %f\n", w, h,
+					imgW, imgH, cropX, cropY, cropW, cropH, localscx, localscy,
+					locx, locy);
 		}
 
 		public void X() {
-
 			// .set("RADRECT", 0) .set("FRTYPE", "0")
 			// .set("CLIPEDIT", "0") .set("PWIDTH", "1") .set("PCOLOR", "None")
 			// .set("PCOLOR2", "None") .set("COLUMNS", "1")
@@ -699,5 +757,9 @@ public class ScribusWriter {
 		public ScribusLine() {
 			super(5);
 		}
+	}
+
+	public ScribusText addText() {
+		return new ScribusText();
 	}
 }

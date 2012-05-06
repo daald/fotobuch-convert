@@ -9,6 +9,7 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusLine;
+import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 
 public class TestIfolorToScribus {
 	private static final long serialVersionUID = 1L;
@@ -63,8 +64,6 @@ public class TestIfolorToScribus {
 			int oY = pd.docbaseY;
 
 			for (BookElement el : page.pics) {
-				int centerX = el.left + el.width / 2;
-				int centerY = el.top + el.height / 2;
 
 				// int offX = el.width / 2, offY;
 				// switch (el.dock) {
@@ -95,8 +94,9 @@ public class TestIfolorToScribus {
 					try {
 						ScribusImg scrimg = wr.addImage(imgFile
 								.getAbsolutePath());
-						scrimg.setPosition(oX + f * el.left, oY + f * el.top, f
-								* el.width, f * el.height, el.angleDegrees);
+						scrimg.setPositionCenterRot(oX + f * el.left, oY + f
+								* el.top, f * el.width, f * el.height,
+								el.angleDegrees);
 						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
 								pic.cropH);
 
@@ -107,15 +107,21 @@ public class TestIfolorToScribus {
 						e.printStackTrace();
 					}
 
+				} else if (el instanceof BookText) {
+					BookText text = (BookText) el;
+					String txt = text.getRtfText(book);
+					// if (txt != null) {
+					// g.setFont(g.getFont().deriveFont(60f));
+					// FontMetrics fm = g.getFontMetrics();
+					// g.drawString(txt, 0, fm.getHeight());
+
+					ScribusText scrimg = wr.addText();
+					scrimg.setPositionCenterRot(oX + f * el.left, oY + f
+							* el.top, f * el.width, f * el.height,
+							el.angleDegrees);
+					scrimg.text(txt);
+					placeHolder = false;
 				}
-				// else if (el instanceof BookText) {
-				// BookText text = (BookText) el;
-				// String txt = text.getRtfText(book);
-				// if (txt != null) {
-				// g.setFont(g.getFont().deriveFont(60f));
-				// FontMetrics fm = g.getFontMetrics();
-				// g.drawString(txt, 0, fm.getHeight());
-				// }
 				// // int w = img.getWidth(null);
 				// // int h = img.getHeight(null);
 				// // System.out.println(">" + w + " " + h + " " +
