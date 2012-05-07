@@ -3,8 +3,11 @@ package org.alder.fotobuchconvert.ifolorconvert;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import javax.swing.text.BadLocationException;
+
+import org.alder.fotobuchconvert.rtf2html.RtfToScribusConverter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
@@ -12,17 +15,18 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusLine;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 
 public class TestIfolorToScribus {
-	private static final long serialVersionUID = 1L;
-
 	public static void main(String[] args) throws Exception {
 
-		Loader loader = new Loader();
 		ProjectPath path = new ProjectPath(TestData.getTestPath());
+
+		Loader loader = new Loader();
 		Book book = loader.load(path);
 
 		TestIfolorToScribus f = new TestIfolorToScribus(book);
 
-		f.process();
+		File outFile = TestData.getTestOutputPath();
+
+		f.process(outFile);
 
 	}
 
@@ -32,8 +36,7 @@ public class TestIfolorToScribus {
 		this.book = book;
 	}
 
-	void process() throws FileNotFoundException {
-		File outFile = new File("/tmp/scribustest.sla");
+	void process(File outFile) throws IOException, BadLocationException {
 
 		int f = 1;
 
@@ -115,11 +118,14 @@ public class TestIfolorToScribus {
 					// FontMetrics fm = g.getFontMetrics();
 					// g.drawString(txt, 0, fm.getHeight());
 
-					ScribusText scrimg = wr.addText();
-					scrimg.setPositionCenterRot(oX + f * el.left, oY + f
+					ScribusText scrtext = wr.addText();
+
+					RtfToScribusConverter rtfConv = new RtfToScribusConverter();
+
+					scrtext.setPositionCenterRot(oX + f * el.left, oY + f
 							* el.top, f * el.width, f * el.height,
 							el.angleDegrees);
-					scrimg.text(txt);
+					rtfConv.convert(scrtext.getElement(), txt);
 					placeHolder = false;
 				}
 				// // int w = img.getWidth(null);

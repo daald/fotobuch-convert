@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.zip.GZIPInputStream;
 
-public class RtfTest {
+public class RtfDecryptPrototype {
 	private static final String UNEXPECTED_END_OF_FILE = "Unexpected end of file";
 	private static final String DIGEST_MD52 = "MD5";
 	// private static final String CHARSET_ISO_8859_1 = "ISO_8859_1";

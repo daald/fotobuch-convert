@@ -3,12 +3,13 @@ package org.alder.fotobuchconvert.scribus;
 import java.io.File;
 import java.io.IOException;
 
+import org.alder.fotobuchconvert.ifolorconvert.TestData;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 
 public class ScribusWriterTest {
 
 	public static void main(String[] args) throws IOException {
-		File file = new File("/tmp/scribustest.sla");
+		File file = TestData.getTestOutputPath();
 
 		int margin = 20;
 		int bleed = 20;

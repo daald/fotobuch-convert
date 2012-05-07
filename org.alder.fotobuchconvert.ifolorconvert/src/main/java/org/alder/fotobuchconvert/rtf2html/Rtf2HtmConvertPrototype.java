@@ -11,7 +11,7 @@ import javax.swing.text.StyledDocument;
 import javax.swing.text.html.MinimalHTMLWriter;
 import javax.swing.text.rtf.RTFEditorKit;
 
-public class Rtf2HtmConvertTest {
+public class Rtf2HtmConvertPrototype {
 	final static String testfile1 = "/media/reverseengineer_ifolor/ifolorFiles/permut2_04_umlaute/permut2 Data/data/b1cdcebf62be4814b176a7b9a8994cc0";
 	final static String outfile = "/tmp/out.htm";
 

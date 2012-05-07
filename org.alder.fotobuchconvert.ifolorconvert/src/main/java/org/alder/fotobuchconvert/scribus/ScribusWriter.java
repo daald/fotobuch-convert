@@ -46,6 +46,17 @@ public class ScribusWriter {
 	}
 
 	private XmlBuilder createIntro() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n");
+		sb.append("  Compatible file format for Scribus\n");
+		sb.append("\n");
+		sb.append("  This format was tested with Scribus 1.4.0");
+		sb.append("\n");
+		sb.append("  Because the format is very complex, it might be a good idea,\n");
+		sb.append("  once loaded, to save the file again within Scribus to ensure\n");
+		sb.append("  better compatibility to later versions.\n");
+		sb.append("\n");
+		root.comment(sb.toString());
 
 		XmlBuilder doc;
 		doc = root.add("DOCUMENT")
@@ -64,6 +75,11 @@ public class ScribusWriter {
 		doc.add("COLOR").set("NAME", "White").set("CMYK", "#00000000")
 				.set("Spot", "0").set("Register", "0");
 
+		// seems to be necessary for scribus 1.4.0
+		doc.add("LAYERS").set("NUMMER", "0").set("SICHTBAR", "1")
+				.set("DRUCKEN", "1").set("EDIT", "1").set("FLOW", "1")
+				.set("TRANS", "1");
+
 		return doc;
 	}
 
@@ -77,7 +93,7 @@ public class ScribusWriter {
 		pageDims.add(pd);
 
 		if (!masterPages.containsKey(masterName)) {
-			int mpgnum = masterName.length();
+			int mpgnum = masterPages.size();
 			XmlBuilder pagemaster;
 			pagemaster = doc.add("MASTERPAGE").set("NAM", masterName)
 					.set("NUM", mpgnum).set("LEFT", left)
@@ -616,6 +632,8 @@ public class ScribusWriter {
 		}
 
 		public void text(String text) {
+			System.out.println(text);
+
 			element.add("ITEXT").set("CH", "text");
 			element.add("para");
 			element.add("ITEXT").set("FONT", "Arial Bold").set("CH", "fett");
@@ -627,6 +645,10 @@ public class ScribusWriter {
 					.set("CH", "fettkursiv");
 			element.add("para");
 			element.add("ITEXT").set("FONTSIZE", "16").set("CH", "gross");
+		}
+
+		public XmlBuilder getElement() {
+			return element;
 		}
 	}
 

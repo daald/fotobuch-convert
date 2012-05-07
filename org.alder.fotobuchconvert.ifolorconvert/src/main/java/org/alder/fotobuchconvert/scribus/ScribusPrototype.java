@@ -1,27 +1,26 @@
 package org.alder.fotobuchconvert.scribus;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Date;
 
-public class ScribusTest {
+import org.alder.fotobuchconvert.ifolorconvert.TestData;
+
+public class ScribusPrototype {
 
 	private final PrintStream out;
-
-	public ScribusTest(PrintStream printStream) {
-		this.out = printStream;
-	}
 
 	public static void main(String[] args) throws IOException {
 		FileOutputStream os = null;
 		try {
-			String name = "/tmp/scribustest.sla";
-			System.out.println("Save data into " + name + "    " + new Date());
+			File file = TestData.getTestOutputPath();
+			System.out.println("Save data into " + file + "    " + new Date());
 
-			os = new FileOutputStream(name);
+			os = new FileOutputStream(file);
 
-			ScribusTest test = new ScribusTest(new PrintStream(os));
+			ScribusPrototype test = new ScribusPrototype(new PrintStream(os));
 
 			test.writeFile();
 
@@ -29,6 +28,10 @@ public class ScribusTest {
 			if (os != null)
 				os.close();
 		}
+	}
+
+	public ScribusPrototype(PrintStream printStream) {
+		this.out = printStream;
 	}
 
 	int pageW = 500;// A4=595.28;
@@ -68,6 +71,11 @@ public class ScribusTest {
 				.set("Spot", "0").set("Register", "0");
 		doc.add("COLOR").set("NAME", "White").set("CMYK", "#00000000")
 				.set("Spot", "0").set("Register", "0");
+
+		// seems to be necessary for scribus 1.4.0
+		doc.add("LAYERS").set("NUMMER", "0").set("SICHTBAR", "1")
+				.set("DRUCKEN", "1").set("EDIT", "1").set("FLOW", "1")
+				.set("TRANS", "1");
 
 		for (int pg = 0; pg < 2; pg++) {
 			XmlBuilder pagemaster;

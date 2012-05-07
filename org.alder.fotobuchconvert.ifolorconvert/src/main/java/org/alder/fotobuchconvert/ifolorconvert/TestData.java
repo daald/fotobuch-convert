@@ -33,4 +33,16 @@ public class TestData {
 
 		throw new RuntimeException("Unknown environment");
 	}
+
+	public static File getTestOutputPath() {
+		if (isWindows())
+			return new File("C:\\Temp\\scribustest.sla");
+		else
+			return new File("/tmp/scribustest.sla");
+	}
+
+	public static boolean isWindows() {
+		String os = System.getProperty("os.name").toLowerCase();
+		return (os.indexOf("win") >= 0);
+	}
 }
