@@ -14,5 +14,39 @@
             <ITEXT FONT="Trebuchet MS Italic" FONTSIZE="16" CH="nicht "/>
             <ITEXT FONT="Trebuchet MS Regular" FONTSIZE="16" CH="zu den offiziell erwähnenswerten Sehenswürdigkeiten zählt, bleibt mir ein Rätsel..."/>
             <para ALIGN="4"/>
+            <ITEXT FONT="Trebuchet MS Regular" FONTSIZE="10" CH="Leafy Seadragon bzw. G"/>
+            <ITEXT FONT="Trebuchet MS Regular" FONTSIZE="10" FCOLOR="Green" CH="rosser Fetzen"/>
+            <ITEXT FONT="Trebuchet MS Regular" FONTSIZE="10" CH="fisch"/>
+            <para/>
+            <para/>
+            <ITEXT FONT="Trebuchet MS Regular" FONTSIZE="10" CH="aus der Familie der Seenadeln"/>
+            <para/>
+            <ITEXT FONT="Trebuchet MS Regular" CH="xxxxxxxxx"/>
+            <para ALIGN="4" LINESPMode="1"/>
+            <ITEXT FONT="Trebuchet MS Regular" CH="neuer Absatz ohne Abstand und blocksatz?"/>
+             <para ALIGN="2"/>
+            <ITEXT FONT="Trebuchet MS Regular" CH="Rechts bündig"/>
+             <para ALIGN="4"/>
+            <ITEXT FONT="Trebuchet MS Regular" CH="erzwungener Block satz"/>
             <PageItemAttributes/>
         </PAGEOBJECT>
+        
+        
+        <!-- 
+        ALIGN=0  links
+        ALIGN=1  center
+        ALIGN=2  rechts
+        ALIGN=3  Blocksatz
+        ALIGN=4  forcierter Blocksatz
+        (para mit align NACH dem Text der Zeile!)
+        
+        
+        PAGEOBJECT attributes:
+        
+        	FLOP="2" 
+        
+        PARA attributes:
+        
+        	LINESPMode="1" to each para
+         -->
+        
