@@ -21,4 +21,8 @@ public class BookElement {
 		this.dock = dock;
 	}
 
+	public boolean isInternalObject() {
+		return false;
+	}
+
 }

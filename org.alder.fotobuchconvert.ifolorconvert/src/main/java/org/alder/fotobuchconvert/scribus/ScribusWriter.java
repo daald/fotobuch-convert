@@ -15,13 +15,14 @@ public class ScribusWriter {
 
 	private final PrintStream out;
 
-	int pageW;// A4=595.28;
-	int pageH;// A4=841.89;
+	double pageW;// A4=595.28;
+	double pageH;// A4=841.89;
 	String pageFormat;// A4
-	int pagePosX = 100;
-	int pagePosY = 20;
-	int margin;
-	int bleed;
+	double pagePosX = 100;
+	double pagePosY = 20;
+	double margin;
+	double bleed;
+
 	private final Vector<PageDims> pageDims = new Vector<PageDims>();
 
 	private final XmlBuilder doc;
@@ -30,8 +31,9 @@ public class ScribusWriter {
 
 	private final XmlBuilder root;
 
-	public ScribusWriter(File file, int margin, int bleed, String pageFormat,
-			int pageW, int pageH) throws FileNotFoundException {
+	public ScribusWriter(File file, double margin, double bleed,
+			String pageFormat, double pageW, double pageH)
+			throws FileNotFoundException {
 
 		out = new PrintStream(file);
 
@@ -75,6 +77,25 @@ public class ScribusWriter {
 		doc.add("COLOR").set("NAME", "White").set("CMYK", "#00000000")
 				.set("Spot", "0").set("Register", "0");
 
+		doc.add("COLOR").set("NAME", "Blue").set("RGB", "#0000ff")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Cool Black").set("CMYK", "#990000ff")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Cyan").set("CMYK", "#ff000000")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Green").set("RGB", "#00ff00")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Magenta").set("CMYK", "#00ff0000")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Red").set("RGB", "#ff0000")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Rich Black").set("CMYK", "#996666ff")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Warm Black").set("CMYK", "#00994cff")
+				.set("Spot", "0").set("Register", "0");
+		doc.add("COLOR").set("NAME", "Yellow").set("CMYK", "#0000ff00")
+				.set("Spot", "0").set("Register", "0");
+
 		// seems to be necessary for scribus 1.4.0
 		doc.add("LAYERS").set("NUMMER", "0").set("SICHTBAR", "1")
 				.set("DRUCKEN", "1").set("EDIT", "1").set("FLOW", "1")
@@ -83,7 +104,7 @@ public class ScribusWriter {
 		return doc;
 	}
 
-	public PageDims addPage(String masterName, int pageW, int pageH) {
+	public PageDims addPage(String masterName, double pageW, double pageH) {
 		final int pgnum = pageDims.size();
 
 		int left = (pgnum % 2);
@@ -112,139 +133,13 @@ public class ScribusWriter {
 		return pd;
 	}
 
-	void b() {
-
-		int w = pageW / 2, h = 150;
-		// IMAGE
-		XmlBuilder el = doc
-				.add("PAGEOBJECT")
-				.set("OwnPage", 0)
-				.set("PTYPE", "2")
-
-				// NEXTITEM/BACKITEM important!
-				.set("NEXTITEM", "-1")
-				.set("BACKITEM", "-1")
-
-				.set("XPOS", "665.28")
-				// XPOS achtung: 0=links aussen
-				.set("YPOS", "0")
-				.set("WIDTH", w)
-				.set("HEIGHT", h)
-				.set("ROT", "1")
-				// ROT: rotation
-				.set("LOCALSCX", "1")
-				.set("LOCALSCY", "2")
-				// LOCALSCX: image scale [1/n]
-				.set("LOCALX", "20")
-				.set("LOCALY", "10")
-				// LOCALX image offset [pt], wird mit LOCALSCX mult.
-
-				.set("PICART", "1")
-
-				.set("SCALETYPE", "1")
-				// SCALETYPE: 0=img-auto-resize, 1=manual
-
-				.set("PFILE",
-						"/media/reverseengineer_ifolor/xml/Australia/files/Australia2-20120409 Data/preview/f804f95403e1414caa14c8091da326d7")
-
-				// cropping-shape NUMPO:
-				.set("NUMPO", "16")
-				.set("POCOOR",
-						"0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-								+ " 0 " + w + " " + h + " " + w + " " + h + " "
-								+ w + " " + h + " " + w + " " + h + " 0 " + h
-								+ " 0 " + h + " 0 " + h + " 0 " + h
-								+ " 0 0 0 0 ");
-
-		// .set("RADRECT", 0) .set("FRTYPE", "0")
-		// .set("CLIPEDIT", "0") .set("PWIDTH", "1") .set("PCOLOR", "None")
-		// .set("PCOLOR2", "None") .set("COLUMNS", "1")
-		// .set("COLGAP", "0") .set("NAMEDLST", "") .set("SHADE", "100")
-		// .set("SHADE2", "100") .set("GRTYP", "0")
-		// .set("PLINEART", "1") .set("PLINEEND", "0") .set("PLINEJOIN", "0")
-		// .set("PLTSHOW", "0") .set("BASEOF", "0")
-		// .set("textPathType", "0") .set("textPathFlipped", "0")
-		// .set("FLIPPEDH", "0") .set("FLIPPEDV", "0")
-		// .set("RATIO", "1") .set("PRINTABLE", "1") .set("ANNOTATION", "0")
-		// .set("ANNAME", "") .set("TEXTFLOWMODE", "0")
-		// .set("TEXTFLOW", "0") .set("TEXTFLOW2", "0") .set("TEXTFLOW3", "0")
-		// .set("AUTOTEXT", "0") .set("EXTRA", "0")
-		// .set("TEXTRA", "0") .set("BEXTRA", "0") .set("REXTRA", "0")
-		// .set("FLOP", "0")
-		// .set("PFILE2", "") .set("PFILE3", "") .set("PRFILE", "")
-		// .set("EPROF", "") .set("IRENDER", "0") .set("EMBEDDED", "0")
-		// .set("LOCK", "0") .set("LOCKR", "0") .set("REVERS", "0")
-		// .set("TransValue", "0") .set("TransValueS", "0") .set("TransBlend",
-		// "0")
-		// .set("TransBlendS", "0") .set("isTableItem", "0") .set("TopLine",
-		// "0") .set("LeftLine", "0") .set("RightLine", "0") .set("BottomLine",
-		// "0")
-		// .set("isGroupControl", "0") .set("NUMDASH", "0") .set("DASHS", "")
-		// .set("DASHOFF", "0")
-		// unbekannt, bleibt auch in Vorlage konstant:
-		// .set("NUMCO", "16")
-		// .set("COCOOR",
-		// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-		// + " 0 " + w + " " + h + " " + w + " " + h + " "
-		// + w + " " + h + " " + w + " " + h + " 0 " + h
-		// + " 0 " + h + " 0 " + h + " 0 " + h
-		// + " 0 0 0 0 ")
-
-		// .set("NUMGROUP", "0")
-		// .set("GROUPS", "")
-		// .set("startArrowIndex", "0")
-		// .set("endArrowIndex", "0")
-		// .set("OnMasterPage", "")
-		// .set("ImageClip", "")
-		// .set("ImageRes", "1")
-		// .set("Pagenumber", "0")
-		// .set("isInline", "0")
-		// .set("fillRule", "1")
-		// .set("doOverprint", "0")
-		// .set("gXpos", "0")
-		// .set("gYpos", "0")
-		// .set("gWidth", "0")
-		// .set("gHeight", "0")
-		// .set("LAYER", "0")
-		// .set("BOOKMARK", "0")
-		;
-
-		// DEMO: Rotation
-		// SHAPE(6)
-		makeRect(800, 300, 100, 100, 0);
-		makeRect(800, 300, 100, 100, 5);
-		makeRect(800, 300, 100, 100, 10);
-
-		/**
-		 * PAGEXPOS="100" PAGEYPOS="20" PAGEWIDTH="595.28" PAGEHEIGHT="841.89"
-		 */
-
-		for (int pg = 0; pg < 3; pg++) {
-			PageDims pd = pageDims.get(pg);
-			// DEMO: Seitenrand
-			// liegt auf Seitenecke:
-			makeRect(pd.docbaseX - bleed, pd.docbaseY - bleed, 1, 1, 0);
-			// liegt auf roter Ecke:
-			makeRect(pd.docbaseX, pd.docbaseY, 1, 1, 0);
-			// liegt auf margin (blaue Ecke):
-			makeRect(pd.docbaseX + margin, pd.docbaseY + margin, 1, 1, 0);
-		}
-
-		PageDims pd = pageDims.get(0);
-		// DEMO: Anker ist die linke obere Ecke
-		makeRect(pd.docbaseX + 100, pd.docbaseY + 100, 1, 1, 0);
-		makeRect(pd.docbaseX + 100, pd.docbaseY + 100, 10, 10, 0);
-		makeRect(pd.docbaseX + 100, pd.docbaseY + 100, 100, 100, 0);
-
-	}
-
 	public void finish() {
 		root.output(out, 0);
 		System.out.println("File written.");
 	}
 
-	private void applyPageSettings(XmlBuilder doc, boolean isDoc, int pageW,
-			int pageH) {
+	private void applyPageSettings(XmlBuilder doc, boolean isDoc, double pageW,
+			double pageH) {
 		doc.set("PAGEWIDTH", pageW).set("PAGEHEIGHT", pageH)
 				.set("BORDERLEFT", margin).set("BORDERRIGHT", margin)
 				.set("BORDERTOP", margin).set("BORDERBOTTOM", margin)
@@ -263,7 +158,8 @@ public class ScribusWriter {
 					.set("AGSelection", "0 0 0 0").set("Size", pageFormat);
 	}
 
-	public ScribusShape makeRect(int x, int y, int w, int h, int rot) {
+	public ScribusShape makeRect(double x, double y, double w, double h,
+			double rot) {
 		ScribusShape si = new ScribusShape();
 		si.setPosition(x, y, w, h, rot);
 		si.setBorder();
@@ -273,143 +169,13 @@ public class ScribusWriter {
 		return si;
 	}
 
-	public void makeRectX(int x, int y, int w, int h, int rot) {
-		XmlBuilder el;
-		el = doc.add("PAGEOBJECT")
-				.set("OwnPage", 0)
-				.set("PTYPE", "6")
-
-				// NEXTITEM/BACKITEM important!
-				.set("NEXTITEM", "-1")
-				.set("BACKITEM", "-1")
-
-				.set("XPOS", x)
-				// XPOS achtung: 0=links aussen
-				.set("YPOS", y)
-				.set("WIDTH", w)
-				.set("HEIGHT", h)
-				// .set("RADRECT", 0)
-				// .set("FRTYPE", "0")
-				// .set("CLIPEDIT", "0")
-				// .set("PWIDTH", "1")
-				// .set("PCOLOR", "None")
-				// PCOLOR2: Linienfarbe
-				.set("PCOLOR2", "Black")
-				// .set("COLUMNS", "1")
-				// .set("COLGAP", "0")
-				// .set("NAMEDLST", "")
-				// .set("SHADE", "100")
-				// SHADE2: Deckung Linie (100=full)
-				.set("SHADE2", "100")
-				// .set("GRTYP", "0")
-				.set("ROT", rot)
-				// ROT: rotation
-				// .set("PLINEART", "1")
-				// .set("PLINEEND", "0")
-				// .set("PLINEJOIN", "0")
-				.set("LOCALSCX", "1")
-				.set("LOCALSCY", "2")
-				// LOCALSCX: image scale [1/n]
-				.set("LOCALX", "20")
-				.set("LOCALY", "10")
-				// LOCALX image offset [pt], wird mit LOCALSCX mult.
-
-				.set("PICART", "1")
-				// .set("PLTSHOW", "0")
-				// .set("BASEOF", "0")
-				// .set("textPathType", "0")
-				// .set("textPathFlipped", "0")
-				// .set("FLIPPEDH", "0")
-				// .set("FLIPPEDV", "0")
-
-				.set("SCALETYPE", "1")
-				// SCALETYPE: 0=img-auto-resize, 1=manual
-				// .set("RATIO", "1")
-				// .set("PRINTABLE", "1")
-				// .set("ANNOTATION", "0")
-				// .set("ANNAME", "")
-				// .set("TEXTFLOWMODE", "0")
-				// .set("TEXTFLOW", "0")
-				// .set("TEXTFLOW2", "0")
-				// .set("TEXTFLOW3", "0")
-				// .set("AUTOTEXT", "0")
-				// .set("EXTRA", "0")
-				// .set("TEXTRA", "0")
-				// .set("BEXTRA", "0")
-				// .set("REXTRA", "0")
-				// .set("FLOP", "0")
-				// .set("PFILE2", "")
-				// .set("PFILE3", "")
-				// .set("PRFILE", "")
-				// .set("EPROF", "")
-				// .set("IRENDER", "0")
-				// .set("EMBEDDED", "0")
-				// .set("LOCK", "0")
-				// .set("LOCKR", "0")
-				// .set("REVERS", "0")
-				// .set("TransValue", "0")
-				// .set("TransValueS", "0")
-				// .set("TransBlend", "0")
-				// .set("TransBlendS", "0")
-				// .set("isTableItem", "0")
-				// .set("TopLine", "0")
-				// .set("LeftLine", "0")
-				// .set("RightLine", "0")
-				// .set("BottomLine", "0")
-				// .set("isGroupControl", "0")
-				// .set("NUMDASH", "0")
-				// .set("DASHS", "")
-				// .set("DASHOFF", "0")
-
-				// cropping-shape NUMPO:
-				.set("NUMPO", "16")
-				.set("POCOOR",
-						"0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-								+ " 0 " + w + " " + h + " " + w + " " + h + " "
-								+ w + " " + h + " " + w + " " + h + " 0 " + h
-								+ " 0 " + h + " 0 " + h + " 0 " + h
-								+ " 0 0 0 0 ");
-
-		// unbekannt, bleibt auch in Vorlage konstant (contour box?):
-		// .set("NUMCO", "16")
-		// .set("COCOOR",
-		// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-		// + " 0 " + w + " " + h + " " + w + " " + h + " "
-		// + w + " " + h + " " + w + " " + h + " 0 " + h
-		// + " 0 " + h + " 0 " + h + " 0 " + h
-		// + " 0 0 0 0 ")
-
-		// .set("startArrowIndex", "0")
-		// .set("endArrowIndex", "0")
-		// .set("OnMasterPage", "")
-		// .set("ImageClip", "")
-		// .set("ImageRes", "1")
-		// .set("Pagenumber", "0")
-		// .set("isInline", "0")
-		// .set("fillRule", "1")
-		// .set("doOverprint", "0")
-		// .set("LAYER", "0")
-		// .set("BOOKMARK", "0")
-
-		// GROUPING:
-		// .set("NUMGROUP", "0")
-		// .set("GROUPS", "")
-		// .set("gXpos", "0")
-		// .set("gYpos", "0")
-		// .set("gWidth", "0")
-		// .set("gHeight", "0")
-
-		// el.add("trail");
-		// el.add("PageItemAttributes");
-	}
-
 	public PageDims[] getPageDims() {
 		return pageDims.toArray(new PageDims[0]);
 	}
 
 	public class PageDims {
-		public final int docbaseX, docbaseY;
-		private final int pageW, pageH;
+		public final double docbaseX, docbaseY;
+		private final double pageW, pageH;
 		private final boolean left;
 
 		// public PageDims(int num) {
@@ -419,10 +185,10 @@ public class ScribusWriter {
 		// }
 
 		public PageDims(Vector<PageDims> pageDims, int pgnum, boolean left,
-				int pageW, int pageH) {
+				double pageW, double pageH) {
 
-			int x = pagePosX;
-			int y = pagePosY;
+			double x = pagePosX;
+			double y = pagePosY;
 
 			for (PageDims pd : pageDims)
 				if (pd.left == left)
@@ -442,103 +208,6 @@ public class ScribusWriter {
 			this.pageH = pageH;
 			this.left = left;
 		}
-	}
-
-	public void addImageX(int page, String fileName) {
-		int w = pageW / 2, h = 150;
-		// IMAGE
-		XmlBuilder el = doc
-				.add("PAGEOBJECT")
-				.set("OwnPage", 0)
-				.set("PTYPE", "2")
-
-				// NEXTITEM/BACKITEM important!
-				.set("NEXTITEM", "-1")
-				.set("BACKITEM", "-1")
-
-				.set("XPOS", "665.28")
-				// XPOS achtung: 0=links aussen
-				.set("YPOS", "0")
-				.set("WIDTH", w)
-				.set("HEIGHT", h)
-				.set("ROT", "1")
-				// ROT: rotation
-				.set("LOCALSCX", "1")
-				.set("LOCALSCY", "2")
-				// LOCALSCX: image scale [1/n]
-				.set("LOCALX", "20")
-				.set("LOCALY", "10")
-				// LOCALX image offset [pt], wird mit LOCALSCX mult.
-
-				.set("PICART", "1")
-
-				.set("SCALETYPE", "1")
-				// SCALETYPE: 0=img-auto-resize, 1=manual
-
-				.set("PFILE",
-						"/media/reverseengineer_ifolor/xml/Australia/files/Australia2-20120409 Data/preview/f804f95403e1414caa14c8091da326d7")
-
-				// cropping-shape NUMPO:
-				.set("NUMPO", "16")
-				.set("POCOOR",
-						"0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-								+ " 0 " + w + " " + h + " " + w + " " + h + " "
-								+ w + " " + h + " " + w + " " + h + " 0 " + h
-								+ " 0 " + h + " 0 " + h + " 0 " + h
-								+ " 0 0 0 0 ");
-
-		// .set("RADRECT", 0) .set("FRTYPE", "0")
-		// .set("CLIPEDIT", "0") .set("PWIDTH", "1") .set("PCOLOR", "None")
-		// .set("PCOLOR2", "None") .set("COLUMNS", "1")
-		// .set("COLGAP", "0") .set("NAMEDLST", "") .set("SHADE", "100")
-		// .set("SHADE2", "100") .set("GRTYP", "0")
-		// .set("PLINEART", "1") .set("PLINEEND", "0") .set("PLINEJOIN", "0")
-		// .set("PLTSHOW", "0") .set("BASEOF", "0")
-		// .set("textPathType", "0") .set("textPathFlipped", "0")
-		// .set("FLIPPEDH", "0") .set("FLIPPEDV", "0")
-		// .set("RATIO", "1") .set("PRINTABLE", "1") .set("ANNOTATION", "0")
-		// .set("ANNAME", "") .set("TEXTFLOWMODE", "0")
-		// .set("TEXTFLOW", "0") .set("TEXTFLOW2", "0") .set("TEXTFLOW3", "0")
-		// .set("AUTOTEXT", "0") .set("EXTRA", "0")
-		// .set("TEXTRA", "0") .set("BEXTRA", "0") .set("REXTRA", "0")
-		// .set("FLOP", "0")
-		// .set("PFILE2", "") .set("PFILE3", "") .set("PRFILE", "")
-		// .set("EPROF", "") .set("IRENDER", "0") .set("EMBEDDED", "0")
-		// .set("LOCK", "0") .set("LOCKR", "0") .set("REVERS", "0")
-		// .set("TransValue", "0") .set("TransValueS", "0") .set("TransBlend",
-		// "0")
-		// .set("TransBlendS", "0") .set("isTableItem", "0") .set("TopLine",
-		// "0") .set("LeftLine", "0") .set("RightLine", "0") .set("BottomLine",
-		// "0")
-		// .set("isGroupControl", "0") .set("NUMDASH", "0") .set("DASHS", "")
-		// .set("DASHOFF", "0")
-		// unbekannt, bleibt auch in Vorlage konstant:
-		// .set("NUMCO", "16")
-		// .set("COCOOR",
-		// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-		// + " 0 " + w + " " + h + " " + w + " " + h + " "
-		// + w + " " + h + " " + w + " " + h + " 0 " + h
-		// + " 0 " + h + " 0 " + h + " 0 " + h
-		// + " 0 0 0 0 ")
-
-		// .set("NUMGROUP", "0")
-		// .set("GROUPS", "")
-		// .set("startArrowIndex", "0")
-		// .set("endArrowIndex", "0")
-		// .set("OnMasterPage", "")
-		// .set("ImageClip", "")
-		// .set("ImageRes", "1")
-		// .set("Pagenumber", "0")
-		// .set("isInline", "0")
-		// .set("fillRule", "1")
-		// .set("doOverprint", "0")
-		// .set("gXpos", "0")
-		// .set("gYpos", "0")
-		// .set("gWidth", "0")
-		// .set("gHeight", "0")
-		// .set("LAYER", "0")
-		// .set("BOOKMARK", "0")
-		;
 	}
 
 	public ScribusImg addImage(String imagePath) throws IOException {

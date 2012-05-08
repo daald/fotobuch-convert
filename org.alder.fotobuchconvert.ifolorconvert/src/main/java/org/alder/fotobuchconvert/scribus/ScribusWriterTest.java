@@ -24,10 +24,9 @@ public class ScribusWriterTest {
 		wr.addPage("Normal", pageW, pageH);
 		PageDims[] pageDims = wr.getPageDims();
 
-		wr.addImageX(
-				0,
-
-				"/media/reverseengineer_ifolor/xml/Australia/files/Australia2-20120409 Data/preview/f804f95403e1414caa14c8091da326d7");
+		wr.addImage(
+				"/media/reverseengineer_ifolor/xml/Australia/files/Australia2-20120409 Data/preview/f804f95403e1414caa14c8091da326d7")
+				.setPosition(400, 400, 100, 100, 0);
 
 		// DEMO: Rotation
 		// SHAPE(6)

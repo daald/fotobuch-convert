@@ -50,4 +50,9 @@ public class BookPicture extends BookElement {
 	public String getSourceName(Book book) {
 		return sourceFile;
 	}
+
+	@Override
+	public boolean isInternalObject() {
+		return "Images::binding.png".equals(origFile);
+	}
 }

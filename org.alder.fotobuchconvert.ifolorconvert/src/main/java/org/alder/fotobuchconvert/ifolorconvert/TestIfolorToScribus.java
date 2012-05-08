@@ -11,7 +11,6 @@ import org.alder.fotobuchconvert.rtf2html.RtfToScribusConverter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
-import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusLine;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 
 public class TestIfolorToScribus {
@@ -38,35 +37,41 @@ public class TestIfolorToScribus {
 
 	void process(File outFile) throws IOException, BadLocationException {
 
-		int f = 1;
+		// int f = 1;
+		// int pageW = (int) (f * 3530);
+		// int pageH = (int) (f * 2500);
 
 		int margin = 20;
 		int bleed = 20;
 		String pageFormat = "Custom";
-		int pageW = (int) (f * 3530);
-		int pageH = (int) (f * 2500);
+
+		double pageW = 847.44;// <Width>7062</Width>
+		double pageH = 600.96;// <Height>2504</Height>
+		double f = pageW / (7062 / 2);
+
 		ScribusWriter wr = new ScribusWriter(outFile, margin, bleed,
 				pageFormat, pageW, pageH);
 
 		wr.addPage("Front", pageW, pageH);
 
-		ScribusLine ln = wr.addLine(200, 200, 300, 300);
-		ln = wr.addLine(200, 200, 300, 250);
-		ln = wr.addLine(200, 200, 300, 200);
-		wr.makeRect(200, 200, 100, 100, 0);
+		// ScribusLine ln = wr.addLine(200, 200, 300, 300);
+		// ln = wr.addLine(200, 200, 300, 250);
+		// ln = wr.addLine(200, 200, 300, 200);
+		// wr.makeRect(200, 200, 100, 100, 0);
 
 		int wrpg = 1;
 		for (BookPage page : book.pages) {
-			if (wrpg > 6)
-				break;
+			// if (wrpg > 10) break;
 
 			PageDims pd = wr.addPage("Normal", pageW, pageH);// left
 			wr.addPage("Normal", pageW, pageH);// right
 
-			int oX = pd.docbaseX;
-			int oY = pd.docbaseY;
+			double oX = pd.docbaseX;
+			double oY = pd.docbaseY;
 
 			for (BookElement el : page.pics) {
+				if (el.isInternalObject())
+					continue;
 
 				// int offX = el.width / 2, offY;
 				// switch (el.dock) {

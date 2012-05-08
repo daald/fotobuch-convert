@@ -19,6 +19,9 @@ public class RtfToScribusConverter {
 
 	public void convert(XmlBuilder xml, String input) throws IOException,
 			BadLocationException {
+		if (input == null)
+			return;
+
 		CharArrayReader rd = new CharArrayReader(input.toCharArray());
 
 		RTFEditorKit kit = new RTFEditorKit();

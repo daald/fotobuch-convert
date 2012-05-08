@@ -28,7 +28,8 @@ public class XmlBuilder extends XmlBuilderBase {
 			out.print("  ");
 		out.print("<" + name);
 		for (Entry<String, String> kv : attributes.entrySet())
-			out.print(" " + kv.getKey() + "=\"" + kv.getValue() + "\"");
+			out.print(" " + kv.getKey() + "=\""
+					+ kv.getValue().replaceAll("\"", "&quot;") + "\"");
 		if (subElements.isEmpty())
 			out.println("/>");
 		else {

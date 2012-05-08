@@ -1,0 +1,5 @@
+was?	doppel	dpi		inch				gerundet		mm			scribus-pt
+------	------	----	-------				--------		----------	----------
+width	7062/2	/300	=11.77 inch							298.958 mm	847.44 pt
+height	2504	/300	=8.346666667 inch	->8.3467 inch	212.005 mm	600.96 pt
+
