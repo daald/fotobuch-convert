@@ -11,14 +11,15 @@ import javax.swing.text.Element;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.rtf.RTFEditorKit;
 
+import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.XmlBuilder;
 
 public class RtfToScribusConverter {
 
-	private static boolean debug = false;
+	private static boolean debug = true;
 
-	public void convert(XmlBuilder xml, String input) throws IOException,
-			BadLocationException {
+	public void convert(XmlBuilder xml, String input, ScribusWriter scribus)
+			throws IOException, BadLocationException {
 		if (input == null)
 			return;
 
@@ -29,10 +30,10 @@ public class RtfToScribusConverter {
 				.createDefaultDocument();
 		kit.read(rd, doc, 0);
 
-		output(xml, doc);
+		output(xml, doc, scribus);
 	}
 
-	void output(XmlBuilder xml, DefaultStyledDocument doc) {
+	void output(XmlBuilder xml, DefaultStyledDocument doc, ScribusWriter scribus) {
 		if (debug)
 			doc.dump(System.out);
 
@@ -42,16 +43,20 @@ public class RtfToScribusConverter {
 				System.out.println(section);
 			assert section.getName().equals("section");
 
-			final int jn = section.getElementCount();
-			for (int j = 0; j < jn; j++) {
+			final int nj = section.getElementCount();
+			for (int j = 0; j < nj; j++) {
 				Element paragraph = section.getElement(j);
 				if (debug)
 					System.out.println(paragraph);
 				assert section.getName().equals("paragraph");
 
-				boolean needParaPrint = (j > 0);
-				boolean firstInPara = true;
+				// boolean firstInPara = true;
 
+				AttributeSet attr = paragraph.getAttributes();
+				Integer alignment = (Integer) attr
+						.getAttribute(StyleConstants.Alignment);
+
+				boolean elementsInThisLine = false;
 				final int ni = paragraph.getElementCount();
 				for (int i = 0; i < ni; i++) {
 					Element content = paragraph.getElement(i);
@@ -60,7 +65,7 @@ public class RtfToScribusConverter {
 					int start = content.getStartOffset();
 					int end = content.getEndOffset();
 
-					AttributeSet attr = content.getAttributes();
+					attr = content.getAttributes();
 					Boolean italic = (Boolean) attr
 							.getAttribute(StyleConstants.Italic);
 					Boolean bold = (Boolean) attr
@@ -76,20 +81,20 @@ public class RtfToScribusConverter {
 
 					String text = doc.getText(start, end - start);
 
-					if (firstInPara && text.trim().isEmpty() && family == null
-							&& fontSize == null)
+					// if (firstInPara && text.trim().isEmpty() && family ==
+					// null
+					// && fontSize == null)
+					// continue;
+					// else
+					// firstInPara = false;
+					if (i == ni - 1 && text.trim().isEmpty()
+							&& text.length() < 3)
 						continue;
-					else
-						firstInPara = false;
+					elementsInThisLine = true;
 
 					System.out.println(italic + " " + bold + " " + underline
 							+ " " + family + " " + fontSize + " " + color
 							+ "\t\"" + text + "\"");
-
-					if (needParaPrint) {
-						xml.add("para");
-						needParaPrint = false;
-					}
 
 					XmlBuilder el = xml.add("ITEXT").set("CH", text);
 
@@ -104,7 +109,33 @@ public class RtfToScribusConverter {
 
 					if (fontSize != null)
 						el.set("FONTSIZE", fontSize);
+
+					if (color != null && color.equals(Color.BLACK)
+							&& scribus != null) {
+						String colname = scribus.getColorName(color);
+						el.set("FCOLOR", colname);
+					}
 				}
+
+				if (!elementsInThisLine && j == nj - 1)
+					break; // don't convert last line if empty
+
+				XmlBuilder el = xml.add("para");
+				if (alignment != null)
+					switch (alignment) {
+					case StyleConstants.ALIGN_LEFT:
+						el.set("ALIGN", 0);
+						break;
+					case StyleConstants.ALIGN_CENTER:
+						el.set("ALIGN", 1);
+						break;
+					case StyleConstants.ALIGN_RIGHT:
+						el.set("ALIGN", 2);
+						break;
+					case StyleConstants.ALIGN_JUSTIFIED:
+						el.set("ALIGN", 3);
+						break;
+					}
 			}
 		} catch (BadLocationException e) {
 			throw new RuntimeException("This error should not occour", e);

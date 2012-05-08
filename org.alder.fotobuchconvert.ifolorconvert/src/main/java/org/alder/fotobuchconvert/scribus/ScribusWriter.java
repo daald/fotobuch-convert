@@ -1,5 +1,6 @@
 package org.alder.fotobuchconvert.scribus;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.io.File;
@@ -22,6 +23,7 @@ public class ScribusWriter {
 	double pagePosY = 20;
 	double margin;
 	double bleed;
+	double vgap = 100;
 
 	private final Vector<PageDims> pageDims = new Vector<PageDims>();
 
@@ -146,11 +148,11 @@ public class ScribusWriter {
 				.set("PRESET", "0");
 
 		if (isDoc)
-			doc.set("GapHorizontal", "0").set("GapVertical", "0");
+			doc.set("GapHorizontal", "0").set("GapVertical", vgap);
 		else
 			doc.set("VerticalGuides", "").set("HorizontalGuides", "")
 					.set("AGhorizontalAutoGap", "0")
-					.set("AGverticalAutoGap", "0")
+					.set("AGverticalAutoGap", vgap)
 					.set("AGhorizontalAutoCount", "0")
 					.set("AGverticalAutoCount", "0")
 					.set("AGhorizontalAutoRefer", "0")
@@ -192,7 +194,7 @@ public class ScribusWriter {
 
 			for (PageDims pd : pageDims)
 				if (pd.left == left)
-					y += pd.pageH;
+					y += pd.pageH + vgap;
 
 			// for(int i=pgnum-1;i>=0 && )
 			if (!left && pgnum > 0)
@@ -200,7 +202,7 @@ public class ScribusWriter {
 
 			// HACK:
 			x = pagePosX + ((pgnum + 1) % 2) * pageW;// - 1;
-			y = pagePosY + (int) ((pgnum + 1) / 2) * pageH;
+			y = pagePosY + (int) ((pgnum + 1) / 2) * (pageH + vgap);
 
 			this.docbaseX = x;
 			this.docbaseY = y;
@@ -452,5 +454,21 @@ public class ScribusWriter {
 
 	public ScribusText addText() {
 		return new ScribusText();
+	}
+
+	public String getColorName(Color color) {
+		String rgbcode = Integer.toHexString(color.getRGB()).substring(2);
+		String key = "RGB." + rgbcode;
+
+		HashMap<String, String> colortable = new HashMap<String, String>();
+		String colname = colortable.get(key);
+		if (colname == null) {
+			colname = "color" + colortable.size();
+			colortable.put(key, colname);
+			doc.add("COLOR").set("NAME", colname).set("RGB", "#" + rgbcode)
+					.set("Spot", "0").set("Register", "0");
+		}
+
+		return colname;
 	}
 }

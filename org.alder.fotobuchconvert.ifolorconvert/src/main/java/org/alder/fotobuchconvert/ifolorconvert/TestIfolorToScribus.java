@@ -14,20 +14,8 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 
 public class TestIfolorToScribus {
-	public static void main(String[] args) throws Exception {
 
-		ProjectPath path = new ProjectPath(TestData.getTestPath());
-
-		Loader loader = new Loader();
-		Book book = loader.load(path);
-
-		TestIfolorToScribus f = new TestIfolorToScribus(book);
-
-		File outFile = TestData.getTestOutputPath();
-
-		f.process(outFile);
-
-	}
+	private final int testLimit = 0;
 
 	private Book book;
 
@@ -36,18 +24,29 @@ public class TestIfolorToScribus {
 	}
 
 	void process(File outFile) throws IOException, BadLocationException {
-
 		// int f = 1;
 		// int pageW = (int) (f * 3530);
 		// int pageH = (int) (f * 2500);
 
-		int margin = 20;
-		int bleed = 20;
+		double margin = 9.33;
+		double bleed = 9.33;
 		String pageFormat = "Custom";
 
-		double pageW = 847.44;// <Width>7062</Width>
-		double pageH = 600.96;// <Height>2504</Height>
-		double f = pageW / (7062 / 2);
+		int ifolorDoubleWidth = 7062;// width of a double page
+		int ifolorHeight = 2504;
+		int ifolorDPI = 300;
+
+		// next is a fix formulare. only make it dynamic if you know the unit of
+		// scribus Pts:
+		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d);
+
+		double pageW = (ifolorDoubleWidth / 2) * ifolorPt2scribusPtFactor;
+		double pageH = ifolorHeight * ifolorPt2scribusPtFactor;
+		double oF = ifolorPt2scribusPtFactor;
+
+		// adjust for bleeding
+		pageW -= bleed;
+		pageH -= bleed * 2;
 
 		ScribusWriter wr = new ScribusWriter(outFile, margin, bleed,
 				pageFormat, pageW, pageH);
@@ -61,33 +60,18 @@ public class TestIfolorToScribus {
 
 		int wrpg = 1;
 		for (BookPage page : book.pages) {
-			// if (wrpg > 10) break;
+			if (testLimit > 0 && wrpg > testLimit)
+				break;
 
 			PageDims pd = wr.addPage("Normal", pageW, pageH);// left
 			wr.addPage("Normal", pageW, pageH);// right
 
-			double oX = pd.docbaseX;
-			double oY = pd.docbaseY;
+			double oX = pd.docbaseX - bleed;
+			double oY = pd.docbaseY - bleed;
 
 			for (BookElement el : page.pics) {
 				if (el.isInternalObject())
 					continue;
-
-				// int offX = el.width / 2, offY;
-				// switch (el.dock) {
-				// case top:
-				// offY = el.height;
-				// break;
-				// case middle:
-				// offY = el.height / 2;
-				// break;
-				// case bottom:
-				// offY = 0;
-				// break;
-				// default:
-				// throw new RuntimeException(
-				// "This command should never be called");
-				// }
 
 				boolean placeHolder = true;
 
@@ -102,8 +86,8 @@ public class TestIfolorToScribus {
 					try {
 						ScribusImg scrimg = wr.addImage(imgFile
 								.getAbsolutePath());
-						scrimg.setPositionCenterRot(oX + f * el.left, oY + f
-								* el.top, f * el.width, f * el.height,
+						scrimg.setPositionCenterRot(oX + oF * el.left, oY + oF
+								* el.top, oF * el.width, oF * el.height,
 								el.angleDegrees);
 						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
 								pic.cropH);
@@ -127,10 +111,10 @@ public class TestIfolorToScribus {
 
 					RtfToScribusConverter rtfConv = new RtfToScribusConverter();
 
-					scrtext.setPositionCenterRot(oX + f * el.left, oY + f
-							* el.top, f * el.width, f * el.height,
+					scrtext.setPositionCenterRot(oX + oF * el.left, oY + oF
+							* el.top, oF * el.width, oF * el.height,
 							el.angleDegrees);
-					rtfConv.convert(scrtext.getElement(), txt);
+					rtfConv.convert(scrtext.getElement(), txt, wr);
 					placeHolder = false;
 				}
 				// // int w = img.getWidth(null);
@@ -153,15 +137,16 @@ public class TestIfolorToScribus {
 				// if (img == null)
 				if (placeHolder) {
 					// g.setColor(Color.LIGHT_GRAY);
-					wr.makeRect(oX + f * el.left, oY + f * el.top,
-							f * el.width, f * el.height, 0);
-					wr.makeRect(oX + f * el.left + 4, oY + f * el.top + 4, f
-							* el.width - 8, f * el.height - 8, 0);
-					wr.addLine(oX + f * el.left, oY + f * el.top, oX + f
-							* (el.left + el.width), oY + f
+					wr.makeRect(oX + oF * el.left, oY + oF * el.top, oF
+							* el.width, oF * el.height, 0);
+					wr.makeRect(oX + oF * el.left + 4, oY + oF * el.top + 4, oF
+							* el.width - 8, oF * el.height - 8, 0);
+					wr.addLine(oX + oF * el.left, oY + oF * el.top, oX + oF
+							* (el.left + el.width), oY + oF
 							* (el.top + el.height));
-					wr.addLine(oX + f * (el.left + el.width), oY + f * el.top,
-							oX + f * el.left, oY + f * (el.top + el.height));
+					wr.addLine(oX + oF * (el.left + el.width),
+							oY + oF * el.top, oX + oF * el.left, oY + oF
+									* (el.top + el.height));
 					// g.drawLine(0, 0, el.width, el.height);
 					// g.drawLine(0, el.height, el.width, 0);
 				}
@@ -205,6 +190,19 @@ public class TestIfolorToScribus {
 		g.drawLine(ox + 3531, oy + 0, ox + 3531, oy + 2504);
 		// <GuideBox left="40" top="40" width="6982" height="2424" />
 		g.drawRect(ox + 40, oy + 40, ox + 6982, oy + 2424);
+	}
+
+	public static void main(String[] args) throws Exception {
+		ProjectPath path = new ProjectPath(TestData.getTestPath());
+
+		Loader loader = new Loader();
+		Book book = loader.load(path);
+
+		TestIfolorToScribus f = new TestIfolorToScribus(book);
+
+		File outFile = TestData.getTestOutputPath();
+
+		f.process(outFile);
 	}
 
 }

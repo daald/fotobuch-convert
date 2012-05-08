@@ -15,6 +15,14 @@ public class TestData {
 				return path + name;
 		}
 
+		if (false) {
+			path = "/home/daniel/Desktop/ifolortest2/";
+			name = "test2";
+			file = new File(path, name + ".dpp");
+			if (file.exists())
+				return path + name;
+		}
+
 		path = "/media/reverseengineer_ifolor/xml/Australia/files/";
 		name = "Australia2-20120409";
 		file = new File(path, name + ".dpp");

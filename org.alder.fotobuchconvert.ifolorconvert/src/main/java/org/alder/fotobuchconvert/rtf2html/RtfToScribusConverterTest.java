@@ -19,7 +19,7 @@ public class RtfToScribusConverterTest {
 		RtfToScribusConverter converter = new RtfToScribusConverter();
 
 		XmlBuilder xml = new XmlBuilder("____");
-		converter.convert(xml, input);
+		converter.convert(xml, input, null);
 
 		xml.output(System.out);
 	}
