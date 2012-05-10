@@ -15,7 +15,7 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 
 public class TestIfolorToScribus {
 
-	private final int testLimit = 0;
+	private final int testLimit = 10;
 
 	private Book book;
 
@@ -92,10 +92,15 @@ public class TestIfolorToScribus {
 						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
 								pic.cropH);
 
+						scrimg.addPictureFrame(oX + oF * el.left, oY + oF
+								* el.top, oF * el.width, oF * el.height,
+								el.angleDegrees);
+
 						placeHolder = false;
 					} catch (Exception e) {
 						System.err.println("Cannot load Image " + imgFile
-								+ ". Drawing not possible");
+								+ " (" + pic.getSourceName(book)
+								+ "). Drawing not possible");
 						e.printStackTrace();
 					}
 

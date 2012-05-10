@@ -444,6 +444,38 @@ public class ScribusWriter {
 			;
 		}
 
+		public void addPictureFrame(double x, double y, double w, double h,
+				double angleDegrees) {
+			XmlBuilder el = doc.add("PAGEOBJECT").set("PTYPE", 6)
+					.set("XPOS", x).set("YPOS", y).set("WIDTH", w)
+					.set("HEIGHT", h);
+			el.set("PWIDTH", "0").set("PCOLOR", "Yellow").set("SHADE", "100");
+			el.set("PCOLOR2", "Black").set("SHADE2", "100");
+
+			double x0 = -5, y0 = -5;
+			double x1 = 5, y1 = 5;
+			double x2 = w - x1, y2 = h - y1;
+			double x3 = w - x0, y3 = h - y0;
+			double xy_g = 999999;
+			String costr = x1 + " " + y1 + " " + x1 + " " + y1 + " " + x2 + " "
+					+ y1 + " " + x2 + " " + y1 + " " + x2 + " " + y1 + " " + x2
+					+ " " + y1 + " " + x2 + " " + y2 + " " + x2 + " " + y2
+					+ " " + x2 + " " + y2 + " " + x2 + " " + y2 + " " + x1
+					+ " " + y2 + " " + x1 + " " + y2 + " " + x1 + " " + y2
+					+ " " + x1 + " " + y2 + " " + x1 + " " + y1 + " " + x1
+					+ " " + y1 + " " + xy_g + " " + xy_g + " " + xy_g + " "
+					+ xy_g + " " + xy_g + " " + xy_g + " " + xy_g + " " + xy_g
+					+ " " + x0 + " " + y0 + " " + x0 + " " + y0 + " " + x3
+					+ " " + y0 + " " + x3 + " " + y0 + " " + x3 + " " + x0
+					+ " " + x3 + " " + y0 + " " + x3 + " " + y3 + " " + x3
+					+ " " + y3 + " " + x3 + " " + y3 + " " + x3 + " " + y3
+					+ " " + x0 + " " + y3 + " " + x0 + " " + y3 + " " + y0
+					+ " " + y3 + " " + y0 + " " + y3 + " " + x0 + " " + y0
+					+ " " + x0 + " " + y0 + " ";
+			el.set("NUMPO", "36").set("POCOOR", costr);
+			el.set("NUMCO", "36").set("COCOOR", costr);
+		}
+
 	}
 
 	public class ScribusLine extends ScribusObject {
