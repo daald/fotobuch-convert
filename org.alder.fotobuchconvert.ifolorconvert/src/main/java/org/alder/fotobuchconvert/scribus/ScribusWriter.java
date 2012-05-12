@@ -30,6 +30,11 @@ public class ScribusWriter {
 	 */
 	private static final String VAL__DOC_VERSION = "1.4.0.rc3";
 
+	private static final int PTYPE_IMAGE = 2;
+	private static final int PTYPE_TEXT = 4;
+	private static final int PTYPE_LINE = 5;
+	private static final int PTYPE_SHAPE = 6;
+
 	/**
 	 * XML Attributes
 	 */
@@ -40,7 +45,9 @@ public class ScribusWriter {
 	private static final String LOCALSCX = "LOCALSCX";
 	private static final String LOCALSCY = "LOCALSCY";
 
-	private static final String PICART = "PICART";
+	private static final String PTYPE = "PTYPE";
+
+	private static final String PICART = "PICART";// 1=shape uses an image file
 	private static final String PFILE = "PFILE";
 
 	private static final String ROT = "ROT";
@@ -54,13 +61,16 @@ public class ScribusWriter {
 	private static final String BACKITEM = "BACKITEM";
 	private static final String NEXTITEM = "NEXTITEM";
 
-	private static final String PTYPE = "PTYPE";
-
 	private static final String OWN_PAGE = "OwnPage";
 
 	private static final String PWIDTH = "PWIDTH";
 
-	private static final String SIZE = "Size";
+	private static final String SIZE = "Size"; // e.g. A4
+	private static final String PAGESIZE = "PAGESIZE";
+	private static final String ORIENTATION = "ORIENTATION"; // page orientation
+
+	private static final String LEFT = "LEFT";// 1=page is on left side (new
+	// line)
 
 	private static final String AG_SELECTION = "AGSelection";
 	private static final String A_GHORIZONTAL_AUTO_GAP = "AGhorizontalAutoGap";
@@ -89,10 +99,10 @@ public class ScribusWriter {
 	private static final String PAGEXPOS = "PAGEXPOS";
 	private static final String PAGEYPOS = "PAGEYPOS";
 
-	private static final String LEFT = "LEFT";
-
+	// Page / object number
 	private static final String NUM = "NUM";
 
+	// Page / Master Page names
 	private static final String MNAM = "MNAM";
 	private static final String NAM = "NAM";
 
@@ -100,23 +110,19 @@ public class ScribusWriter {
 
 	private static final String FLOW = "FLOW";
 
+	// protection flags
 	private static final String EDIT = "EDIT";
-
 	private static final String DRUCKEN = "DRUCKEN";
-
 	private static final String SICHTBAR = "SICHTBAR";
 
 	private static final String NUMMER = "NUMMER";
 
-	private static final String RGB = "RGB";
-	private static final String REGISTER = "Register";
-	private static final String SPOT = "Spot";
-	private static final String CMYK = "CMYK";
+	// color table
 	private static final String NAME = "NAME";
-
-	private static final String PAGESIZE = "PAGESIZE";
-
-	private static final String ORIENTATION = "ORIENTATION";
+	private static final String RGB = "RGB";
+	private static final String CMYK = "CMYK";
+	private static final String SPOT = "Spot";
+	private static final String REGISTER = "Register";
 
 	private static final String BLEED_LEFT = "BleedLeft";
 	private static final String BLEED_RIGHT = "BleedRight";
@@ -484,14 +490,16 @@ public class ScribusWriter {
 	}
 
 	public class ScribusShape extends ScribusObject {
+
 		public ScribusShape() {
-			super(6);// auch Rechtecke
+			super(PTYPE_SHAPE);// auch Rechtecke
 		}
 	}
 
 	public class ScribusText extends ScribusObject {
+
 		public ScribusText() {
-			super(4);
+			super(PTYPE_TEXT);
 		}
 
 		public XmlBuilder getElement() {
@@ -504,7 +512,9 @@ public class ScribusWriter {
 		private final double imgW, imgH;
 
 		public ScribusImg(String imagePath) throws IOException {
-			super(2);
+			super(PTYPE_IMAGE);
+
+			element.set(PICART, "1");
 
 			this.imagePath = imagePath;
 
@@ -519,8 +529,6 @@ public class ScribusWriter {
 				imgW = 0;
 				imgH = 0;
 			}
-
-			element.set(PICART, "1");
 		}
 
 		public void setCropPct(double cropX, double cropY, double cropW,
@@ -606,8 +614,9 @@ public class ScribusWriter {
 	}
 
 	public class ScribusLine extends ScribusObject {
+
 		public ScribusLine() {
-			super(5);
+			super(PTYPE_LINE);
 		}
 	}
 
