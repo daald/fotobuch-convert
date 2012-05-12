@@ -51,7 +51,6 @@ public class RtfToScribusConverter {
 				assert section.getName().equals("paragraph");
 
 				// boolean firstInPara = true;
-
 				AttributeSet attr = paragraph.getAttributes();
 				Integer alignment = (Integer) attr
 						.getAttribute(StyleConstants.Alignment);
@@ -96,44 +95,45 @@ public class RtfToScribusConverter {
 							+ " " + family + " " + fontSize + " " + color
 							+ "\t\"" + text + "\"");
 
-					XmlBuilder el = xml.add("ITEXT").set("CH", text);
+					XmlBuilder el = xml.add(ScribusWriter.EL_ITEXT).set("CH",
+							text);
 
 					if (bold == Boolean.TRUE && italic == Boolean.TRUE)
-						el.set("FONT", family + " Bold Italic");
+						el.set(ScribusWriter.FONT, family + " Bold Italic");
 					else if (bold == Boolean.TRUE)
-						el.set("FONT", family + " Bold");
+						el.set(ScribusWriter.FONT, family + " Bold");
 					else if (italic == Boolean.TRUE)
-						el.set("FONT", family + " Italic");
+						el.set(ScribusWriter.FONT, family + " Italic");
 					else
-						el.set("FONT", family + " Regular");
+						el.set(ScribusWriter.FONT, family + " Regular");
 
 					if (fontSize != null)
-						el.set("FONTSIZE", fontSize);
+						el.set(ScribusWriter.FONTSIZE, fontSize);
 
 					if (color != null && color.equals(Color.BLACK)
 							&& scribus != null) {
 						String colname = scribus.getColorName(color);
-						el.set("FCOLOR", colname);
+						el.set(ScribusWriter.FCOLOR, colname);
 					}
 				}
 
 				if (!elementsInThisLine && j == nj - 1)
 					break; // don't convert last line if empty
 
-				XmlBuilder el = xml.add("para");
+				XmlBuilder el = xml.add(ScribusWriter.EL_PARA);
 				if (alignment != null)
 					switch (alignment) {
 					case StyleConstants.ALIGN_LEFT:
-						el.set("ALIGN", 0);
+						el.set(ScribusWriter.ALIGN, 0);
 						break;
 					case StyleConstants.ALIGN_CENTER:
-						el.set("ALIGN", 1);
+						el.set(ScribusWriter.ALIGN, 1);
 						break;
 					case StyleConstants.ALIGN_RIGHT:
-						el.set("ALIGN", 2);
+						el.set(ScribusWriter.ALIGN, 2);
 						break;
 					case StyleConstants.ALIGN_JUSTIFIED:
-						el.set("ALIGN", 3);
+						el.set(ScribusWriter.ALIGN, 3);
 						break;
 					}
 			}
