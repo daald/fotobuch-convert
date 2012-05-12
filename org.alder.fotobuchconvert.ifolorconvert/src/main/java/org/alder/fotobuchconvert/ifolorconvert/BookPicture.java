@@ -20,6 +20,12 @@ public class BookPicture extends BookElement {
 			double cropX, double cropY, double cropW, double cropH) {
 		super(left, top, width, height, angleDegrees, dragable, dock);
 
+		if (origFile.isEmpty() && previewFile.isEmpty() && sourceFile.isEmpty()) {
+			origFile = null;
+			previewFile = null;
+			sourceFile = null;
+		}
+
 		this.origFile = origFile;
 		this.previewFile = previewFile;
 		this.sourceFile = sourceFile;
@@ -32,6 +38,9 @@ public class BookPicture extends BookElement {
 	}
 
 	public File getImageFile(Book book) {
+		if (previewFile == null)
+			return null;
+
 		File file = new File(book.pathInfo.projectFolder, previewFile.replace(
 				'\\', '/'));
 		return file;
@@ -42,6 +51,8 @@ public class BookPicture extends BookElement {
 			return image;
 
 		File file = getImageFile(book);
+		if (file == null)
+			return null;
 		System.out.println(this + ": " + file);
 		image = new ImageIcon(file.getAbsolutePath()).getImage();
 		return image;
@@ -55,4 +66,5 @@ public class BookPicture extends BookElement {
 	public boolean isInternalObject() {
 		return "Images::binding.png".equals(origFile);
 	}
+
 }

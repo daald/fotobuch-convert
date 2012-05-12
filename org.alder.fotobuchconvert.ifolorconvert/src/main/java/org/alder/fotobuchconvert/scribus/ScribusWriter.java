@@ -25,6 +25,8 @@ public class ScribusWriter {
 	double bleed;
 	double vgap = 100;
 
+	private static final String FRTYPE = "FRTYPE";// Resize complex shapes
+
 	private final Vector<PageDims> pageDims = new Vector<PageDims>();
 
 	private final XmlBuilder doc;
@@ -233,6 +235,8 @@ public class ScribusWriter {
 		protected final XmlBuilder element;
 		final private int type;
 
+		protected double w, h;
+
 		public ScribusObject(int type) {
 			this.type = type;
 
@@ -259,7 +263,6 @@ public class ScribusWriter {
 
 			double[] src = { x, y }, dst = new double[2];
 			trans.transform(src, 0, dst, 0, 1);
-			// TODO geht noch nicht wie gewünscht
 			x = dst[0];
 			y = dst[1];
 
@@ -268,20 +271,47 @@ public class ScribusWriter {
 
 		public void setPosition(double x, double y, double w, double h,
 				double angleDegrees) {
+			this.w = w;
+			this.h = h;
+
 			element.set("XPOS", x).set("YPOS", y);
 			element.set("WIDTH", w).set("HEIGHT", h);
 
 			// ROT: rotation
 			element.set("ROT", angleDegrees);
 
-			if (type != 5) {
-				// cropping-shape NUMPO: (also needed for shapes)
-				element.set("NUMPO", "16");
-				element.set("POCOOR", "0 0 0 0 " + w + " 0 " + w + " 0 " + w
-						+ " 0 " + w + " 0 " + w + " " + h + " " + w + " " + h
-						+ " " + w + " " + h + " " + w + " " + h + " 0 " + h
-						+ " 0 " + h + " 0 " + h + " 0 " + h + " 0 0 0 0 ");
+			ScribusPolyBuilder pb;
+			pb = getPoly(false);
+			if (pb != null) {
+				element.set("NUMPO", pb.getNumber());
+				element.set("POCOOR", pb.getCoordsStr());
 			}
+			pb = getPoly(true);
+			if (pb != null) {
+				element.set("NUMCO", pb.getNumber());
+				element.set("COCOOR", pb.getCoordsStr());
+			}
+		}
+
+		/**
+		 * @param co
+		 *            co=true=COCOORD, co=false=POCOORD
+		 */
+		protected ScribusPolyBuilder getPoly(boolean co) {
+
+			if (type == 5 || co == true)
+				return null;
+
+			ScribusPolyBuilder pb = new ScribusPolyBuilder();
+
+			// cropping-shape PO: (also needed for shapes)
+			pb.add(0, 0);
+			pb.add2(w, 0);
+			pb.add2(w, h);
+			pb.add2(0, h);
+			pb.add(0, 0);
+
+			return pb;
 		}
 
 		public void setBorder() {
@@ -289,6 +319,13 @@ public class ScribusWriter {
 			// SHADE2: Deckung Linie (100=full)
 			element.set("SHADE2", "100");
 		}
+
+		public void setFill(String color) {
+			element.set("PCOLOR", color);
+			// SHADE2: Deckung Fläche (100=full)
+			element.set("SHADE", "100");
+		}
+
 	}
 
 	public class ScribusShape extends ScribusObject {
@@ -326,29 +363,25 @@ public class ScribusWriter {
 	public class ScribusImg extends ScribusObject {
 		private final String imagePath;
 		private final double imgW, imgH;
-		private double w, h;
 
 		public ScribusImg(String imagePath) throws IOException {
 			super(2);
 
 			this.imagePath = imagePath;
 
-			Image img = new ImageIcon(imagePath).getImage();
-			imgW = img.getWidth(null);
-			imgH = img.getHeight(null);
-			if (imgW <= 0 || imgH <= 0)
-				throw new IOException("Image file not found");
+			if (imagePath != null) {
+				Image img = new ImageIcon(imagePath).getImage();
+				imgW = img.getWidth(null);
+				imgH = img.getHeight(null);
+				if (imgW <= 0 || imgH <= 0)
+					throw new IOException("Image file not found");
+				element.set("PFILE", imagePath);
+			} else {
+				imgW = 0;
+				imgH = 0;
+			}
 
 			element.set("PICART", "1");
-			element.set("PFILE", imagePath);
-		}
-
-		@Override
-		public void setPosition(double x, double y, double w, double h,
-				double angleDegrees) {
-			this.w = w;
-			this.h = h;
-			super.setPosition(x, y, w, h, angleDegrees);
 		}
 
 		public void setCropPct(double cropX, double cropY, double cropW,
@@ -384,98 +417,71 @@ public class ScribusWriter {
 					locx, locy);
 		}
 
-		public void X() {
-			// .set("RADRECT", 0) .set("FRTYPE", "0")
-			// .set("CLIPEDIT", "0") .set("PWIDTH", "1") .set("PCOLOR", "None")
-			// .set("PCOLOR2", "None") .set("COLUMNS", "1")
-			// .set("COLGAP", "0") .set("NAMEDLST", "") .set("SHADE", "100")
-			// .set("SHADE2", "100") .set("GRTYP", "0")
-			// .set("PLINEART", "1") .set("PLINEEND", "0") .set("PLINEJOIN",
-			// "0")
-			// .set("PLTSHOW", "0") .set("BASEOF", "0")
-			// .set("textPathType", "0") .set("textPathFlipped", "0")
-			// .set("FLIPPEDH", "0") .set("FLIPPEDV", "0")
-			// .set("RATIO", "1") .set("PRINTABLE", "1") .set("ANNOTATION", "0")
-			// .set("ANNAME", "") .set("TEXTFLOWMODE", "0")
-			// .set("TEXTFLOW", "0") .set("TEXTFLOW2", "0") .set("TEXTFLOW3",
-			// "0")
-			// .set("AUTOTEXT", "0") .set("EXTRA", "0")
-			// .set("TEXTRA", "0") .set("BEXTRA", "0") .set("REXTRA", "0")
-			// .set("FLOP", "0")
-			// .set("PFILE2", "") .set("PFILE3", "") .set("PRFILE", "")
-			// .set("EPROF", "") .set("IRENDER", "0") .set("EMBEDDED", "0")
-			// .set("LOCK", "0") .set("LOCKR", "0") .set("REVERS", "0")
-			// .set("TransValue", "0") .set("TransValueS", "0")
-			// .set("TransBlend",
-			// "0")
-			// .set("TransBlendS", "0") .set("isTableItem", "0") .set("TopLine",
-			// "0") .set("LeftLine", "0") .set("RightLine", "0")
-			// .set("BottomLine",
-			// "0")
-			// .set("isGroupControl", "0") .set("NUMDASH", "0") .set("DASHS",
-			// "")
-			// .set("DASHOFF", "0")
-			// unbekannt, bleibt auch in Vorlage konstant:
-			// .set("NUMCO", "16")
-			// .set("COCOOR",
-			// "0 0 0 0 " + w + " 0 " + w + " 0 " + w + " 0 " + w
-			// + " 0 " + w + " " + h + " " + w + " " + h + " "
-			// + w + " " + h + " " + w + " " + h + " 0 " + h
-			// + " 0 " + h + " 0 " + h + " 0 " + h
-			// + " 0 0 0 0 ")
-
-			// .set("NUMGROUP", "0")
-			// .set("GROUPS", "")
-			// .set("startArrowIndex", "0")
-			// .set("endArrowIndex", "0")
-			// .set("OnMasterPage", "")
-			// .set("ImageClip", "")
-			// .set("ImageRes", "1")
-			// .set("Pagenumber", "0")
-			// .set("isInline", "0")
-			// .set("fillRule", "1")
-			// .set("doOverprint", "0")
-			// .set("gXpos", "0")
-			// .set("gYpos", "0")
-			// .set("gWidth", "0")
-			// .set("gHeight", "0")
-			// .set("LAYER", "0")
-			// .set("BOOKMARK", "0")
-			;
-		}
-
 		public void addPictureFrame(double x, double y, double w, double h,
 				double angleDegrees) {
-			XmlBuilder el = doc.add("PAGEOBJECT").set("PTYPE", 6)
-					.set("XPOS", x).set("YPOS", y).set("WIDTH", w)
-					.set("HEIGHT", h);
-			el.set("PWIDTH", "0").set("PCOLOR", "Yellow").set("SHADE", "100");
-			el.set("PCOLOR2", "Black").set("SHADE2", "100");
+			ScribusImgFrame frame = new ScribusImgFrame();
+			frame.setPositionCenterRot(x, y, w, h, angleDegrees);
+			frame.setBorder();
+			frame.setFill("Warm Black");
+		}
+	}
 
+	public class ScribusImgFrame extends ScribusShape {
+		public ScribusImgFrame() {
+			super();
+
+			element.set(FRTYPE, "3");
+		}
+
+		@Override
+		protected ScribusPolyBuilder getPoly(boolean co) {
 			double x0 = -5, y0 = -5;
 			double x1 = 5, y1 = 5;
 			double x2 = w - x1, y2 = h - y1;
 			double x3 = w - x0, y3 = h - y0;
-			double xy_g = 999999;
-			String costr = x1 + " " + y1 + " " + x1 + " " + y1 + " " + x2 + " "
-					+ y1 + " " + x2 + " " + y1 + " " + x2 + " " + y1 + " " + x2
-					+ " " + y1 + " " + x2 + " " + y2 + " " + x2 + " " + y2
-					+ " " + x2 + " " + y2 + " " + x2 + " " + y2 + " " + x1
-					+ " " + y2 + " " + x1 + " " + y2 + " " + x1 + " " + y2
-					+ " " + x1 + " " + y2 + " " + x1 + " " + y1 + " " + x1
-					+ " " + y1 + " " + xy_g + " " + xy_g + " " + xy_g + " "
-					+ xy_g + " " + xy_g + " " + xy_g + " " + xy_g + " " + xy_g
-					+ " " + x0 + " " + y0 + " " + x0 + " " + y0 + " " + x3
-					+ " " + y0 + " " + x3 + " " + y0 + " " + x3 + " " + x0
-					+ " " + x3 + " " + y0 + " " + x3 + " " + y3 + " " + x3
-					+ " " + y3 + " " + x3 + " " + y3 + " " + x3 + " " + y3
-					+ " " + x0 + " " + y3 + " " + x0 + " " + y3 + " " + y0
-					+ " " + y3 + " " + y0 + " " + y3 + " " + x0 + " " + y0
-					+ " " + x0 + " " + y0 + " ";
-			el.set("NUMPO", "36").set("POCOOR", costr);
-			el.set("NUMCO", "36").set("COCOOR", costr);
-		}
+			// double xy_g = 999999;
+			// String costr = x1 + " " + y1 + " " + x1 + " " + y1 + " " + x2 +
+			// " "
+			// + y1 + " " + x2 + " " + y1 + " " + x2 + " " + y1 + " " + x2
+			// + " " + y1 + " " + x2 + " " + y2 + " " + x2 + " " + y2
+			// + " " + x2 + " " + y2 + " " + x2 + " " + y2 + " " + x1
+			// + " " + y2 + " " + x1 + " " + y2 + " " + x1 + " " + y2
+			// + " " + x1 + " " + y2 + " " + x1 + " " + y1 + " " + x1
+			// + " " + y1 + " " + xy_g + " " + xy_g + " " + xy_g + " "
+			// + xy_g + " " + xy_g + " " + xy_g + " " + xy_g + " " + xy_g
+			// + " " + x0 + " " + y0 + " " + x0 + " " + y0 + " " + x3
+			// + " " + y0 + " " + x3 + " " + y0 + " " + x3 + " " + x0
+			// + " " + x3 + " " + y0 + " " + x3 + " " + y3 + " " + x3
+			// + " " + y3 + " " + x3 + " " + y3 + " " + x3 + " " + y3
+			// + " " + x0 + " " + y3 + " " + x0 + " " + y3 + " " + y0
+			// + " " + y3 + " " + y0 + " " + y3 + " " + x0 + " " + y0
+			// + " " + x0 + " " + y0 + " ";
 
+			ScribusPolyBuilder pb = new ScribusPolyBuilder();
+
+			// cropping-shape PO: (also needed for shapes)
+			pb.add(x1, y1);
+			pb.add2(x2, y1);
+			pb.add2(x2, y2);
+			pb.add2(x1, y2);
+			pb.add(x1, y1);
+			pb.sep();
+			pb.add(x0, y0);
+			pb.add2(x0, y3);
+			pb.add2(x3, y3);
+			pb.add2(x3, y0);
+			pb.add(x0, y0);
+
+			// element.set("NUMPO", "36").set("POCOOR", costr).set("NUMCO",
+			// "36")
+			// .set("COCOOR", costr);
+
+			return pb;
+
+			// .set("OwnPage","3")
+			// --------------
+			// .set("RADRECT", "0")
+		}
 	}
 
 	public class ScribusLine extends ScribusObject {

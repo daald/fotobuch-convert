@@ -84,20 +84,23 @@ public class TestIfolorToScribus {
 					// + pic.cropH);
 
 					try {
-						ScribusImg scrimg = wr.addImage(imgFile
-								.getAbsolutePath());
+						String imgFilePath = imgFile != null ? imgFile
+								.getAbsolutePath() : null;
+						ScribusImg scrimg = wr.addImage(imgFilePath);
 						scrimg.setPositionCenterRot(oX + oF * el.left, oY + oF
 								* el.top, oF * el.width, oF * el.height,
 								el.angleDegrees);
 						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
 								pic.cropH);
 
-						scrimg.addPictureFrame(oX + oF * el.left, oY + oF
-								* el.top, oF * el.width, oF * el.height,
-								el.angleDegrees);
+						if (imgFile != null) {
+							scrimg.addPictureFrame(oX + oF * el.left, oY + oF
+									* el.top, oF * el.width, oF * el.height,
+									el.angleDegrees);
+						}
 
 						placeHolder = false;
-					} catch (Exception e) {
+					} catch (IOException e) {
 						System.err.println("Cannot load Image " + imgFile
 								+ " (" + pic.getSourceName(book)
 								+ "). Drawing not possible");
