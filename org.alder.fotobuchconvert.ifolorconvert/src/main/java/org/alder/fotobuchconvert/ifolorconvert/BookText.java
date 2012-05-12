@@ -14,12 +14,18 @@ public class BookText extends BookElement {
 			boolean dragable, IfolorDock dock, String dataFile) {
 		super(left, top, width, height, angleDegrees, dragable, dock);
 
+		if (dataFile.isEmpty())
+			dataFile = null;
+
 		this.dataFile = dataFile;
 	}
 
 	public byte[] getRtf(Book book) throws IOException {
 		if (data != null)
 			return data;
+
+		if (dataFile == null)
+			return null;
 
 		File file = new File(book.pathInfo.projectFolder, dataFile.replace(
 				'\\', '/'));
@@ -31,10 +37,13 @@ public class BookText extends BookElement {
 
 	public String getRtfText(Book book) {
 		try {
-			return new String(getRtf(book),
-					Charset.forName(Decryptor.CHARSET_cp1252));
+			byte[] rtf = getRtf(book);
+			if (rtf == null)
+				return null;
+
+			return new String(rtf, Charset.forName(Decryptor.CHARSET_cp1252));
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.warn("Error loading text file", e);
 			return null;
 		}
 

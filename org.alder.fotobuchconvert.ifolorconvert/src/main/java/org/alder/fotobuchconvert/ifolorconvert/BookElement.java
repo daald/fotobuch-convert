@@ -1,6 +1,11 @@
 package org.alder.fotobuchconvert.ifolorconvert;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class BookElement {
+
+	protected final Log log = LogFactory.getLog(getClass());
 
 	protected final int left;
 	protected final int top;

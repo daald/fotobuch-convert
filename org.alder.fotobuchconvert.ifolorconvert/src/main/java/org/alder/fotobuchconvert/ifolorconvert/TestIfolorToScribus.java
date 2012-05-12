@@ -12,8 +12,12 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class TestIfolorToScribus {
+
+	protected final Log log = LogFactory.getLog(getClass());
 
 	private final int testLimit = 10;
 
@@ -97,7 +101,8 @@ public class TestIfolorToScribus {
 							scrimg.addPictureFrame(oX + oF * el.left, oY + oF
 									* el.top, oF * el.width, oF * el.height,
 									el.angleDegrees);
-						}
+						} else
+							log.warn("Empty picture in page " + wrpg);
 
 						placeHolder = false;
 					} catch (IOException e) {
@@ -117,12 +122,16 @@ public class TestIfolorToScribus {
 
 					ScribusText scrtext = wr.addText();
 
-					RtfToScribusConverter rtfConv = new RtfToScribusConverter();
-
 					scrtext.setPositionCenterRot(oX + oF * el.left, oY + oF
 							* el.top, oF * el.width, oF * el.height,
 							el.angleDegrees);
-					rtfConv.convert(scrtext.getElement(), txt, wr);
+					if (txt != null) {
+						RtfToScribusConverter rtfConv = new RtfToScribusConverter();
+
+						rtfConv.convert(scrtext.getElement(), txt, wr);
+					} else
+						log.warn("Empty text in page " + wrpg);
+
 					placeHolder = false;
 				}
 				// // int w = img.getWidth(null);
