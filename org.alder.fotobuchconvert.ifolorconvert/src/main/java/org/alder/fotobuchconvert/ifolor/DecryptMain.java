@@ -12,7 +12,7 @@ public class DecryptMain {
 
 	public static void main(String[] args) throws IOException {
 		Decryptor decryptor = new Decryptor();
-		File projectFile = new File(TestData.getTestProject() + ".dpp");
+		File projectFile = TestData.getTestProject().projectFile;
 		byte[] bytes = decryptor.loadBinaryFile(projectFile, "DPP");
 		System.out.print(new String(bytes, 0, bytes.length, CHARSET_cp1252));
 	}
