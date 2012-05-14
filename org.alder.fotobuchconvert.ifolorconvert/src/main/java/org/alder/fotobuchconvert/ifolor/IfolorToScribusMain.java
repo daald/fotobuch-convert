@@ -50,8 +50,8 @@ public class IfolorToScribusMain {
 		int ifolorHeight = 2504;
 		int ifolorDPI = 300;
 
-		// next is a fix formulare. only make it dynamic if you know the unit of
-		// scribus Pts:
+		// next is a fix formula. only change it if you know the unit of scribus
+		// Pts
 		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d);
 
 		double pageW = (ifolorDoubleWidth / 2) * ifolorPt2scribusPtFactor;
@@ -66,11 +66,6 @@ public class IfolorToScribusMain {
 				pageFormat, pageW, pageH);
 
 		wr.addPage("Front", pageW, pageH);
-
-		// ScribusLine ln = wr.addLine(200, 200, 300, 300);
-		// ln = wr.addLine(200, 200, 300, 250);
-		// ln = wr.addLine(200, 200, 300, 200);
-		// wr.makeRect(200, 200, 100, 100, 0);
 
 		int wrpg = 1;
 		for (BookPage page : book.pages) {
@@ -92,10 +87,6 @@ public class IfolorToScribusMain {
 				if (el instanceof BookPicture) {
 					BookPicture pic = (BookPicture) el;
 					File imgFile = pic.getImageFile(book);
-
-					// System.out.println(">" + w + " " + h + " " + pic.cropX
-					// + " " + pic.cropY + " " + pic.cropW + " "
-					// + pic.cropH);
 
 					try {
 						String imgFilePath = imgFile != null ? imgFile
@@ -125,10 +116,6 @@ public class IfolorToScribusMain {
 				} else if (el instanceof BookText) {
 					BookText text = (BookText) el;
 					String txt = text.getRtfText(book);
-					// if (txt != null) {
-					// g.setFont(g.getFont().deriveFont(60f));
-					// FontMetrics fm = g.getFontMetrics();
-					// g.drawString(txt, 0, fm.getHeight());
 
 					ScribusText scrtext = wr.addText();
 
@@ -162,7 +149,6 @@ public class IfolorToScribusMain {
 				}
 
 				if (placeHolder) {
-					// g.setColor(Color.LIGHT_GRAY);
 					wr.makeRect(oX + oF * el.left, oY + oF * el.top, oF
 							* el.width, oF * el.height, 0);
 					wr.makeRect(oX + oF * el.left + 4, oY + oF * el.top + 4, oF
@@ -173,10 +159,7 @@ public class IfolorToScribusMain {
 					wr.addLine(oX + oF * (el.left + el.width),
 							oY + oF * el.top, oX + oF * el.left, oY + oF
 									* (el.top + el.height));
-					// g.drawLine(0, 0, el.width, el.height);
-					// g.drawLine(0, el.height, el.width, 0);
 				}
-				// g.drawImage(img, 0, 0, pic.width, pic.height, null);
 			}
 
 			// pageBorders(g);
