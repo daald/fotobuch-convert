@@ -1,53 +1,48 @@
 package org.alder.fotobuchconvert.ifolorconvert;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class TestData {
-	public static String getTestPath() {
-		String path, name;
-		File file;
+	private final static Log log = LogFactory.getLog(TestData.class);
 
-		if (true) {
-			path = "/media/reverseengineer_ifolor/ifolorFiles/";
-			name = "test2";
-			file = new File(path, name + ".dpp");
-			if (file.exists())
-				return path + name;
+	public static ProjectPath getTestProject() {
+		final String configFile = "testpaths.txt";
+		try {
+			InputStream is = TestData.class.getClassLoader()
+					.getResourceAsStream(configFile);
+			BufferedReader ir = new BufferedReader(new InputStreamReader(is));
+
+			String line;
+			while ((line = ir.readLine()) != null) {
+				if (line.isEmpty() || line.startsWith("#"))
+					continue;
+
+				File file = new File(line);
+				if (!file.exists())
+					continue;
+
+				// if (line.endsWith(".xml"))
+				// line = line.substring(0, line.length() - 4);
+				// if (line.endsWith(".dpp"))
+				// line = line.substring(0, line.length() - 4);
+
+				log.info("Using Test Data: " + file);
+
+				return new ProjectPath(file);
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 
-		if (false) {
-			path = "/media/reverseengineer_ifolor/ifolorFiles/permut2_03_texte/";
-			name = "permut2";
-			file = new File(path, name + ".dpp");
-			if (file.exists())
-				return path + name;
-		}
-
-		if (false) {
-			path = "/home/daniel/Desktop/ifolortest2/";
-			name = "test2";
-			file = new File(path, name + ".dpp");
-			if (file.exists())
-				return path + name;
-		}
-
-		path = "/media/reverseengineer_ifolor/xml/Australia/files/";
-		name = "Australia2-20120409";
-		file = new File(path, name + ".dpp");
-		if (file.exists())
-			return path + name;
-
-		path = "G:\\ifolor\\tmpwin\\";
-		file = new File(path, name + ".dpp");
-		if (file.exists())
-			return path + name;
-
-		path = "P:\\ifolor\\fb\\Australia2-20120409\\";
-		file = new File(path, name + ".dpp");
-		if (file.exists())
-			return path + name;
-
-		throw new RuntimeException("Unknown environment");
+		throw new RuntimeException("No test file found (check " + configFile
+				+ ")");
 	}
 
 	public static File getTestOutputPath() {
@@ -57,8 +52,14 @@ public class TestData {
 			return new File("/tmp/scribustest.sla");
 	}
 
-	public static boolean isWindows() {
+	private static boolean isWindows() {
 		String os = System.getProperty("os.name").toLowerCase();
 		return (os.indexOf("win") >= 0);
+	}
+
+	public static void main(String[] args) {
+		ProjectPath pp = getTestProject();
+		System.out.println(pp.projectFile);
+		System.out.println(pp.projectFolder);
 	}
 }

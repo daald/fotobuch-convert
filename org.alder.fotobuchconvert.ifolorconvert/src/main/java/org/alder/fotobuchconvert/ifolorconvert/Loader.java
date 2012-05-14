@@ -20,7 +20,7 @@ public class Loader {
 	public Book load(ProjectPath path) throws Exception {
 		log.info("Loading Layout for " + path);
 		log.debug("File: " + path.projectFile.getAbsolutePath());
-		log.debug("Extsts: " + path.projectFile.exists());
+		log.debug("Exists: " + path.projectFile.exists());
 
 		/******
 		 * initialization
@@ -51,6 +51,7 @@ public class Loader {
 		AutoPilot apImVpTop = new AutoPilot();
 		AutoPilot apImVpWidth = new AutoPilot();
 		AutoPilot apImVpHeight = new AutoPilot();
+		AutoPilot apImBorderType = new AutoPilot();
 		AutoPilot apShapeColor = new AutoPilot();
 		AutoPilot apShapeColorValue = new AutoPilot();
 		AutoPilot apShapeColorPos = new AutoPilot();
@@ -70,7 +71,7 @@ public class Loader {
 		apImApplyOffset.selectXPath("@applyOffset");// ="0"
 		apImEditable.selectXPath("@editable");// ="1"
 		apImDragable.selectXPath("@dragable");// ="1"
-		apImDock.selectXPath("@dock");// ="middle"
+		apImDock.selectXPath("@dock");// ="middle", (only "top" on cover pages)
 		apImDesigner.selectXPath("@designer");// ="0"
 		apImOrigFilePath.selectXPath("OrigFilePath");// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
 		apImPreviewFilePath.selectXPath("PreviewFilePath");// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
@@ -79,6 +80,7 @@ public class Loader {
 		apImVpTop.selectXPath("VisiblePart/@top");// top="2.333334"
 		apImVpWidth.selectXPath("VisiblePart/@width");// width="100"
 		apImVpHeight.selectXPath("VisiblePart/@height");// height="90.66666"
+		apImBorderType.selectXPath("Border/@id");// <Border id="Elegant" />
 
 		// <Colors><Color value="7F000000" position="0" /></Colors>
 		apShapeColor.selectXPath("Colors/Color");
@@ -117,6 +119,7 @@ public class Loader {
 		apImVpTop.bind(vn);
 		apImVpWidth.bind(vn);
 		apImVpHeight.bind(vn);
+		apImBorderType.bind(vn);
 		apShapeColor.bind(vn);
 		apShapeColorValue.bind(vn);
 		apShapeColorPos.bind(vn);
@@ -156,6 +159,10 @@ public class Loader {
 					double cropY = apImVpTop.evalXPathToNumber() / 100d;
 					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
 					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
+
+					String border = apImBorderType.evalXPathToString();
+
+					System.out.println("border: " + border);
 
 					BookPicture pic = new BookPicture(left, top, width, height,
 							angleDegrees, dragable, dock, origFile,

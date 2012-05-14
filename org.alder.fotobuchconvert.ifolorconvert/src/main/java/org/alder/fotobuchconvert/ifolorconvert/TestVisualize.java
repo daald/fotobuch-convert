@@ -22,7 +22,7 @@ public class TestVisualize extends JFrame {
 	public static void main(String[] args) throws Exception {
 
 		Loader loader = new Loader();
-		ProjectPath path = new ProjectPath(TestData.getTestPath());
+		ProjectPath path = TestData.getTestProject();
 		Book book = loader.load(path);
 
 		TestVisualize f = new TestVisualize(book);

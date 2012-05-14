@@ -14,7 +14,7 @@ public class ListFiles {
 	public static void main(String[] args) throws Exception {
 
 		Loader loader = new Loader();
-		ProjectPath path = new ProjectPath(TestData.getTestPath());
+		ProjectPath path = TestData.getTestProject();
 		Book book = loader.load(path);
 
 		HashSet<String> duplicateFind = new HashSet<String>();
