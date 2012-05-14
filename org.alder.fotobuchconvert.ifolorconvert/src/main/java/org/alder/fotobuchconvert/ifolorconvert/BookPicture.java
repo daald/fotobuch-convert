@@ -11,7 +11,7 @@ public class BookPicture extends BookElement {
 							// <OrigFilePath><![CDATA[data\9ac23b2ee4f146678aaed92ab627d786]]
 	final String previewFile;
 	final String sourceFile;
-	final double cropX, cropY, cropW, cropH;
+	public final double cropX, cropY, cropW, cropH;
 	private Image image;
 
 	public BookPicture(int left, int top, int width, int height,

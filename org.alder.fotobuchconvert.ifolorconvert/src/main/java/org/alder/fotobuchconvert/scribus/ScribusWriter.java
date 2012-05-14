@@ -11,6 +11,8 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 
+import org.alder.fotobuchconvert.ifolorconvert.BookShape.ShapeColor;
+
 public class ScribusWriter {
 
 	private static final String OUTPUT_DOC_VERSION = "1.4.0.rc3";
@@ -329,6 +331,26 @@ public class ScribusWriter {
 		public ScribusShape() {
 			super(C.PTYPE_SHAPE);// auch Rechtecke
 		}
+
+		public void setGradient(ShapeColor[] colors) {
+			// GRSTARTX="0" GRSTARTY="196.08" GRENDX="108.96" GRENDY="196.08"
+			element.set("GRSTARTX", 0).set("GRSTARTY", h).set("GRENDX", w)
+					.set("GRENDY", h).set("GRTYP", 1);
+
+			// Test: element.set("RATIO", "1").set("SHADE", "70").set("PCOLOR",
+			// "None");
+
+			// <CSTOP RAMP="0.640569395017794" NAME="Blue" SHADE="100"
+			// TRANS="1"/>
+			for (ShapeColor color : colors) {
+				element.add(C.CSTOP)
+						.set(C.RAMP, color.position)
+						.set(C.NAME, colorManager.getColorName(color.color))
+						.set(C.SHADE,
+								(int) (color.color.getAlpha() / 256d * 100d))
+						.set(C.TRANS, 1);
+			}
+		}
 	}
 
 	public class ScribusText extends ScribusObject {
@@ -457,6 +479,10 @@ public class ScribusWriter {
 
 	public ScribusText addText() {
 		return new ScribusText();
+	}
+
+	public ScribusShape addShape() {
+		return new ScribusShape();
 	}
 
 }

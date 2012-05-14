@@ -140,6 +140,15 @@ public class C {
 	public static final String PCOLOR2 = "PCOLOR2";// border color
 
 	/**
+	 * CSTOP (gradient) specific
+	 */
+	// public static final String TRANS = "TRANS";
+	// public static final String SHADE = "SHADE";
+	// public static final String NAME = "NAME";
+	public static final String RAMP = "RAMP";
+	public static final String CSTOP = "CSTOP";
+
+	/**
 	 * Text specific
 	 */
 	public static final String EL_ITEXT = "ITEXT";

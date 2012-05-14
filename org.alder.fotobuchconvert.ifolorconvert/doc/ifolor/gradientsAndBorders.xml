@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserProject version="1.0" created="20120413T011219">
+	<Product>5201</Product>
+	<LastSelected>
+		<Background></Background>
+	</LastSelected>
+	<View>
+		<Preview>Images::P00_default.png</Preview>
+		<PagesOnSheet>2</PagesOnSheet>
+		<LeftPageOffset>-102</LeftPageOffset>
+		<RightPageOffset>102</RightPageOffset>
+		<CoverPageOffset>0</CoverPageOffset>
+		<GridWidth>100</GridWidth>
+		<GridHeight>100</GridHeight>
+	</View>
+	<Cover>
+		<ProjectPage id="C00">
+			<Sheet>
+				<Width>7666</Width>
+				<Height>2953</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::C00.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\2393d067204b4fd1b5725810111d982e]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>0</RightSideOffset>
+			<LeftPageOffset>0</LeftPageOffset>
+			<RightPageOffset>0</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>True</IsCover>
+			<Editable>True</Editable>
+			<Style>DESIGN01_Booktext</Style>
+			<Guides>
+				<GuideLine x1="3778" y1="0" x2="3778" y2="2953" />
+				<GuideLine x1="3888" y1="0" x2="3888" y2="2953" />
+				<GuideBox left="220" top="220" width="7226" height="2513" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="0" top="0" width="7666" height="2953" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0"></Image>
+				<Text tooLong="0" style="DESIGN01_CoverHeaderCenter" valign="top"
+					id="T01" left="5691" top="345" width="1550" height="230"
+					rotateAngle="0" applyOffset="0" editable="1" dragable="1" dock="middle"
+					designer="0"></Text>
+				<Text tooLong="0" style="" valign="top" id="" left="423" top="471"
+					width="2555" height="984" rotateAngle="0" applyOffset="1" editable="1"
+					dragable="1" dock="middle" designer="0"></Text>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Logo"
+					left="3067" top="2448" width="576" height="194" rotateAngle="0"
+					applyOffset="1" editable="0" dragable="1" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::logo2.png]]></OrigFilePath>
+					<SourceFilePath>Images::logo2.png</SourceFilePath>
+					<VisiblePart left="0" top="0.09042168" width="100"
+						height="99.63831" />
+				</Image>
+				<Text tooLong="0" style="DESIGN01_CoverSpine" valign="center"
+					id="Spine" left="2633" top="1436" width="2400" height="82"
+					rotateAngle="-90" applyOffset="1" editable="1" dragable="0" dock="top"
+					designer="0"></Text>
+			</GuiObjects>
+		</ProjectPage>
+	</Cover>
+	<Pages>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>False</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco01"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\35411563a5fb4cdbb25f286e6139d18f]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Medium" enhancement="1" modified="0" id=""
+					left="883" top="626" width="1765" height="1252" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\291fd5ff467d471cb4ebfd9805209c56]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\291fd5ff467d471cb4ebfd9805209c56]]></PreviewFilePath>
+					<VisiblePart left="0" top="1.355051" width="100"
+						height="94.5798" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P00_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\2b06600fbf58484cb91325fd68da45d8]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Medium" enhancement="1" modified="0" id=""
+					left="2800" top="490" width="1462" height="1310" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\8a2458a7cd304a48a407aee175798b8f]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\8a2458a7cd304a48a407aee175798b8f]]></PreviewFilePath>
+					<VisiblePart left="8.485497" top="0" width="83.02901"
+						height="100" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="-406"
+					top="900" width="804" height="596" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\0b5f771df5944aa1bc314402ea13d360]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\0b5f771df5944aa1bc314402ea13d360]]></PreviewFilePath>
+					<VisiblePart left="0" top="0.0406208" width="100"
+						height="99.83752" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="-238"
+					top="200" width="553" height="446" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\ebc18116dbb34ebe8e8d540df0855225]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\ebc18116dbb34ebe8e8d540df0855225]]></PreviewFilePath>
+					<VisiblePart left="3.84108" top="0" width="92.31784"
+						height="99.99725" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="500"
+					top="-186" width="553" height="446" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\19c16b7b79674d36bd58e74eb85fbd9f]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\19c16b7b79674d36bd58e74eb85fbd9f]]></PreviewFilePath>
+					<VisiblePart left="3.84108" top="0" width="92.31784"
+						height="99.99725" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="600"
+					top="2237" width="553" height="446" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\90bba0131b344ef0ac26a689cc3c567d]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\90bba0131b344ef0ac26a689cc3c567d]]></PreviewFilePath>
+					<VisiblePart left="3.84108" top="0" width="92.31784"
+						height="99.99725" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="6658"
+					top="700" width="804" height="596" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\09f96dc7da8847b09d43759dc9fe2d37]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\09f96dc7da8847b09d43759dc9fe2d37]]></PreviewFilePath>
+					<VisiblePart left="0" top="0.0406208" width="100"
+						height="99.83752" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="1496"
+					top="-299" width="804" height="596" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\30d47bb374fb4bae86d17d16f1e071e3]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\30d47bb374fb4bae86d17d16f1e071e3]]></PreviewFilePath>
+					<VisiblePart left="0" top="0.0406208" width="100"
+						height="99.83752" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="1496"
+					top="2199" width="804" height="596" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\6a006e7786474468ab903dd0442f8fb1]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\6a006e7786474468ab903dd0442f8fb1]]></PreviewFilePath>
+					<VisiblePart left="0" top="0.0406208" width="100"
+						height="99.83752" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="6747"
+					top="154" width="553" height="446" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\fdddc2d7f8374c6b80f2c406bf088c34]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\fdddc2d7f8374c6b80f2c406bf088c34]]></PreviewFilePath>
+					<VisiblePart left="3.84108" top="0" width="92.31784"
+						height="99.99725" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0" id="" left="3253"
+					top="1900" width="553" height="446" rotateAngle="0" applyOffset="1"
+					editable="1" dragable="1" dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\293b71b7d47f436a9ffd0b6a23591804]]></OrigFilePath>
+					<SourceFilePath><![CDATA[C:\Users\daniel\Desktop\mark.png]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\293b71b7d47f436a9ffd0b6a23591804]]></PreviewFilePath>
+					<VisiblePart left="3.84108" top="0" width="92.31784"
+						height="99.99725" />
+					<Border id="Elegant" />
+				</Image>
+				<ColorRectangle id="e79adf891b614a418ca9dd6d2912acd8"
+					left="0" top="1543" width="7062" height="156" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="876878971f444401800e8d82fbf91262"
+					left="5662" top="0" width="143" height="2500" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco01"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Base64::iVBORw0KGgoAAAANSUhEUgAAAEAAAAAuCAYAAACYlx/0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADbSURBVGhD7Zo7DsAgDEN7/ytw2FTdCsqQGIkBP6qOrpSfbaBPmK/HPP4gAXSAeQbSERhx5vnnfoyI6qvivu+viwRkE3Cm/nM5qtVfq9jB0QGMABwACaICSwawwuZGMN8M7WhrB6s6OhVX9wENW7pjTNRAVBwJKBshOqC+M2MElraCBBvjo5KZiiuToJM3wAk6VTuLNT8Sa8wxKoAKzI2FDDbGR5UzFVeWwU4V4QA44EIOcPIGOMH0aqzB5JAgJHghCeID4ADOBMu/q1ypAhghowzgBI2KnYZq3wEvCWivePmSSy0AAAAASUVORK5CYII=
+				</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\e18af1b583084d16bbea171bba38ed1f]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Text tooLong="0" style="" valign="center"
+					id="02c4a54f0bc44785a722c704071c722f" left="225" top="225" width="1500"
+					height="475" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0"></Text>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="4583ab79f8df491786e760f72198ebc6" left="1900" top="300" width="500"
+					height="342" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\e1d889cbfe234197b877a0ff586af4a1]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\e1d889cbfe234197b877a0ff586af4a1]]></PreviewFilePath>
+					<VisiblePart left="14.11719" top="14.85999" width="71.76562"
+						height="65.51812" />
+					<Border>
+						<Box color="#993300" inflateWidth="-3" inflateHeight="-3"
+							penSize="6" />
+						<Box color="#808000" inflateWidth="33" inflateHeight="33"
+							penSize="66" />
+						<Box color="#993300" inflateWidth="69" inflateHeight="69"
+							penSize="6" />
+						<Shadow color="Black" inflateWidth="87" inflateHeight="87"
+							offsetWidth="16" offsetHeight="16" shadowSize="55" />
+					</Border>
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="6ef1ec9348d34906a0a4e15ab26306ba" left="2575" top="225" width="725"
+					height="475" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\9a2466a9c6584b0aaaebf6b4f5013748]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\9a2466a9c6584b0aaaebf6b4f5013748]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.160919" width="100"
+						height="87.35632" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="e49ad1687b0347ac81198e3a1bd048a0" left="1025" top="775" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\886fff8fe7d644739e967de4e581d5a9]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\886fff8fe7d644739e967de4e581d5a9]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<AlphaSet id="[ALPHAMASK01]Alpha2" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="67b975aca511475cbb62f63e9e3dfd21" left="225" top="775" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\ae9a5947295c4a82821ee990333b8eea]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\ae9a5947295c4a82821ee990333b8eea]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<AlphaSet id="[ALPHAMASK01]Alpha5" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="b975ecd4011f466cb7b48316e2d1d833" left="1800" top="775" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\b0e8e09f0be34ed4b572ba4e040eb7c7]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\b0e8e09f0be34ed4b572ba4e040eb7c7]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<AlphaSet id="[ALPHAMASK01]Alpha6" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="0781c52c55d646999ddd8e7f90bfafac" left="2575" top="775" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\a5a755e688b947929a237b9b7313d8cf]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\a5a755e688b947929a237b9b7313d8cf]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<AlphaSet id="[ALPHAMASK01]Alpha1" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="6f09c574ae6740bd9e3aa529ad8cfc89" left="225" top="1300" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\5ed03098c9ad46fcad962eaa6c29dde6]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\5ed03098c9ad46fcad962eaa6c29dde6]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<AlphaSet id="[ALPHAMASK01]Alpha3" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="267e0746a56c4bc5abe6249efea3f72c" left="1025" top="1300" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\965ed8a48fab49ecb191f95a6b450959]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\965ed8a48fab49ecb191f95a6b450959]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<AlphaSet id="[ALPHAMASK01]Alpha10" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="4e66c0c205b4430b8615ddcc1f48ec8a" left="1800" top="1300" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\ebca0da566154bfea505fa04365209ed]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\ebca0da566154bfea505fa04365209ed]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="419d6192ab774276b4eff33ff2b3d1cc" left="2575" top="1300" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\9185a40e6c09496a94729f492ab27390]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\9185a40e6c09496a94729f492ab27390]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="2011255a3f8f486395a8a087374c36aa" left="225" top="1825" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\88b3ae6ad73c47239138e54367541295]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\88b3ae6ad73c47239138e54367541295]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="[ALPHAMASK01]Border04" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="78ab441c559644f797302a773d8d49fe" left="1025" top="1825" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\018d161c92624464a41f8fdc783ca34f]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\018d161c92624464a41f8fdc783ca34f]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="[ALPHAMASK01]Border05" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="544c694ad71c4ed799b3e2383a144638" left="1800" top="1825" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\b62cf44da4ec4626806b86a86e6e6a29]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\b62cf44da4ec4626806b86a86e6e6a29]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="[ALPHAMASK01]Border06" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="f22b84162f6c4db29a7a90e96ef9c4c2" left="2575" top="1825" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\83ea0091acfd405eb7fb3a2c16e0f07c]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\83ea0091acfd405eb7fb3a2c16e0f07c]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Elegant" />
+				</Image>
+				<Text tooLong="0" style="" valign="center"
+					id="02c4a54f0bc44785a722c704071c722f" left="3756" top="225" width="1500"
+					height="475" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0"></Text>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="4583ab79f8df491786e760f72198ebc6" left="5331" top="225" width="700"
+					height="475" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\5389bee1d99e4397be45d8fab5e7afb6]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\5389bee1d99e4397be45d8fab5e7afb6]]></PreviewFilePath>
+					<VisiblePart left="0" top="2.380953" width="100"
+						height="90.47619" />
+					<Border id="Basic" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="6ef1ec9348d34906a0a4e15ab26306ba" left="6106" top="225" width="725"
+					height="475" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\efa5697ee2bb45c9b556b454e692d696]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\efa5697ee2bb45c9b556b454e692d696]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.160919" width="100"
+						height="87.35632" />
+					<Border id="Retro" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="e49ad1687b0347ac81198e3a1bd048a0" left="4556" top="775" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\0d9bad4394b2419d9f5a652576add283]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\0d9bad4394b2419d9f5a652576add283]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="Heavy Black" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="67b975aca511475cbb62f63e9e3dfd21" left="3756" top="775" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\84c6757acc454f8d81a7b1c5908dafe0]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\84c6757acc454f8d81a7b1c5908dafe0]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Solid" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="b975ecd4011f466cb7b48316e2d1d833" left="5331" top="775" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\60eeecec331d4f97ad14bc9cb48bd28f]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\60eeecec331d4f97ad14bc9cb48bd28f]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="Heavy White" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="0781c52c55d646999ddd8e7f90bfafac" left="6106" top="775" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\d381fbceb742438781bc793ac80b0b99]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\d381fbceb742438781bc793ac80b0b99]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Classic" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="6f09c574ae6740bd9e3aa529ad8cfc89" left="3756" top="1300" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\f94eaef957464a8bb556ebe22271718e]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\f94eaef957464a8bb556ebe22271718e]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="White Line" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="267e0746a56c4bc5abe6249efea3f72c" left="4556" top="1300" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\1d1183c8837447708d6fa55c89bf772e]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\1d1183c8837447708d6fa55c89bf772e]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="Orange Line" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="4e66c0c205b4430b8615ddcc1f48ec8a" left="5331" top="1300" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\809a3b2b1f9d49a6ba6cf38e7c28950f]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\809a3b2b1f9d49a6ba6cf38e7c28950f]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="Blue Line" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="419d6192ab774276b4eff33ff2b3d1cc" left="6106" top="1300" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\9156f237f4b64fbf9a8c9242f9d4eedc]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\9156f237f4b64fbf9a8c9242f9d4eedc]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Green Line" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="2011255a3f8f486395a8a087374c36aa" left="3756" top="1825" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\e2401630c654457e9ad2d3de1f60c5ad]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\e2401630c654457e9ad2d3de1f60c5ad]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="Red Line" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="78ab441c559644f797302a773d8d49fe" left="4556" top="1825" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\1080d4556c364fff83563485795e62d5]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\1080d4556c364fff83563485795e62d5]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="[ALPHAMASK01]Border01" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="544c694ad71c4ed799b3e2383a144638" left="5331" top="1825" width="700"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\d8ab90bd80c24bac83fb6d23d2bcc550]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\d8ab90bd80c24bac83fb6d23d2bcc550]]></PreviewFilePath>
+					<VisiblePart left="0" top="3.571428" width="100"
+						height="85.71429" />
+					<Border id="[ALPHAMASK01]Border02" />
+				</Image>
+				<Image quality="Good" enhancement="1" modified="0"
+					id="f22b84162f6c4db29a7a90e96ef9c4c2" left="6106" top="1825" width="725"
+					height="450" rotateAngle="0" applyOffset="0" editable="1" dragable="1"
+					dock="middle" designer="0">
+					<OrigFilePath><![CDATA[data\b3d0e248d53d40c98b9914716c7e3776]]></OrigFilePath>
+					<SourceFilePath><![CDATA[P:\source2012flat\2010-12b Sydney Manly SEA__2010-12-17 Santa Pub Crawl (ext)__65824_487805197957_512722957_5776700_911888_n.jpg]]></SourceFilePath>
+					<PreviewFilePath><![CDATA[preview\b3d0e248d53d40c98b9914716c7e3776]]></PreviewFilePath>
+					<VisiblePart left="0" top="4.310345" width="100"
+						height="82.75862" />
+					<Border id="[ALPHAMASK01]Border03" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0"
+					id="adb4398af07a43a89a55e8a0a6cb1c4b" left="3156" top="0" width="750"
+					height="2504" rotateAngle="0" applyOffset="0" editable="0"
+					dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[data\381754e414244c35b66aed0fd0ae77c9]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<ColorRectangle id="8171dcc587254dde8fba04c0cfddc894"
+					left="146" top="166" width="454" height="1634" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="ABFC0077" position="0" />
+						<Color value="AB00FC6B" position="0.1666666" />
+						<Color value="ABBF9B55" position="1" />
+					</Colors>
+				</ColorRectangle>
+				<ColorRectangle id="dea19e13b29743b49f9854a53e3a3de1"
+					left="588" top="835" width="2354" height="834" rotateAngle="0"
+					applyOffset="1" editable="1" dragable="1" dock="middle" designer="0">
+					<Colors>
+						<Color value="7F000000" position="0" />
+					</Colors>
+				</ColorRectangle>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<VisiblePart left="0" top="7.28824" width="100" height="70.84704" />
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P02_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>True</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="3756" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+		<ProjectPage>
+			<Sheet>
+				<Width>7062</Width>
+				<Height>2504</Height>
+				<Dpi>300</Dpi>
+				<Preview>Images::P00_preview.png</Preview>
+			</Sheet>
+			<Preview><![CDATA[Images::P00_default.png]]></Preview>
+			<LeftSideOffset>0</LeftSideOffset>
+			<RightSideOffset>3531</RightSideOffset>
+			<LeftPageOffset>-102</LeftPageOffset>
+			<RightPageOffset>102</RightPageOffset>
+			<LeftPageEnabled>True</LeftPageEnabled>
+			<RightPageEnabled>False</RightPageEnabled>
+			<IsCover>False</IsCover>
+			<Editable>True</Editable>
+			<Style>Elegant</Style>
+			<Guides>
+				<GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
+				<GuideBox left="40" top="40" width="6982" height="2424" />
+			</Guides>
+			<GuiObjects>
+				<Image quality="Unknown" enhancement="1" modified="0" id="I01"
+					left="225" top="225" width="3100" height="2050" rotateAngle="0"
+					applyOffset="0" editable="1" dragable="1" dock="middle" designer="0">
+					<Border id="Elegant" />
+				</Image>
+				<Image quality="Unknown" enhancement="1" modified="0" id="Deco02"
+					left="3156" top="0" width="750" height="2504" rotateAngle="0"
+					applyOffset="0" editable="0" dragable="0" dock="top" designer="1">
+					<OrigFilePath><![CDATA[Images::binding.png]]></OrigFilePath>
+					<SourceFilePath>Images::binding.png</SourceFilePath>
+					<Border id="Elegant" />
+				</Image>
+			</GuiObjects>
+		</ProjectPage>
+	</Pages>
+</UserProject>

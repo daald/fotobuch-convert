@@ -19,7 +19,10 @@ public class ColorManager {
 	HashMap<String, String> colortable = new HashMap<String, String>();
 
 	public String getColorName(Color color) {
-		String rgbCode = "#" + Integer.toHexString(color.getRGB()).substring(2);
+		String s = Integer.toHexString(color.getRGB() & 0xFFFFFF);
+		while (s.length() < 6)
+			s = "0" + s;
+		String rgbCode = "#" + s;
 		String key = "RGB." + rgbCode;
 
 		String colname = colortable.get(key);

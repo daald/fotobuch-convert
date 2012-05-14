@@ -7,13 +7,10 @@ public class BookElement {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
-	protected final int left;
-	protected final int top;
-	protected final int width;
-	protected final int height;
-	protected final int angleDegrees;
-	protected final boolean dragable;
-	protected final IfolorDock dock;
+	public final int left, top, width, height;
+	public final int angleDegrees;
+	public final boolean dragable;
+	public final IfolorDock dock;
 
 	public BookElement(int left, int top, int width, int height,
 			int angleDegrees, boolean dragable, IfolorDock dock) {

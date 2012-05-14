@@ -1,4 +1,4 @@
-package org.alder.fotobuchconvert.ifolorconvert;
+package org.alder.fotobuchconvert.ifolor;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -7,23 +7,33 @@ import java.io.IOException;
 
 import javax.swing.text.BadLocationException;
 
+import org.alder.fotobuchconvert.ifolorconvert.Book;
+import org.alder.fotobuchconvert.ifolorconvert.BookElement;
+import org.alder.fotobuchconvert.ifolorconvert.BookPage;
+import org.alder.fotobuchconvert.ifolorconvert.BookPicture;
+import org.alder.fotobuchconvert.ifolorconvert.BookShape;
+import org.alder.fotobuchconvert.ifolorconvert.BookText;
+import org.alder.fotobuchconvert.ifolorconvert.Loader;
+import org.alder.fotobuchconvert.ifolorconvert.ProjectPath;
+import org.alder.fotobuchconvert.ifolorconvert.TestData;
 import org.alder.fotobuchconvert.rtf2html.RtfToScribusConverter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
+import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusShape;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class TestIfolorToScribus {
+public class IfolorToScribusMain {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
-	private final int testLimit = 10;
+	private final int testLimit = 12;
 
 	private Book book;
 
-	public TestIfolorToScribus(final Book book) {
+	public IfolorToScribusMain(final Book book) {
 		this.book = book;
 	}
 
@@ -133,25 +143,24 @@ public class TestIfolorToScribus {
 						log.warn("Empty text in page " + wrpg);
 
 					placeHolder = false;
+
+				} else if (el instanceof BookShape) {
+					BookShape shape = (BookShape) el;
+
+					ScribusShape out = wr.addShape();
+
+					out.setPositionCenterRot(oX + oF * el.left, oY + oF
+							* el.top, oF * el.width, oF * el.height,
+							el.angleDegrees);
+					if (shape.colors.length == 1)
+						out.setFill(wr.colorManager
+								.getColorName(shape.colors[0].color));
+					else
+						out.setGradient(shape.colors);
+
+					placeHolder = false;
 				}
-				// // int w = img.getWidth(null);
-				// // int h = img.getHeight(null);
-				// // System.out.println(">" + w + " " + h + " " +
-				// // text.cropX
-				// // + " " + text.cropY + " " + text.cropW + " "
-				// // + text.cropH);
-				// // if (w > 0) {
-				// // g.drawImage(img, 0, 0, el.width, el.height,
-				// // r(text.cropX * w), r(text.cropY * h),
-				// // r((text.cropX + text.cropW) * w),
-				// // r((text.cropY + text.cropH) * h), null);
-				// // } else
-				// img = null;
-				// } else {
-				// img = null;
-				// }
-				//
-				// if (img == null)
+
 				if (placeHolder) {
 					// g.setColor(Color.LIGHT_GRAY);
 					wr.makeRect(oX + oF * el.left, oY + oF * el.top, oF
@@ -215,7 +224,7 @@ public class TestIfolorToScribus {
 		Loader loader = new Loader();
 		Book book = loader.load(path);
 
-		TestIfolorToScribus f = new TestIfolorToScribus(book);
+		IfolorToScribusMain f = new IfolorToScribusMain(book);
 
 		File outFile = TestData.getTestOutputPath();
 

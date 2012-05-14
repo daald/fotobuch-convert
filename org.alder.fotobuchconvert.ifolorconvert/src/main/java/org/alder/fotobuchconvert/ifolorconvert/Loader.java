@@ -1,8 +1,11 @@
 package org.alder.fotobuchconvert.ifolorconvert;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
+import org.alder.fotobuchconvert.ifolorconvert.BookShape.ShapeColor;
 import org.alder.fotobuchconvert.ifolorencryption.Decryptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -48,6 +51,9 @@ public class Loader {
 		AutoPilot apImVpTop = new AutoPilot();
 		AutoPilot apImVpWidth = new AutoPilot();
 		AutoPilot apImVpHeight = new AutoPilot();
+		AutoPilot apShapeColor = new AutoPilot();
+		AutoPilot apShapeColorValue = new AutoPilot();
+		AutoPilot apShapeColorPos = new AutoPilot();
 
 		apPg.selectXPath("/UserProject/Pages/ProjectPage");
 		apGo.selectXPath("GuiObjects/*"); // Image, ColorRectangle, Text
@@ -73,6 +79,11 @@ public class Loader {
 		apImVpTop.selectXPath("VisiblePart/@top");// top="2.333334"
 		apImVpWidth.selectXPath("VisiblePart/@width");// width="100"
 		apImVpHeight.selectXPath("VisiblePart/@height");// height="90.66666"
+
+		// <Colors><Color value="7F000000" position="0" /></Colors>
+		apShapeColor.selectXPath("Colors/Color");
+		apShapeColorValue.selectXPath("@value");
+		apShapeColorPos.selectXPath("@position");
 
 		/******
 		 * now load the file
@@ -106,6 +117,9 @@ public class Loader {
 		apImVpTop.bind(vn);
 		apImVpWidth.bind(vn);
 		apImVpHeight.bind(vn);
+		apShapeColor.bind(vn);
+		apShapeColorValue.bind(vn);
+		apShapeColorPos.bind(vn);
 
 		/******
 		 * now read the file contents
@@ -151,9 +165,25 @@ public class Loader {
 					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\n", left,
 							top, origFile, cropX, cropY, cropW, cropH);
 				} else if ("ColorRectangle".equals(type)) {
-					BookShape pic = new BookShape(left, top, width, height,
-							angleDegrees, dragable, dock);
-					page.add(pic);
+					Vector<ShapeColor> colors = new Vector<ShapeColor>();
+
+					apShapeColor.resetXPath();
+					while (apShapeColor.evalXPath() != -1) {
+						String value = apShapeColorValue.evalXPathToString();
+						double pos = apShapeColorPos.evalXPathToNumber();
+
+						int a = Integer.parseInt(value.substring(0, 2), 16);
+						int r = Integer.parseInt(value.substring(2, 4), 16);
+						int g = Integer.parseInt(value.substring(4, 6), 16);
+						int b = Integer.parseInt(value.substring(6, 8), 16);
+
+						colors.add(new ShapeColor(new Color(r, g, b, a), pos));
+					}
+
+					BookShape shape = new BookShape(left, top, width, height,
+							angleDegrees, dragable, dock,
+							colors.toArray(new ShapeColor[0]));
+					page.add(shape);
 
 					System.out.printf("    %d,%d\n", left, top);
 				} else if ("Text".equals(type)) {
