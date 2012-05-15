@@ -261,6 +261,24 @@ public class Loader {
 			System.err.println("Unsupported border: " + input);
 			return null;
 		}
+		if (input.equals("Classic")) {
+			System.err.println("Unsupported border: " + input);
+			return null;
+		}
+		if (input.equals("Basic")) {
+			System.err.println("Unsupported border: " + input);
+			return null;
+		}
+		if (input.equals("Retro")) {
+			System.err.println("Unsupported border: " + input);
+			return null;
+		}
+		if (input.equals("Solid")) {
+			System.err.println("Unsupported border: " + input);
+			return null;
+		}
+
+		// also: [ALPHAMASK01]Border01..06
 
 		System.err.println("Unknown border: " + input);
 
