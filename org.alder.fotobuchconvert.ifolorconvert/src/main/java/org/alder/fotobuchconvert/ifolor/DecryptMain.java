@@ -3,8 +3,6 @@ package org.alder.fotobuchconvert.ifolor;
 import java.io.File;
 import java.io.IOException;
 
-import org.alder.fotobuchconvert.ifolorconvert.TestData;
-import org.alder.fotobuchconvert.ifolorencryption.Decryptor;
 
 public class DecryptMain {
 	// private static final String CHARSET_ISO_8859_1 = "ISO_8859_1";
@@ -14,6 +12,7 @@ public class DecryptMain {
 		Decryptor decryptor = new Decryptor();
 		File projectFile = TestData.getTestProject().projectFile;
 		byte[] bytes = decryptor.loadBinaryFile(projectFile, "DPP");
+		System.out.println();
 		System.out.print(new String(bytes, 0, bytes.length, CHARSET_cp1252));
 	}
 }

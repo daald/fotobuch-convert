@@ -25,7 +25,7 @@ public class C {
 	 * XML Attributes
 	 */
 
-	public static final String SCALETYPE = "SCALETYPE";
+	public static final String SCALETYPE = "SCALETYPE";// 0=img-auto-resize
 	public static final String LOCALX = "LOCALX";
 	public static final String LOCALY = "LOCALY";
 	public static final String LOCALSCX = "LOCALSCX";
@@ -138,6 +138,8 @@ public class C {
 	public static final String PCOLOR = "PCOLOR";// fill color
 	public static final String SHADE2 = "SHADE2";// border opacity
 	public static final String PCOLOR2 = "PCOLOR2";// border color
+
+	public static final String TRANSVALUE = "TransValue";// transparency(0..1)
 
 	/**
 	 * CSTOP (gradient) specific

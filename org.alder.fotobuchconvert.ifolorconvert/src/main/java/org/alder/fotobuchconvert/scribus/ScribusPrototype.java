@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Date;
 
-import org.alder.fotobuchconvert.ifolorconvert.TestData;
+import org.alder.fotobuchconvert.ifolor.TestData;
 
 public class ScribusPrototype {
 

@@ -7,19 +7,20 @@ import java.io.IOException;
 
 import javax.swing.text.BadLocationException;
 
-import org.alder.fotobuchconvert.ifolorconvert.Book;
-import org.alder.fotobuchconvert.ifolorconvert.BookElement;
-import org.alder.fotobuchconvert.ifolorconvert.BookPage;
-import org.alder.fotobuchconvert.ifolorconvert.BookPicture;
-import org.alder.fotobuchconvert.ifolorconvert.BookShape;
-import org.alder.fotobuchconvert.ifolorconvert.BookText;
-import org.alder.fotobuchconvert.ifolorconvert.Loader;
-import org.alder.fotobuchconvert.ifolorconvert.ProjectPath;
-import org.alder.fotobuchconvert.ifolorconvert.TestData;
-import org.alder.fotobuchconvert.rtf2html.RtfToScribusConverter;
+import org.alder.fotobuchconvert.objects.Book;
+import org.alder.fotobuchconvert.objects.BookElement;
+import org.alder.fotobuchconvert.objects.BookPage;
+import org.alder.fotobuchconvert.objects.BookPicture;
+import org.alder.fotobuchconvert.objects.BookShape;
+import org.alder.fotobuchconvert.objects.BookText;
+import org.alder.fotobuchconvert.objects.Border;
+import org.alder.fotobuchconvert.objects.Border.HeavyBorder;
+import org.alder.fotobuchconvert.objects.Border.LineBorder;
+import org.alder.fotobuchconvert.scribus.RtfToScribusConverter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
+import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImgFrame;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusShape;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 import org.apache.commons.logging.Log;
@@ -92,17 +93,34 @@ public class IfolorToScribusMain {
 						String imgFilePath = imgFile != null ? imgFile
 								.getAbsolutePath() : null;
 						ScribusImg scrimg = wr.addImage(imgFilePath);
+
 						scrimg.setPositionCenterRot(oX + oF * el.left, oY + oF
 								* el.top, oF * el.width, oF * el.height,
 								el.angleDegrees);
 						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
 								pic.cropH);
 
-						if (imgFile != null) {
-							scrimg.addPictureFrame(oX + oF * el.left, oY + oF
-									* el.top, oF * el.width, oF * el.height,
-									el.angleDegrees);
-						} else
+						if (pic.border instanceof Border.LineBorder) {
+							Border.LineBorder border = (LineBorder) pic.border;
+							scrimg.setBorder(border.width, border.color);
+						} else if (pic.border instanceof Border.HeavyBorder) {
+							Border.HeavyBorder border = (HeavyBorder) pic.border;
+
+							ScribusImgFrame frame = scrimg.addPictureFrame(oX
+									+ oF * el.left, oY + oF * el.top, oF
+									* el.width, oF * el.height,
+									el.angleDegrees, border.width, 0);
+
+							frame.setBorder(2, Color.GRAY);
+							frame.setFill(border.color);
+							frame.setTransparency(border.transparency);
+						} else if (imgFile != null) {
+							scrimg.addPictureFrameDefault(oX + oF * el.left, oY
+									+ oF * el.top, oF * el.width, oF
+									* el.height, el.angleDegrees);
+						}
+
+						if (imgFile == null)
 							log.warn("Empty picture in page " + wrpg);
 
 						placeHolder = false;
@@ -149,16 +167,19 @@ public class IfolorToScribusMain {
 				}
 
 				if (placeHolder) {
-					wr.makeRect(oX + oF * el.left, oY + oF * el.top, oF
-							* el.width, oF * el.height, 0);
-					wr.makeRect(oX + oF * el.left + 4, oY + oF * el.top + 4, oF
-							* el.width - 8, oF * el.height - 8, 0);
-					wr.addLine(oX + oF * el.left, oY + oF * el.top, oX + oF
-							* (el.left + el.width), oY + oF
-							* (el.top + el.height));
-					wr.addLine(oX + oF * (el.left + el.width),
-							oY + oF * el.top, oX + oF * el.left, oY + oF
-									* (el.top + el.height));
+					ScribusShape shape = wr.addShape();
+					shape.setPositionCenterRot(oX + oF * el.left, oY + oF
+							* el.top, oF * el.width, oF * el.height,
+							el.angleDegrees);
+					shape.setBorder();
+
+					final double bw = 5;
+
+					shape = wr.addShape();
+					shape.setPositionCenterRot(oX + oF * el.left + bw, oY + oF
+							* el.top + bw, oF * el.width - bw * 2, oF
+							* el.height - bw * 2, el.angleDegrees);
+					shape.setBorder();
 				}
 			}
 
