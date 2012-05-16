@@ -114,10 +114,6 @@ public class IfolorToScribusMain {
 							frame.setBorder(2, Color.GRAY);
 							frame.setFill(border.color);
 							frame.setTransparency(border.transparency);
-						} else if (imgFile != null) {
-							scrimg.addPictureFrameDefault(oX + oF * el.left, oY
-									+ oF * el.top, oF * el.width, oF
-									* el.height, el.angleDegrees);
 						}
 
 						if (imgFile == null)

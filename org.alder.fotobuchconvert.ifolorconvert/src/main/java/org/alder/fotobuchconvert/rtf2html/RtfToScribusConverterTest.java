@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.swing.text.BadLocationException;
 
 import org.alder.fotobuchconvert.scribus.RtfToScribusConverter;
-import org.alder.fotobuchconvert.scribus.XmlBuilder;
+import org.alder.fotobuchconvert.tools.XmlBuilder;
 
 public class RtfToScribusConverterTest {
 	static String input = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2055{\\fonttbl{\\f0\\fnil\\fcharset0 Trebuchet MS;}}\n"

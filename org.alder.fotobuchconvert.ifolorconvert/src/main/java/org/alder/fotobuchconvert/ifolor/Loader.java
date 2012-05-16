@@ -249,6 +249,8 @@ public class Loader {
 			if (input.equals("Black Line"))
 				return new Border.LineBorder(2, Color.BLACK);
 		}
+		if (input.equals("Classic")) // simple gray line
+			return new Border.LineBorder(2, Color.GRAY);
 
 		if (input.startsWith("Heavy ")) {
 			if (input.equals("Heavy White"))
@@ -257,32 +259,29 @@ public class Loader {
 				return new Border.HeavyBorder(24, Color.BLACK, 0.6, true);
 		}
 
-		if (input.equals("Elegant")) {
+		if (input.equals("Elegant")) {// no border, soft shadow
 			System.err.println("Unsupported border: " + input);
-			return null;
+			return new Border.LineBorder(20, Color.GREEN);
+			// return null;
 		}
-		if (input.equals("Classic")) {
-			System.err.println("Unsupported border: " + input);
+		if (input.equals("Basic")) // no border, no shadow
 			return null;
+
+		if (input.equals("Retro")) {// white heavy border and soft shadow
+			System.err.println("Unsupported border: " + input);
+			return new Border.LineBorder(20, Color.BLUE);
+			// return null;
 		}
-		if (input.equals("Basic")) {
+		if (input.equals("Solid")) {// simple black border and hard shadow
 			System.err.println("Unsupported border: " + input);
-			return null;
-		}
-		if (input.equals("Retro")) {
-			System.err.println("Unsupported border: " + input);
-			return null;
-		}
-		if (input.equals("Solid")) {
-			System.err.println("Unsupported border: " + input);
-			return null;
+			return new Border.LineBorder(20, Color.GRAY);
+			// return null;
 		}
 
 		// also: [ALPHAMASK01]Border01..06
 
 		System.err.println("Unknown border: " + input);
-
-		return null;
+		return new Border.LineBorder(20, Color.GREEN.brighter());
 	}
 
 	private int atoi(String s) {

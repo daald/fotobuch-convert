@@ -11,6 +11,8 @@ import javax.swing.text.Element;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.rtf.RTFEditorKit;
 
+import org.alder.fotobuchconvert.tools.XmlBuilder;
+
 
 public class RtfToScribusConverter {
 

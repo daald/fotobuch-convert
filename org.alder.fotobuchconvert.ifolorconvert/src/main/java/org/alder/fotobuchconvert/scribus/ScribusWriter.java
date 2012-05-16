@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 
 import org.alder.fotobuchconvert.objects.BookShape.ShapeColor;
+import org.alder.fotobuchconvert.tools.XmlBuilder;
 
 public class ScribusWriter {
 
@@ -105,25 +106,26 @@ public class ScribusWriter {
 		if (!masterPages.containsKey(masterName)) {
 			int mpgnum = masterPages.size();
 			XmlBuilder pagemaster;
-			pagemaster = doc.add(C.EL_MASTERPAGE).set(C.NAM, masterName)
-					.set(C.NUM, mpgnum).set(C.LEFT, left)
-					.set(C.PAGEXPOS, pagePosX).set(C.PAGEYPOS, pagePosY);
+			pagemaster = doc.addAfterSimilar(C.EL_MASTERPAGE)
+					.set(C.NAM, masterName).set(C.NUM, mpgnum)
+					.set(C.LEFT, left).set(C.PAGEXPOS, pagePosX)
+					.set(C.PAGEYPOS, pagePosY);
 			applyPageSettings(pagemaster, false, pageW, pageH);
 			masterPages.put(masterName, mpgnum);
 		}
 
 		XmlBuilder page;
 
-		page = doc.add(C.EL_PAGE).set(C.MNAM, masterName).set(C.NUM, pgnum)
-				.set(C.LEFT, left).set(C.PAGEXPOS, pd.docbaseX)
-				.set(C.PAGEYPOS, pd.docbaseY);
+		page = doc.addAfterSimilar(C.EL_PAGE).set(C.MNAM, masterName)
+				.set(C.NUM, pgnum).set(C.LEFT, left)
+				.set(C.PAGEXPOS, pd.docbaseX).set(C.PAGEYPOS, pd.docbaseY);
 		applyPageSettings(page, false, pageW, pageH);
 
 		return pd;
 	}
 
 	public void finish() {
-		root.output(out, 0);
+		root.output(out);
 		System.out.println("File written.");
 	}
 
@@ -198,9 +200,7 @@ public class ScribusWriter {
 		double w = x2 - x1, h = y2 - y1;
 		si.setPosition(x1, y1, Math.sqrt(w * w + h * h), 1, Math.atan2(h, w)
 				/ Math.PI * 180);
-		si.setBorder();
-
-		si.element.set(C.PWIDTH, 1);
+		si.setBorder(0, Color.BLACK);
 		return si;
 	}
 
@@ -300,9 +300,16 @@ public class ScribusWriter {
 			element.set(C.SHADE2, 100);
 		}
 
+		/**
+		 * Sets color and width of the border around the object
+		 * 
+		 * @param width
+		 *            0=hairline; >1=width in points
+		 * @param color
+		 */
 		public void setBorder(double width, Color color) {
 			element.set(C.PCOLOR2, colorManager.getColorName(color));
-			// SHADE2: Deckung Linie (100=full)
+			element.set(C.PWIDTH, width);
 			element.set(C.SHADE2, 100);
 		}
 
@@ -430,19 +437,6 @@ public class ScribusWriter {
 					"CROP: %f/%f\t%f/%f\t%f %f %f %f   -> %f %f %f %f\n", w, h,
 					imgW, imgH, cropX, cropY, cropW, cropH, localscx, localscy,
 					locx, locy);
-		}
-
-		/**
-		 * @deprecated
-		 */
-		public void addPictureFrameDefault(double x, double y, double w,
-				double h, double angleDegrees) {
-			ScribusImgFrame frame = new ScribusImgFrame(5, 5);
-			frame.setPositionCenterRot(x, y, w, h, angleDegrees);
-			frame.setBorder();
-			frame.setFill("Warm Black");
-
-			frame.setGroup(getGroup());
 		}
 
 		public ScribusImgFrame addPictureFrame(double x, double y, double w,

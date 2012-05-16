@@ -1,4 +1,4 @@
-package org.alder.fotobuchconvert.scribus;
+package org.alder.fotobuchconvert.tools;
 
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -61,6 +61,32 @@ public class XmlBuilder extends XmlBuilderBase {
 	public XmlBuilder add(String name) {
 		XmlBuilder e = new XmlBuilder(name);
 		subElements.add(e);
+		return e;
+	}
+
+	/**
+	 * Like {@link add}, but inserts the element and the end of the first group
+	 * of elements with the same name. Use this function for definitions like
+	 * PAGE, MASTERPAGE or COLOR
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public XmlBuilder addAfterSimilar(String name) {
+		final int n = subElements.size();
+		int insert = 0;
+		XmlBuilderBase o;
+		for (int i = 0; i < n; i++)
+			if ((o = subElements.get(i)) instanceof XmlBuilder)
+				if (((XmlBuilder) o).name.equals(name))
+					insert = i + 1;
+				else if (insert > 0)
+					break;
+		if (insert == 0)
+			insert = n;
+
+		XmlBuilder e = new XmlBuilder(name);
+		subElements.add(insert, e);
 		return e;
 	}
 

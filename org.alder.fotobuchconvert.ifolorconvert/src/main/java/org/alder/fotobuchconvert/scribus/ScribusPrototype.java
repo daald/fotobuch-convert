@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.util.Date;
 
 import org.alder.fotobuchconvert.ifolor.TestData;
+import org.alder.fotobuchconvert.tools.XmlBuilder;
 
 public class ScribusPrototype {
 
@@ -221,7 +222,7 @@ public class ScribusPrototype {
 		makeRect(doc, pd.docbaseX + 100, pd.docbaseY + 100, 10, 10, 0);
 		makeRect(doc, pd.docbaseX + 100, pd.docbaseY + 100, 100, 100, 0);
 
-		root.output(out, 0);
+		root.output(out);
 	}
 
 	private void applyPageSettings(XmlBuilder doc, boolean isDoc) {
