@@ -17,6 +17,10 @@ public class TestData {
 		try {
 			InputStream is = TestData.class.getClassLoader()
 					.getResourceAsStream(configFile);
+			if (is == null)
+				throw new RuntimeException(
+						"Test project config not found (check " + configFile
+								+ ")");
 			BufferedReader ir = new BufferedReader(new InputStreamReader(is));
 
 			String line;
