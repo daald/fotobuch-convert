@@ -25,7 +25,8 @@ public class C {
 	 * XML Attributes
 	 */
 
-	public static final String SCALETYPE = "SCALETYPE";// 0=img-auto-resize
+	public static final String RATIO = "RATIO";// 1=proportional auto-scale
+	public static final String SCALETYPE = "SCALETYPE";// 0=img-auto-scale
 	public static final String LOCALX = "LOCALX";
 	public static final String LOCALY = "LOCALY";
 	public static final String LOCALSCX = "LOCALSCX";

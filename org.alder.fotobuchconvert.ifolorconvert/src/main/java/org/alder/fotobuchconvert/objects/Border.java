@@ -18,13 +18,10 @@ public class Border {
 		public final double width;
 		public final Color color;
 		public final double transparency;
-		public final boolean shadow;
 
-		public HeavyBorder(double width, Color color, double transparency,
-				boolean shadow) {
+		public HeavyBorder(double width, Color color, double transparency) {
 			this.width = width;
 			this.color = color;
-			this.shadow = shadow;
 			this.transparency = transparency;
 		}
 	}

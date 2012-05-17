@@ -12,6 +12,7 @@ import org.alder.fotobuchconvert.objects.BookShape;
 import org.alder.fotobuchconvert.objects.BookShape.ShapeColor;
 import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
+import org.alder.fotobuchconvert.objects.Shadow;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -20,6 +21,7 @@ import com.ximpleware.VTDGen;
 import com.ximpleware.VTDNav;
 
 public class Loader {
+
 	private final Log log = LogFactory.getLog(Loader.class);
 
 	public Book load(ProjectPath path) throws Exception {
@@ -165,15 +167,19 @@ public class Loader {
 					double cropY = apImVpTop.evalXPathToNumber() / 100d;
 					double cropW = apImVpWidth.evalXPathToNumber() / 100d;
 					double cropH = apImVpHeight.evalXPathToNumber() / 100d;
-					Border border = s2border(apImBorderType.evalXPathToString());
+					BorderShadow bs = s2border(apImBorderType
+							.evalXPathToString());
+					if (bs == null)
+						bs = new BorderShadow(null, null);
 
-					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\t%s\n",
+					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\t%s %s\n",
 							left, top, origFile, cropX, cropY, cropW, cropH,
-							border);
+							bs.border, bs.shadow);
 
 					BookPicture pic = new BookPicture(left, top, width, height,
 							angleDegrees, dragable, origFile, previewFile,
-							sourceFile, cropX, cropY, cropW, cropH, border);
+							sourceFile, cropX, cropY, cropW, cropH, bs.border,
+							bs.shadow);
 					page.add(pic);
 
 				} else if ("ColorRectangle".equals(type)) {
@@ -231,57 +237,69 @@ public class Loader {
 	// throw new RuntimeException("Invalid value for dock: " + s);
 	// }
 
-	private Border s2border(String input) {
+	private BorderShadow s2border(String input) {
 		if (input == null)
 			return null;
 
 		if (input.endsWith(" Line")) {
 			if (input.equals("Green Line"))
-				return new Border.LineBorder(2, Color.GREEN);
+				return new BorderShadow(new Border.LineBorder(2, Color.GREEN),
+						null);
 			if (input.equals("Orange Line"))
-				return new Border.LineBorder(2, Color.ORANGE);
+				return new BorderShadow(new Border.LineBorder(2, Color.ORANGE),
+						null);
 			if (input.equals("Red Line"))
-				return new Border.LineBorder(2, Color.RED);
+				return new BorderShadow(new Border.LineBorder(2, Color.RED),
+						null);
 			if (input.equals("White Line"))
-				return new Border.LineBorder(2, Color.WHITE);
+				return new BorderShadow(new Border.LineBorder(2, Color.WHITE),
+						null);
 			if (input.equals("Blue Line"))
-				return new Border.LineBorder(2, Color.BLUE);
+				return new BorderShadow(new Border.LineBorder(2, Color.BLUE),
+						null);
 			if (input.equals("Black Line"))
-				return new Border.LineBorder(2, Color.BLACK);
+				return new BorderShadow(new Border.LineBorder(2, Color.BLACK),
+						null);
 		}
 		if (input.equals("Classic")) // simple gray line
-			return new Border.LineBorder(2, Color.GRAY);
+			return new BorderShadow(new Border.LineBorder(2, Color.GRAY), null);
 
 		if (input.startsWith("Heavy ")) {
 			if (input.equals("Heavy White"))
-				return new Border.HeavyBorder(24, Color.WHITE, 0.6, true);
+				return new BorderShadow(new Border.HeavyBorder(24, Color.WHITE,
+						0.6), mkSoftShadow());
 			if (input.equals("Heavy Black"))
-				return new Border.HeavyBorder(24, Color.BLACK, 0.6, true);
+				return new BorderShadow(new Border.HeavyBorder(24, Color.BLACK,
+						0.6), mkSoftShadow());
 		}
 
-		if (input.equals("Elegant")) {// no border, soft shadow
-			System.err.println("Unsupported border: " + input);
-			return new Border.LineBorder(20, Color.GREEN);
-			// return null;
-		}
+		if (input.equals("Elegant")) // no border, soft shadow
+			return new BorderShadow(null, mkSoftShadow());
+
 		if (input.equals("Basic")) // no border, no shadow
 			return null;
 
-		if (input.equals("Retro")) {// white heavy border and soft shadow
-			System.err.println("Unsupported border: " + input);
-			return new Border.LineBorder(20, Color.BLUE);
-			// return null;
-		}
-		if (input.equals("Solid")) {// simple black border and hard shadow
-			System.err.println("Unsupported border: " + input);
-			return new Border.LineBorder(20, Color.GRAY);
-			// return null;
-		}
+		if (input.equals("Retro")) // white heavy border and soft shadow
+			return new BorderShadow(new Border.HeavyBorder(12, Color.WHITE, 1),
+					mkSoftShadow());
 
-		// also: [ALPHAMASK01]Border01..06
+		if (input.equals("Solid")) // simple black border and hard shadow
+			return new BorderShadow(new Border.LineBorder(2, Color.BLACK),
+					mkHardShadow());
+
+		// also: existing borders [ALPHAMASK01]Border01..06
 
 		System.err.println("Unknown border: " + input);
-		return new Border.LineBorder(20, Color.GREEN.brighter());
+		return new BorderShadow(new Border.LineBorder(20,
+				Color.GREEN.brighter()), null);
+	}
+
+	private Shadow mkSoftShadow() {
+		return new Shadow.SoftShadow(5, 5, 1, .6, 5);
+	}
+
+	private Shadow mkHardShadow() {
+		return new Shadow.HardShadow(5, 5, 1, .6);
 	}
 
 	private int atoi(String s) {
@@ -295,4 +313,14 @@ public class Loader {
 		vg.setDoc(bytes);
 	}
 
+	public static final class BorderShadow {
+		public final Border border;
+		public final Shadow shadow;
+
+		public BorderShadow(Border border, Shadow shadow) {
+			this.border = border;
+			this.shadow = shadow;
+		}
+
+	}
 }

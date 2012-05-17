@@ -384,31 +384,32 @@ public class ScribusWriter {
 
 	public class ScribusImg extends ScribusObject {
 		private final String imagePath;
-		private final double imgW, imgH;
 
-		public ScribusImg(String imagePath) throws IOException {
+		public ScribusImg(String imagePath) {
 			super(C.PTYPE_IMAGE);
 
 			element.set(C.PICART, 1);
+			if (imagePath != null)
+				element.set(C.PFILE, imagePath);
 
 			this.imagePath = imagePath;
+		}
 
+		public void setCropPct(double cropX, double cropY, double cropW,
+				double cropH) throws IOException {
+			assert w > 0 && h > 0;
+
+			final double imgW, imgH;
 			if (imagePath != null) {
 				Image img = new ImageIcon(imagePath).getImage();
 				imgW = img.getWidth(null);
 				imgH = img.getHeight(null);
 				if (imgW <= 0 || imgH <= 0)
 					throw new IOException("Image file not found");
-				element.set(C.PFILE, imagePath);
 			} else {
-				imgW = 0;
-				imgH = 0;
+				throw new RuntimeException(
+						"Cropping a non-existing image not possible");
 			}
-		}
-
-		public void setCropPct(double cropX, double cropY, double cropW,
-				double cropH) {
-			assert w > 0 && h > 0;
 
 			// SCALETYPE: 0=img-auto-resize, 1=manual
 			element.set(C.SCALETYPE, 1);
@@ -446,6 +447,11 @@ public class ScribusWriter {
 			frame.setPositionCenterRot(x, y, w, h, angleDegrees);
 			frame.setGroup(getGroup());
 			return frame;
+		}
+
+		public void setAutoScale(boolean proportional) {
+			element.set(C.SCALETYPE, 0);
+			element.set(C.RATIO, proportional ? 1 : 0);
 		}
 
 	}

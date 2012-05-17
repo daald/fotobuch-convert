@@ -16,7 +16,10 @@ import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
 import org.alder.fotobuchconvert.objects.Border.HeavyBorder;
 import org.alder.fotobuchconvert.objects.Border.LineBorder;
+import org.alder.fotobuchconvert.objects.Shadow;
+import org.alder.fotobuchconvert.objects.Shadow.SoftShadow;
 import org.alder.fotobuchconvert.scribus.RtfToScribusConverter;
+import org.alder.fotobuchconvert.scribus.SVGShadowManager;
 import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
@@ -85,20 +88,29 @@ public class IfolorToScribusMain {
 
 				boolean placeHolder = true;
 
+				double elX = oX + oF * el.left;
+				double elY = oY + oF * el.top;
+				double elW = oF * el.width;
+				double elH = oF * el.height;
+
 				if (el instanceof BookPicture) {
 					BookPicture pic = (BookPicture) el;
 					File imgFile = pic.getImageFile(book);
+
+					if (pic.shadow != null)
+						addShadow(wr, pic.shadow, elX, elY, elW, elH,
+								el.angleDegrees);
 
 					try {
 						String imgFilePath = imgFile != null ? imgFile
 								.getAbsolutePath() : null;
 						ScribusImg scrimg = wr.addImage(imgFilePath);
 
-						scrimg.setPositionCenterRot(oX + oF * el.left, oY + oF
-								* el.top, oF * el.width, oF * el.height,
+						scrimg.setPositionCenterRot(elX, elY, elW, elH,
 								el.angleDegrees);
-						scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
-								pic.cropH);
+						if (imgFilePath != null)
+							scrimg.setCropPct(pic.cropX, pic.cropY, pic.cropW,
+									pic.cropH);
 
 						if (pic.border instanceof Border.LineBorder) {
 							Border.LineBorder border = (LineBorder) pic.border;
@@ -106,10 +118,9 @@ public class IfolorToScribusMain {
 						} else if (pic.border instanceof Border.HeavyBorder) {
 							Border.HeavyBorder border = (HeavyBorder) pic.border;
 
-							ScribusImgFrame frame = scrimg.addPictureFrame(oX
-									+ oF * el.left, oY + oF * el.top, oF
-									* el.width, oF * el.height,
-									el.angleDegrees, border.width, 0);
+							ScribusImgFrame frame = scrimg.addPictureFrame(elX,
+									elY, elW, elH, el.angleDegrees,
+									border.width, 0);
 
 							frame.setBorder(2, Color.GRAY);
 							frame.setFill(border.color);
@@ -133,8 +144,7 @@ public class IfolorToScribusMain {
 
 					ScribusText scrtext = wr.addText();
 
-					scrtext.setPositionCenterRot(oX + oF * el.left, oY + oF
-							* el.top, oF * el.width, oF * el.height,
+					scrtext.setPositionCenterRot(elX, elY, elW, elH,
 							el.angleDegrees);
 					if (txt != null) {
 						RtfToScribusConverter rtfConv = new RtfToScribusConverter();
@@ -150,8 +160,7 @@ public class IfolorToScribusMain {
 
 					ScribusShape out = wr.addShape();
 
-					out.setPositionCenterRot(oX + oF * el.left, oY + oF
-							* el.top, oF * el.width, oF * el.height,
+					out.setPositionCenterRot(elX, elY, elW, elH,
 							el.angleDegrees);
 					if (shape.colors.length == 1)
 						out.setFill(wr.colorManager
@@ -164,17 +173,15 @@ public class IfolorToScribusMain {
 
 				if (placeHolder) {
 					ScribusShape shape = wr.addShape();
-					shape.setPositionCenterRot(oX + oF * el.left, oY + oF
-							* el.top, oF * el.width, oF * el.height,
+					shape.setPositionCenterRot(elX, elY, elW, elH,
 							el.angleDegrees);
 					shape.setBorder();
 
 					final double bw = 5;
 
 					shape = wr.addShape();
-					shape.setPositionCenterRot(oX + oF * el.left + bw, oY + oF
-							* el.top + bw, oF * el.width - bw * 2, oF
-							* el.height - bw * 2, el.angleDegrees);
+					shape.setPositionCenterRot(elX + bw, elY + bw,
+							elW - 2 * bw, elH - 2 * bw, el.angleDegrees);
 					shape.setBorder();
 				}
 			}
@@ -185,6 +192,33 @@ public class IfolorToScribusMain {
 		}
 
 		wr.finish();
+	}
+
+	private void addShadow(ScribusWriter wr, Shadow shadow, double elX,
+			double elY, double elW, double elH, int angleDegrees)
+			throws IOException {
+
+		final double cx = elX + elW / 2, cy = elY + elH / 2;
+
+		elX = ((elX - cx) * shadow.scale + cx) + shadow.rx;
+		elY = ((elY - cy) * shadow.scale + cy) + shadow.ry;
+		elW = elW * shadow.scale;
+		elH = elH * shadow.scale;
+
+		if (shadow instanceof Shadow.HardShadow) {
+			ScribusShape scshadow = wr.addShape();
+			scshadow.setPosition(elX, elY, elW, elH, angleDegrees);
+			scshadow.setFill(Color.BLACK);// , shadow.transparency);
+		} else if (shadow instanceof Shadow.SoftShadow) {
+			Shadow.SoftShadow sshadow = (SoftShadow) shadow;
+
+			File file = SVGShadowManager.getInstance().get((int) elW,
+					(int) elH, sshadow.softedge);
+			System.out.println(file);
+			ScribusImg scshadow = wr.addImage(file.getAbsolutePath());
+			scshadow.setPosition(elX, elY, elW, elH, angleDegrees);
+			scshadow.setAutoScale(false);
+		}
 	}
 
 	private void pageBorders(Graphics2D g) {
