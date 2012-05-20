@@ -9,6 +9,10 @@ public class ScribusPolyBuilder {
 		points.add(new Point(x, y, x, y));
 	}
 
+	public void add(double x1, double y1, double x2, double y2) {
+		points.add(new Point(x1, y1, x2, y2));
+	}
+
 	public void sep() {
 		add2(999999, 999999);
 	}

@@ -5,6 +5,8 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 
+import org.alder.fotobuchconvert.scribus.ImageCutCoords;
+
 public class BookPicture extends BookElement {
 	// apImDesigner.selectXPath("@designer");// ="0"
 	final String origFile;// apImOrigFilePath.selectXPath("OrigFilePath");//
@@ -15,11 +17,13 @@ public class BookPicture extends BookElement {
 	private Image image;
 	public final Border border;
 	public final Shadow shadow;
+	public final ImageCutCoords alpha;
 
 	public BookPicture(int left, int top, int width, int height,
 			int angleDegrees, boolean dragable, String origFile,
 			String previewFile, String sourceFile, double cropX, double cropY,
-			double cropW, double cropH, Border border, Shadow shadow) {
+			double cropW, double cropH, Border border, Shadow shadow,
+			ImageCutCoords alpha) {
 		super(left, top, width, height, angleDegrees, dragable);
 
 		if (origFile.isEmpty() && previewFile.isEmpty() && sourceFile.isEmpty()) {
@@ -39,6 +43,7 @@ public class BookPicture extends BookElement {
 
 		this.border = border;
 		this.shadow = shadow;
+		this.alpha = alpha;// ex. heart
 
 	}
 

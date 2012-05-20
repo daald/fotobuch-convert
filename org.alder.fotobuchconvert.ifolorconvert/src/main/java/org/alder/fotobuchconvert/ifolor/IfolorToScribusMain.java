@@ -108,6 +108,9 @@ public class IfolorToScribusMain {
 								.getAbsolutePath() : null;
 						ScribusImg scrimg = wr.addImage(imgFilePath);
 
+						if (pic.alpha != null)
+							scrimg.setPOCoords(pic.alpha.get(elW, elH));
+
 						scrimg.setPositionCenterRot(elX, elY, elW, elH,
 								el.angleDegrees);
 						if (imgFilePath != null)
@@ -132,9 +135,10 @@ public class IfolorToScribusMain {
 
 							ScribusImgScratchFrame frame = scrimg
 									.addScratchFrame(elX, elY, elW, elH,
-											el.angleDegrees, border.width, 0);
+											el.angleDegrees, border.innerWidth,
+											border.outerWidth);
 
-							frame.setBorder(1, Color.BLACK);
+							frame.setBorder(0, Color.GRAY);
 							frame.setFill(Color.WHITE);
 						}
 

@@ -211,6 +211,7 @@ public class ScribusWriter {
 
 		protected double w, h;
 		private int group;
+		protected ScribusPolyBuilder pocoords;
 
 		public ScribusObject(int type) {
 			this.type = type;
@@ -256,7 +257,10 @@ public class ScribusWriter {
 			element.set(C.ROT, angleDegrees);
 
 			ScribusPolyBuilder pb;
-			pb = getPoly(false);
+			if (pocoords != null)
+				pb = pocoords;
+			else
+				pb = getPoly(false);
 			if (pb != null) {
 				element.set(C.NUMPO, pb.getNumber());
 				element.set(C.POCOOR, pb.getCoordsStr());
@@ -464,6 +468,10 @@ public class ScribusWriter {
 			element.set(C.RATIO, proportional ? 1 : 0);
 		}
 
+		public void setPOCoords(ScribusPolyBuilder pocoords) {
+			this.pocoords = pocoords;
+		}
+
 	}
 
 	public class ScribusImgFrame extends ScribusShape {
@@ -523,7 +531,7 @@ public class ScribusWriter {
 		@Override
 		protected ScribusPolyBuilder getPoly(boolean co) {
 			ScribusPolyBuilder pb = new ScratchFrameCoords().get(w, h,
-					innerWidth * .3);
+					innerWidth, outerWidth);
 
 			pb.sep();
 			pb.add(innerWidth, innerWidth);

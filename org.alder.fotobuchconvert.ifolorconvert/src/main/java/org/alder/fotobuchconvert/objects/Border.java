@@ -27,10 +27,11 @@ public class Border {
 	}
 
 	public static class ScratchBorder extends Border {
-		public final double width;
+		public final double innerWidth, outerWidth;
 
-		public ScratchBorder(double width) {
-			this.width = width;
+		public ScratchBorder(double innerWidth, double outerWidth) {
+			this.innerWidth = innerWidth;
+			this.outerWidth = outerWidth;
 		}
 	}
 }

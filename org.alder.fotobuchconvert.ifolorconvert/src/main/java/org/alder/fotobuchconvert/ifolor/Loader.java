@@ -13,6 +13,7 @@ import org.alder.fotobuchconvert.objects.BookShape.ShapeColor;
 import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
 import org.alder.fotobuchconvert.objects.Shadow;
+import org.alder.fotobuchconvert.scribus.ImageCutCoords;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -176,11 +177,8 @@ public class Loader {
 							.evalXPathToString());
 					if (bs == null)
 						bs = new BorderShadow(null, null);
-					String alpha = apImAlphaType.evalXPathToString();
-					if (alpha != null && !alpha.isEmpty())
-						System.err
-								.println("Unsupported: alpha layer in picture: "
-										+ alpha);
+					ImageCutCoords alpha = s2alpha(apImAlphaType
+							.evalXPathToString());
 
 					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\t%s %s\n",
 							left, top, origFile, cropX, cropY, cropW, cropH,
@@ -189,7 +187,7 @@ public class Loader {
 					BookPicture pic = new BookPicture(left, top, width, height,
 							angleDegrees, dragable, origFile, previewFile,
 							sourceFile, cropX, cropY, cropW, cropH, bs.border,
-							bs.shadow);
+							bs.shadow, alpha);
 					page.add(pic);
 
 				} else if ("ColorRectangle".equals(type)) {
@@ -247,6 +245,28 @@ public class Loader {
 	// throw new RuntimeException("Invalid value for dock: " + s);
 	// }
 
+	private ImageCutCoords s2alpha(String alpha) {
+		if (alpha == null || alpha.isEmpty())
+			return null;
+
+		if (alpha.equals("[ALPHAMASK01]Alpha2"))// ok
+			return new ImageCutCoords.HeartCoords();
+		if (alpha.equals("[ALPHAMASK01]Alpha5"))// ok
+			return new ImageCutCoords.HeartCoords();
+		if (alpha.equals("[ALPHAMASK01]Alpha6"))// ok
+			return new ImageCutCoords.OvalCoords();
+		// if (alpha.equals("[ALPHAMASK01]Alpha1"))//ausgefranst
+		// return null;
+		// if (alpha.equals("[ALPHAMASK01]Alpha3"))//gepunkteter Rand
+		// return null;
+		// if (alpha.equals("[ALPHAMASK01]Alpha10"))// umblättern
+		// return null;
+
+		System.err.println("Unsupported: alpha layer in picture: " + alpha);
+
+		return null;
+	}
+
 	private BorderShadow s2border(String input) {
 		if (input == null || input.isEmpty())
 			return null;
@@ -300,7 +320,7 @@ public class Loader {
 		// also: existing borders [ALPHAMASK01]Border01..06
 
 		if (input.equals("[ALPHAMASK01]Border01"))// scratch frame
-			return new BorderShadow(new Border.ScratchBorder(10), null);
+			return new BorderShadow(new Border.ScratchBorder(4, 4), null);
 		//
 		// if (input.equals("[ALPHAMASK01]Border02"))// double black/white frame
 		// // without shadow
@@ -324,7 +344,7 @@ public class Loader {
 		//
 		// if (input.equals("[ALPHAMASK01]Border06"))// smaller heavy white
 		// frame
-		// // without shadow
+		// // without shadow and round corners
 		// return new BorderShadow(new Border.LineBorder(20,
 		// Color.GRAY.brighter()), null);
 

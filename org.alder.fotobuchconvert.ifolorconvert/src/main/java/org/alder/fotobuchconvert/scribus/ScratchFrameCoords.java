@@ -58,41 +58,45 @@ public class ScratchFrameCoords {
 	public static void main(String[] args) {
 		checkLimits();
 
-		new ScratchFrameCoords().get(500, 500, 20);
+		new ScratchFrameCoords().get(500, 500, 5, 15);
 	}
 
-	public ScribusPolyBuilder get(double width, double height, double framewidth) {
-		final double outer = 0;
-		final double outx1 = 0 - outer, outx4 = width + outer, outx2 = stretch(
-				datax2, datax1, dataFrameW, outx1, framewidth), outx3 = stretch(
-				datax3, dataFrameW, datax4, width - framewidth, outx4);
-		final double outy1 = 0 - outer, outy4 = height + outer, outy2 = stretch(
-				datay2, datay1, dataFrameW, outy1, framewidth), outy3 = stretch(
-				datay3, dataFrameW, datay4, width - framewidth, outy4);
+	public ScribusPolyBuilder get(double width, double height,
+			double innerwidth, double outerwidth) {
+		final double outx1 = 0 - outerwidth, outx2 = 0, outx3 = width, outx4 = width
+				+ outerwidth;
+		final double outy1 = 0 - outerwidth, outy2 = 0, outy3 = height, outy4 = height
+				+ outerwidth;
 
 		ScribusPolyBuilder pb = new ScribusPolyBuilder();
 
-		for (int i = 0; i < datacoords.length; i += 2) {
-			float x = datacoords[i];
-			float y = datacoords[i + 1];
+		for (int i = 0; i < datacoords.length; i += 4) {
+			double[] pt = new double[4];
+			for (int j = 0; j < 4; j += 2) {
+				float x = datacoords[i + j];
+				float y = datacoords[i + j + 1];
 
-			double ox, oy;
-			if (x <= datax2)
-				ox = stretch(x, datax1, datax2, outx1, outx2);
-			else if (x >= datax3)
-				ox = stretch(x, datax3, datax4, outx3, outx4);
-			else
-				ox = stretch(x, datax2, datax3, outx2, outx3);
+				double ox, oy;
+				if (x <= datax2)
+					ox = stretch(x, datax1, datax2, outx1, outx2);
+				else if (x >= datax3)
+					ox = stretch(x, datax3, datax4, outx3, outx4);
+				else
+					ox = stretch(x, datax2, datax3, outx2, outx3);
 
-			if (y <= datay2)
-				oy = stretch(y, datay1, datay2, outy1, outy2);
-			else if (y >= datay3)
-				oy = stretch(y, datay3, datay4, outy3, outy4);
-			else
-				oy = stretch(y, datay2, datay3, outy2, outy3);
+				if (y <= datay2)
+					oy = stretch(y, datay1, datay2, outy1, outy2);
+				else if (y >= datay3)
+					oy = stretch(y, datay3, datay4, outy3, outy4);
+				else
+					oy = stretch(y, datay2, datay3, outy2, outy3);
 
-			System.out.println(x + " " + y + "\t" + ox + " " + oy);
-			pb.add(ox, oy);
+				System.out.println(x + " " + y + "\t" + ox + " " + oy);
+				pt[0 + j] = ox;
+				pt[1 + j] = oy;
+			}
+
+			pb.add(pt[0], pt[1], pt[2], pt[3]);
 		}
 
 		return pb;
