@@ -35,7 +35,7 @@ public class IfolorToScribusMain {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
-	private final int testLimit = 12;
+	private final int testLimit = 0;
 
 	private Book book;
 
@@ -190,14 +190,14 @@ public class IfolorToScribusMain {
 					ScribusShape shape = wr.addShape();
 					shape.setPositionCenterRot(elX, elY, elW, elH,
 							el.angleDegrees);
-					shape.setBorder();
+					shape.setBorder(0, Color.BLACK);
 
 					final double bw = 5;
 
 					shape = wr.addShape();
 					shape.setPositionCenterRot(elX + bw, elY + bw,
 							elW - 2 * bw, elH - 2 * bw, el.angleDegrees);
-					shape.setBorder();
+					shape.setBorder(0, Color.BLACK);
 				}
 			}
 

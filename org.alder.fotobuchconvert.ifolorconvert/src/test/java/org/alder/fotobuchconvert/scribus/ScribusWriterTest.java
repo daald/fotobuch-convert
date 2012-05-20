@@ -1,5 +1,6 @@
 package org.alder.fotobuchconvert.scribus;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 
@@ -30,9 +31,12 @@ public class ScribusWriterTest {
 
 		// DEMO: Rotation
 		// SHAPE(6)
-		wr.addShape().setPosition(800, 300, 100, 100, 0).setBorder();
-		wr.addShape().setPosition(800, 300, 100, 100, 5).setBorder();
-		wr.addShape().setPosition(800, 300, 100, 100, 10).setBorder();
+		wr.addShape().setPosition(800, 300, 100, 100, 0)
+				.setBorder(0, Color.BLACK);
+		wr.addShape().setPosition(800, 300, 100, 100, 5)
+				.setBorder(0, Color.BLACK);
+		wr.addShape().setPosition(800, 300, 100, 100, 10)
+				.setBorder(0, Color.BLACK);
 
 		/**
 		 * PAGEXPOS="100" PAGEYPOS="20" PAGEWIDTH="595.28" PAGEHEIGHT="841.89"
@@ -44,27 +48,27 @@ public class ScribusWriterTest {
 			// liegt auf Seitenecke:
 			wr.addShape()
 					.setPosition(pd.docbaseX - bleed, pd.docbaseY - bleed, 1,
-							1, 0).setBorder();
+							1, 0).setBorder(0, Color.BLACK);
 			// liegt auf roter Ecke:
 			wr.addShape().setPosition(pd.docbaseX, pd.docbaseY, 1, 1, 0)
-					.setBorder();
+					.setBorder(0, Color.BLACK);
 			// liegt auf margin (blaue Ecke):
 			wr.addShape()
 					.setPosition(pd.docbaseX + margin, pd.docbaseY + margin, 1,
-							1, 0).setBorder();
+							1, 0).setBorder(0, Color.BLACK);
 		}
 
 		PageDims pd = pageDims[0];
 		// DEMO: Anker ist die linke obere Ecke
 		wr.addShape()
 				.setPosition(pd.docbaseX + 100, pd.docbaseY + 100, 1, 1, 0)
-				.setBorder();
+				.setBorder(0, Color.BLACK);
 		wr.addShape()
 				.setPosition(pd.docbaseX + 100, pd.docbaseY + 100, 10, 10, 0)
-				.setBorder();
+				.setBorder(0, Color.BLACK);
 		wr.addShape()
 				.setPosition(pd.docbaseX + 100, pd.docbaseY + 100, 100, 100, 0)
-				.setBorder();
+				.setBorder(0, Color.BLACK);
 
 		wr.finish();
 	}

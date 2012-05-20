@@ -349,8 +349,7 @@ public class Loader {
 		// Color.GRAY.brighter()), null);
 
 		System.err.println("Unknown border: " + input);
-		return new BorderShadow(new Border.LineBorder(20,
-				Color.GREEN.brighter()), null);
+		return null;
 	}
 
 	private Shadow mkSoftShadow() {

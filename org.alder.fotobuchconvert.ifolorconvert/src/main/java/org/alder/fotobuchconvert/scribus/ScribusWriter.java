@@ -296,15 +296,6 @@ public class ScribusWriter {
 		}
 
 		/**
-		 * @deprecated
-		 */
-		public void setBorder() {
-			element.set(C.PCOLOR2, "Black");
-			// SHADE2: Deckung Linie (100=full)
-			element.set(C.SHADE2, 100);
-		}
-
-		/**
 		 * Sets color and width of the border around the object
 		 * 
 		 * @param width

@@ -14,14 +14,14 @@ public class SVGShadowManager {
 
 	HashSet<File> generatedFiles = new HashSet<File>();
 
-	// public static void main(String[] args) throws FileNotFoundException {
-	// SVGShadowManager m = new SVGShadowManager();
-	//
-	// for (int i = 10; i < 1000; i += 15) {
-	// System.out.println(i + "\t");
-	// m.get(i, 777, 60);
-	// }
-	// }
+	public static void main(String[] args) throws FileNotFoundException {
+		SVGShadowManager m = new SVGShadowManager();
+
+		for (int i = 10; i < 1000; i += 15) {
+			File file = m.get(i, 777, 60);
+			System.out.println(i + "\t" + file);
+		}
+	}
 
 	public File get(double width, double height, double edge)
 			throws FileNotFoundException {
@@ -50,8 +50,8 @@ public class SVGShadowManager {
 
 		return (int) (Math.pow(
 				base,
-				Math.round(Math.log((double) value / (double) edge))
-						/ Math.log(base)) * edge);
+				Math.round(Math.log((double) value / (double) edge)
+						/ Math.log(base))) * (double) edge);
 	}
 
 	private XmlBuilder generateXML(int width, int height, int edge) {

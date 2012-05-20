@@ -51,7 +51,7 @@ public class C {
 
 	public static final String OWN_PAGE = "OwnPage";
 
-	public static final String PWIDTH = "PWIDTH";
+	public static final String PWIDTH = "PWIDTH";// line width; 0=hairline
 
 	public static final String SIZE = "Size"; // e.g. A4
 	public static final String PAGESIZE = "PAGESIZE";
