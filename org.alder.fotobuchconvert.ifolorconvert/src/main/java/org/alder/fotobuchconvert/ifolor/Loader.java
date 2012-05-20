@@ -59,6 +59,7 @@ public class Loader {
 		AutoPilot apImVpWidth = new AutoPilot();
 		AutoPilot apImVpHeight = new AutoPilot();
 		AutoPilot apImBorderType = new AutoPilot();
+		AutoPilot apImAlphaType = new AutoPilot();
 		AutoPilot apShapeColor = new AutoPilot();
 		AutoPilot apShapeColorValue = new AutoPilot();
 		AutoPilot apShapeColorPos = new AutoPilot();
@@ -89,6 +90,9 @@ public class Loader {
 		apImVpWidth.selectXPath("VisiblePart/@width");// width="100"
 		apImVpHeight.selectXPath("VisiblePart/@height");// height="90.66666"
 		apImBorderType.selectXPath("Border/@id");// <Border id="Elegant" />
+		apImAlphaType.selectXPath("AlphaSet/@id"); // <AlphaSet
+													// id="[ALPHAMASK01]Alpha10"
+													// />
 
 		// <Colors><Color value="7F000000" position="0" /></Colors>
 		apShapeColor.selectXPath("Colors/Color");
@@ -128,6 +132,7 @@ public class Loader {
 		apImVpWidth.bind(vn);
 		apImVpHeight.bind(vn);
 		apImBorderType.bind(vn);
+		apImAlphaType.bind(vn);
 		apShapeColor.bind(vn);
 		apShapeColorValue.bind(vn);
 		apShapeColorPos.bind(vn);
@@ -171,6 +176,11 @@ public class Loader {
 							.evalXPathToString());
 					if (bs == null)
 						bs = new BorderShadow(null, null);
+					String alpha = apImAlphaType.evalXPathToString();
+					if (alpha != null && !alpha.isEmpty())
+						System.err
+								.println("Unsupported: alpha layer in picture: "
+										+ alpha);
 
 					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\t%s %s\n",
 							left, top, origFile, cropX, cropY, cropW, cropH,
