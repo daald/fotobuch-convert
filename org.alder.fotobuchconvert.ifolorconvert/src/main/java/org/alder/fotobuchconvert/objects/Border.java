@@ -25,4 +25,12 @@ public class Border {
 			this.transparency = transparency;
 		}
 	}
+
+	public static class ScratchBorder extends Border {
+		public final double width;
+
+		public ScratchBorder(double width) {
+			this.width = width;
+		}
+	}
 }

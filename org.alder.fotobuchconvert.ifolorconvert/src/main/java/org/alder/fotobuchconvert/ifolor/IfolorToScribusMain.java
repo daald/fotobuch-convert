@@ -16,6 +16,7 @@ import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
 import org.alder.fotobuchconvert.objects.Border.HeavyBorder;
 import org.alder.fotobuchconvert.objects.Border.LineBorder;
+import org.alder.fotobuchconvert.objects.Border.ScratchBorder;
 import org.alder.fotobuchconvert.objects.Shadow;
 import org.alder.fotobuchconvert.objects.Shadow.SoftShadow;
 import org.alder.fotobuchconvert.scribus.RtfToScribusConverter;
@@ -24,6 +25,7 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImgFrame;
+import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImgScratchFrame;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusShape;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 import org.apache.commons.logging.Log;
@@ -125,6 +127,15 @@ public class IfolorToScribusMain {
 							frame.setBorder(2, Color.GRAY);
 							frame.setFill(border.color);
 							frame.setTransparency(border.transparency);
+						} else if (pic.border instanceof Border.ScratchBorder) {
+							Border.ScratchBorder border = (ScratchBorder) pic.border;
+
+							ScribusImgScratchFrame frame = scrimg
+									.addScratchFrame(elX, elY, elW, elH,
+											el.angleDegrees, border.width, 0);
+
+							frame.setBorder(1, Color.BLACK);
+							frame.setFill(Color.WHITE);
 						}
 
 						if (imgFile == null)

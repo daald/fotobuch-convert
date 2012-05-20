@@ -449,6 +449,16 @@ public class ScribusWriter {
 			return frame;
 		}
 
+		public ScribusImgScratchFrame addScratchFrame(double x, double y,
+				double w, double h, double angleDegrees, double innerWidth,
+				double outerWidth) {
+			ScribusImgScratchFrame frame = new ScribusImgScratchFrame(
+					innerWidth, outerWidth);
+			frame.setPositionCenterRot(x, y, w, h, angleDegrees);
+			frame.setGroup(getGroup());
+			return frame;
+		}
+
 		public void setAutoScale(boolean proportional) {
 			element.set(C.SCALETYPE, 0);
 			element.set(C.RATIO, proportional ? 1 : 0);
@@ -495,6 +505,34 @@ public class ScribusWriter {
 			// .set(C."OwnPage","3")
 			// --------------
 			// .set(C."RADRECT", 0)
+		}
+	}
+
+	public class ScribusImgScratchFrame extends ScribusShape {
+		private final double innerWidth, outerWidth;
+
+		public ScribusImgScratchFrame(double innerWidth, double outerWidth) {
+			super();
+
+			element.set(C.FRTYPE, 3);
+
+			this.innerWidth = innerWidth;
+			this.outerWidth = outerWidth;
+		}
+
+		@Override
+		protected ScribusPolyBuilder getPoly(boolean co) {
+			ScribusPolyBuilder pb = new ScratchFrameCoords().get(w, h,
+					innerWidth * .3);
+
+			pb.sep();
+			pb.add(innerWidth, innerWidth);
+			pb.add2(innerWidth, h - innerWidth);
+			pb.add2(w - innerWidth, h - innerWidth);
+			pb.add2(w - innerWidth, innerWidth);
+			pb.add(innerWidth, innerWidth);
+
+			return pb;
 		}
 	}
 

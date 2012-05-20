@@ -130,22 +130,14 @@ public class SVGShadowManager {
 				.set("y", y2).set("width", edge).set("height", ih);
 
 		// corners
-		g.add("rect")
-				.set("style", "color:#000000;fill:url(#radialGradientTL);")
-				.set("width", edge).set("height", edge).set("x", x1)
-				.set("y", y1);
-		g.add("rect")
-				.set("style", "color:#000000;fill:url(#radialGradientTR);")
-				.set("width", edge).set("height", edge).set("x", x3)
-				.set("y", y1);
-		g.add("rect")
-				.set("style", "color:#000000;fill:url(#radialGradientBR);")
-				.set("width", edge).set("height", edge).set("x", x3)
-				.set("y", y3);
-		g.add("rect")
-				.set("style", "color:#000000;fill:url(#radialGradientBL);")
-				.set("width", edge).set("height", edge).set("x", x1)
-				.set("y", y3);
+		g.add("rect").set("fill", "url(#radialGradientTL)").set("x", x1)
+				.set("y", y1).set("width", edge).set("height", edge);
+		g.add("rect").set("fill", "url(#radialGradientTR)").set("x", x3)
+				.set("y", y1).set("width", edge).set("height", edge);
+		g.add("rect").set("fill", "url(#radialGradientBR)").set("x", x3)
+				.set("y", y3).set("width", edge).set("height", edge);
+		g.add("rect").set("fill", "url(#radialGradientBL)").set("x", x1)
+				.set("y", y3).set("width", edge).set("height", edge);
 
 		return svg;
 	}

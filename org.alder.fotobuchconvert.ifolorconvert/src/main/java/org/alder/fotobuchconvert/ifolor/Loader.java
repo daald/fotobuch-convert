@@ -238,7 +238,7 @@ public class Loader {
 	// }
 
 	private BorderShadow s2border(String input) {
-		if (input == null)
+		if (input == null || input.isEmpty())
 			return null;
 
 		if (input.endsWith(" Line")) {
@@ -288,6 +288,35 @@ public class Loader {
 					mkHardShadow());
 
 		// also: existing borders [ALPHAMASK01]Border01..06
+
+		if (input.equals("[ALPHAMASK01]Border01"))// scratch frame
+			return new BorderShadow(new Border.ScratchBorder(10), null);
+		//
+		// if (input.equals("[ALPHAMASK01]Border02"))// double black/white frame
+		// // without shadow
+		// return new BorderShadow(new Border.LineBorder(20,
+		// Color.BLUE.brighter()), null);
+		//
+		// if (input.equals("[ALPHAMASK01]Border03"))// fat heavy gray frame
+		// // without shadow
+		// return new BorderShadow(new Border.LineBorder(20,
+		// Color.YELLOW.brighter()), null);
+		//
+		// if (input.equals("[ALPHAMASK01]Border04"))// fat white frame with
+		// // centered shadow
+		// return new BorderShadow(new Border.LineBorder(20,
+		// Color.BLUE.brighter()), null);
+		//
+		// if (input.equals("[ALPHAMASK01]Border05"))// heavy white frame with
+		// // centered shadow
+		// return new BorderShadow(new Border.LineBorder(20,
+		// Color.CYAN.brighter()), null);
+		//
+		// if (input.equals("[ALPHAMASK01]Border06"))// smaller heavy white
+		// frame
+		// // without shadow
+		// return new BorderShadow(new Border.LineBorder(20,
+		// Color.GRAY.brighter()), null);
 
 		System.err.println("Unknown border: " + input);
 		return new BorderShadow(new Border.LineBorder(20,
