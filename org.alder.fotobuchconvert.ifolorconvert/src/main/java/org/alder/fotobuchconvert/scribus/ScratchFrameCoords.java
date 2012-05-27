@@ -2,64 +2,64 @@ package org.alder.fotobuchconvert.scribus;
 
 public class ScratchFrameCoords {
 
-	public static void checkLimits() {
-		float limitLT = 20;
-		float limitBR = 270;
-
-		float x1 = 99999, x2 = -1, x3 = 99999, x4 = -1;
-		float y1 = 99999, y2 = -1, y3 = 99999, y4 = -1;
-
-		for (int i = 0; i < datacoords.length; i += 2) {
-			float x = datacoords[i];
-			float y = datacoords[i + 1];
-
-			boolean left = x < limitLT;
-			boolean right = x > limitBR;
-			boolean top = y < limitLT;
-			boolean bottom = y > limitBR;
-
-			if (left && x1 > x)
-				x1 = x;
-			if (right && x4 < x)
-				x4 = x;
-			if (top && y1 > y)
-				y1 = y;
-			if (bottom && y4 < y)
-				y4 = y;
-
-			if ((left || right) && (top || bottom))
-				continue;
-
-			if (left && x2 < x)
-				x2 = x;
-			if (right && x3 > x)
-				x3 = x;
-			if (top && y2 < y)
-				y2 = y;
-			if (bottom && y3 > y)
-				y3 = y;
-		}
-		System.out.printf("X: %f %f %f %f \n", x1, x2, x3, x4);
-		System.out.printf("Y: %f %f %f %f \n", y1, y2, y3, y4);
-
-		System.out.printf("R: %f %f %f %f \n", x2 - x1, x4 - x3, y2 - y1, y4
-				- y3);
-
-		System.out
-				.printf("private final static float datax1=%ff,datax2=%ff,datax3=%ff,datax4=%ff;\n",
-						x1, x2, x3, x4);
-		System.out
-				.printf("private final static float datay1=%ff,datay2=%ff,datay3=%ff,datay4=%ff;\n",
-						y1, y2, y3, y4);
-
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		checkLimits();
-
-		new ScratchFrameCoords().get(500, 500, 5, 15);
-	}
+	// public static void checkLimits() {
+	// float limitLT = 20;
+	// float limitBR = 270;
+	//
+	// float x1 = 99999, x2 = -1, x3 = 99999, x4 = -1;
+	// float y1 = 99999, y2 = -1, y3 = 99999, y4 = -1;
+	//
+	// for (int i = 0; i < datacoords.length; i += 2) {
+	// float x = datacoords[i];
+	// float y = datacoords[i + 1];
+	//
+	// boolean left = x < limitLT;
+	// boolean right = x > limitBR;
+	// boolean top = y < limitLT;
+	// boolean bottom = y > limitBR;
+	//
+	// if (left && x1 > x)
+	// x1 = x;
+	// if (right && x4 < x)
+	// x4 = x;
+	// if (top && y1 > y)
+	// y1 = y;
+	// if (bottom && y4 < y)
+	// y4 = y;
+	//
+	// if ((left || right) && (top || bottom))
+	// continue;
+	//
+	// if (left && x2 < x)
+	// x2 = x;
+	// if (right && x3 > x)
+	// x3 = x;
+	// if (top && y2 < y)
+	// y2 = y;
+	// if (bottom && y3 > y)
+	// y3 = y;
+	// }
+	// System.out.printf("X: %f %f %f %f \n", x1, x2, x3, x4);
+	// System.out.printf("Y: %f %f %f %f \n", y1, y2, y3, y4);
+	//
+	// System.out.printf("R: %f %f %f %f \n", x2 - x1, x4 - x3, y2 - y1, y4
+	// - y3);
+	//
+	// System.out
+	// .printf("private final static float datax1=%ff,datax2=%ff,datax3=%ff,datax4=%ff;\n",
+	// x1, x2, x3, x4);
+	// System.out
+	// .printf("private final static float datay1=%ff,datay2=%ff,datay3=%ff,datay4=%ff;\n",
+	// y1, y2, y3, y4);
+	//
+	// System.out.println();
+	// }
+	//
+	// public static void main(String[] args) {
+	// checkLimits();
+	//
+	// new ScratchFrameCoords().get(500, 500, 5, 15);
+	// }
 
 	public ScribusPolyBuilder get(double width, double height,
 			double innerwidth, double outerwidth) {

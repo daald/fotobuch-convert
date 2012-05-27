@@ -13,7 +13,6 @@ import javax.swing.text.rtf.RTFEditorKit;
 
 import org.alder.fotobuchconvert.tools.XmlBuilder;
 
-
 public class RtfToScribusConverter {
 
 	private static boolean debug = true;
@@ -90,6 +89,9 @@ public class RtfToScribusConverter {
 							&& text.length() < 3)
 						continue;
 					elementsInThisLine = true;
+
+					while (text.endsWith("\n") || text.endsWith("\r"))
+						text = text.substring(0, text.length() - 1);
 
 					System.out.println(italic + " " + bold + " " + underline
 							+ " " + family + " " + fontSize + " " + color

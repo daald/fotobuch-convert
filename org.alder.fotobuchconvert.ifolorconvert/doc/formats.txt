@@ -1,0 +1,25 @@
+(source: Google)
+
+
+== Photo book formats ==
+.pbf
+	* http://www.fotokasten.de/
+	* LIDL
+	* ALDI(?)
+	* Cewe
+
+.dpp
+	* http://www.ifolor.ch/
+
+.mcf
+	also CEWE?
+
+== Potential Output formats ==
+.sla
+	Scribus Open Source DTP Application
+	- No shadow support
+	- No picture frame support
+	- No vertical text alignment
+
+.pdf
+	- read-only, but authentic
