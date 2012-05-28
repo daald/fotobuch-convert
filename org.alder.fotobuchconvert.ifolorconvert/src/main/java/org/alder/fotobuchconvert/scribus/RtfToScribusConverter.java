@@ -12,15 +12,21 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.rtf.RTFEditorKit;
 
 import org.alder.fotobuchconvert.tools.XmlBuilder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class RtfToScribusConverter {
 
 	private static boolean debug = true;
 
+	protected final Log log = LogFactory.getLog(RtfToScribusConverter.class);
+
 	public void convert(XmlBuilder xml, String input, ScribusWriter scribus)
 			throws IOException, BadLocationException {
 		if (input == null)
 			return;
+
+		log.debug("RTF input: " + input);
 
 		CharArrayReader rd = new CharArrayReader(input.toCharArray());
 
@@ -33,20 +39,19 @@ public class RtfToScribusConverter {
 	}
 
 	void output(XmlBuilder xml, DefaultStyledDocument doc, ScribusWriter scribus) {
-		if (debug)
-			doc.dump(System.out);
+		log.debug("Starting conversion of RTF data");
+		if (log.isTraceEnabled())
+			doc.dump(System.err);
 
 		try {
 			Element section = doc.getDefaultRootElement();
-			if (debug)
-				System.out.println(section);
+			log.trace(section);
 			assert section.getName().equals("section");
 
 			final int nj = section.getElementCount();
 			for (int j = 0; j < nj; j++) {
 				Element paragraph = section.getElement(j);
-				if (debug)
-					System.out.println(paragraph);
+				log.trace(paragraph);
 				assert section.getName().equals("paragraph");
 
 				// boolean firstInPara = true;
@@ -93,11 +98,11 @@ public class RtfToScribusConverter {
 					while (text.endsWith("\n") || text.endsWith("\r"))
 						text = text.substring(0, text.length() - 1);
 
-					System.out.println(italic + " " + bold + " " + underline
-							+ " " + family + " " + fontSize + " " + color
-							+ "\t\"" + text + "\"");
+					log.debug(italic + " " + bold + " " + underline + " "
+							+ family + " " + fontSize + " " + color + "\t\""
+							+ text + "\"");
 
-					XmlBuilder el = xml.add(C.EL_ITEXT).set("CH", text);
+					XmlBuilder el = xml.add(C.EL_ITEXT).set(C.CH, text);
 
 					if (bold == Boolean.TRUE && italic == Boolean.TRUE)
 						el.set(C.FONT, family + " Bold Italic");

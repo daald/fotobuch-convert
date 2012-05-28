@@ -9,16 +9,14 @@ public class BookElement {
 
 	public final int left, top, width, height;
 	public final int angleDegrees;
-	public final boolean dragable;
 
 	public BookElement(int left, int top, int width, int height,
-			int angleDegrees, boolean dragable) {
+			int angleDegrees) {
 		this.left = left;
 		this.top = top;
 		this.width = width;
 		this.height = height;
 		this.angleDegrees = angleDegrees;
-		this.dragable = dragable;
 	}
 
 	public boolean isInternalObject() {

@@ -157,6 +157,7 @@ public class C {
 	public static final String EL_ITEXT = "ITEXT";
 	public static final String EL_PARA = "para";
 
+	public static final String CH = "CH";
 	public static final String ALIGN = "ALIGN";
 	public static final String FCOLOR = "FCOLOR";
 	public static final String FONTSIZE = "FONTSIZE";

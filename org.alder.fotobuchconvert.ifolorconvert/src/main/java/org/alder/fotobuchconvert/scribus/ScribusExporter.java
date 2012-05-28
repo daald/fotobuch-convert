@@ -10,6 +10,7 @@ import org.alder.fotobuchconvert.objects.Book;
 import org.alder.fotobuchconvert.objects.BookElement;
 import org.alder.fotobuchconvert.objects.BookPage;
 import org.alder.fotobuchconvert.objects.BookPicture;
+import org.alder.fotobuchconvert.objects.BookRtfText;
 import org.alder.fotobuchconvert.objects.BookShape;
 import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
@@ -29,7 +30,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class ScribusExporter {
 
-	protected final Log log = LogFactory.getLog(ScribusExporter.class);
+	private final Log log = LogFactory.getLog(ScribusExporter.class);
 
 	private final Book book;
 
@@ -69,6 +70,8 @@ public class ScribusExporter {
 
 		int wrpg = 1;
 		for (BookPage page : book.pages) {
+			log.info("Exporting page " + wrpg);
+
 			PageDims pd = wr.addPage("Normal", pageW, pageH);// left
 			wr.addPage("Normal", pageW, pageH);// right
 
@@ -79,12 +82,14 @@ public class ScribusExporter {
 				if (el.isInternalObject())
 					continue;
 
+				log.info("  Exporting element " + el);
+
 				boolean placeHolder = true;
 
-				double elX = oX + oF * el.left;
-				double elY = oY + oF * el.top;
-				double elW = oF * el.width;
-				double elH = oF * el.height;
+				final double elX = oX + oF * el.left;
+				final double elY = oY + oF * el.top;
+				final double elW = oF * el.width;
+				final double elH = oF * el.height;
 
 				if (el instanceof BookPicture) {
 					BookPicture pic = (BookPicture) el;
@@ -138,14 +143,14 @@ public class ScribusExporter {
 
 						placeHolder = false;
 					} catch (IOException e) {
-						System.err.println("Cannot load Image " + imgFile
-								+ " (" + pic.getSourceName(book)
-								+ "). Drawing not possible");
-						e.printStackTrace();
+						log.error(
+								"Cannot load Image " + imgFile + " ("
+										+ pic.getSourceName(book)
+										+ "). Drawing not possible", e);
 					}
 
-				} else if (el instanceof BookText) {
-					BookText text = (BookText) el;
+				} else if (el instanceof BookRtfText) {
+					BookRtfText text = (BookRtfText) el;
 					String txt = text.getRtfText(book);
 
 					ScribusText scrtext = wr.addText();
@@ -158,6 +163,28 @@ public class ScribusExporter {
 						rtfConv.convert(scrtext.getElement(), txt, wr);
 					} else
 						log.warn("Empty text in page " + wrpg);
+
+					placeHolder = false;
+
+				} else if (el instanceof BookText) {
+					BookText text = (BookText) el;
+					String txt = text.getText(book);
+
+					ScribusText scrtext = wr.addText();
+
+					scrtext.setPositionCenterRot(elX, elY, elW, elH,
+							el.angleDegrees);
+
+					if (el instanceof BookRtfText) {
+						String rtftxt = ((BookRtfText) text).getRtfText(book);
+						if (rtftxt != null) {
+							RtfToScribusConverter rtfConv = new RtfToScribusConverter();
+							rtfConv.convert(scrtext.getElement(), rtftxt, wr);
+						} else
+							log.warn("Empty text in page " + wrpg);
+					} else {
+						scrtext.setText(txt);
+					}
 
 					placeHolder = false;
 
@@ -213,16 +240,16 @@ public class ScribusExporter {
 
 		if (shadow instanceof Shadow.HardShadow) {
 			ScribusShape scshadow = wr.addShape();
-			scshadow.setPosition(elX, elY, elW, elH, angleDegrees);
+			scshadow.setPositionCenterRot(elX, elY, elW, elH, angleDegrees);
 			scshadow.setFill(Color.BLACK);// , shadow.transparency);
 		} else if (shadow instanceof Shadow.SoftShadow) {
 			Shadow.SoftShadow sshadow = (SoftShadow) shadow;
 
 			File file = SVGShadowManager.getInstance().get((int) elW,
 					(int) elH, sshadow.softedge);
-			System.out.println(file);
+			log.debug("shadow file " + file);
 			ScribusImg scshadow = wr.addImage(file.getAbsolutePath());
-			scshadow.setPosition(elX, elY, elW, elH, angleDegrees);
+			scshadow.setPositionCenterRot(elX, elY, elW, elH, angleDegrees);
 			scshadow.setAutoScale(false);
 		}
 	}

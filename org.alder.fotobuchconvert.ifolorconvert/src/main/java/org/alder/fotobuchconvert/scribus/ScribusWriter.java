@@ -14,10 +14,14 @@ import javax.swing.ImageIcon;
 
 import org.alder.fotobuchconvert.objects.BookShape.ShapeColor;
 import org.alder.fotobuchconvert.tools.XmlBuilder;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class ScribusWriter {
 
 	private static final String OUTPUT_DOC_VERSION = "1.4.0.rc3";
+
+	private final Log log = LogFactory.getLog(ScribusWriter.class);
 
 	private final PrintStream out;
 
@@ -126,7 +130,7 @@ public class ScribusWriter {
 
 	public void finish() {
 		root.output(out);
-		System.out.println("File written.");
+		log.info("File written.");
 	}
 
 	private void applyPageSettings(XmlBuilder doc, boolean isDoc, double pageW,
@@ -375,6 +379,19 @@ public class ScribusWriter {
 		public XmlBuilder getElement() {
 			return element;
 		}
+
+		/**
+		 * outputs text in its simplest form (without formatting at character
+		 * level)
+		 * 
+		 * @param txt
+		 */
+		public void setText(String text) {
+			for (String line : text.trim().split("\n")) {
+				element.add(C.EL_ITEXT).set(C.CH, line);
+				element.add(C.EL_PARA).set(C.ALIGN, 1);
+			}
+		}
 	}
 
 	public class ScribusImg extends ScribusObject {
@@ -414,7 +431,7 @@ public class ScribusWriter {
 
 			// ifolor Designer only allows proportionally scaled images.
 			assert localscx / localscy > 0.999d && localscx / localscy < 1.001d;
-			System.out.println("Scale h/v factor: " + localscx / localscy
+			log.debug("Scale h/v factor: " + localscx / localscy
 					+ "  (1.000 is best)");
 
 			// LOCALSCX: image scale [1/n]
@@ -429,10 +446,10 @@ public class ScribusWriter {
 			element.set(C.LOCALX, locx);
 			element.set(C.LOCALY, locy);
 
-			System.out.printf(
+			log.debug(String.format(
 					"CROP: %f/%f\t%f/%f\t%f %f %f %f   -> %f %f %f %f\n", w, h,
 					imgW, imgH, cropX, cropY, cropW, cropH, localscx, localscy,
-					locx, locy);
+					locx, locy));
 		}
 
 		public ScribusImgFrame addPictureFrame(double x, double y, double w,

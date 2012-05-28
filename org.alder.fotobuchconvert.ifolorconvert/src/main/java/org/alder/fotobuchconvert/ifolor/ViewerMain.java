@@ -112,7 +112,7 @@ public class ViewerMain extends JFrame {
 						}
 					} else if (el instanceof BookText) {
 						BookText text = (BookText) el;
-						String txt = text.getRtfText(book);
+						String txt = text.getText(book);
 						if (txt != null) {
 							g.setFont(g.getFont().deriveFont(60f));
 							FontMetrics fm = g.getFontMetrics();

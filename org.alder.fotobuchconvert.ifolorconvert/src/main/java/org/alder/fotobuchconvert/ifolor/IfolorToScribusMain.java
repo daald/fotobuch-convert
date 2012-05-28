@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class IfolorToScribusMain {
 
-	protected final Log log = LogFactory.getLog(getClass());
+	protected final Log log = LogFactory.getLog(IfolorToScribusMain.class);
 
 	public static void main(String[] args) throws Exception {
 		ProjectPath path = TestData.getTestProject();

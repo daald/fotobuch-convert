@@ -8,10 +8,11 @@ import java.util.Vector;
 import org.alder.fotobuchconvert.objects.Book;
 import org.alder.fotobuchconvert.objects.BookPage;
 import org.alder.fotobuchconvert.objects.BookPicture;
+import org.alder.fotobuchconvert.objects.BookRtfText;
 import org.alder.fotobuchconvert.objects.BookShape;
 import org.alder.fotobuchconvert.objects.BookShape.ShapeColor;
-import org.alder.fotobuchconvert.objects.BookText;
 import org.alder.fotobuchconvert.objects.Border;
+import org.alder.fotobuchconvert.objects.PageNumberElement;
 import org.alder.fotobuchconvert.objects.Shadow;
 import org.alder.fotobuchconvert.scribus.ImageCutCoords;
 import org.apache.commons.logging.Log;
@@ -36,6 +37,36 @@ public class IfolorLoader {
 
 		VTDGen vg = new VTDGen();
 		AutoPilot apPg = new AutoPilot();
+		AutoPilot apPgLeftEnabled = new AutoPilot();
+		AutoPilot apPgRightEnabled = new AutoPilot();
+		AutoPilot apPgLeftPageNumberLabel = new AutoPilot();
+		AutoPilot apPgRightPageNumberLabel = new AutoPilot();
+
+		AutoPilot apPgLeftPageNumberLeft = new AutoPilot();
+		AutoPilot apPgLeftPageNumberTop = new AutoPilot();
+		AutoPilot apPgLeftPageNumberWidth = new AutoPilot();
+		AutoPilot apPgLeftPageNumberHeight = new AutoPilot();
+		AutoPilot apPgLeftPageNumberVisible = new AutoPilot();
+		AutoPilot apPgLeftPageNumberValign = new AutoPilot();
+		AutoPilot apPgLeftPageNumberFontName = new AutoPilot();
+		AutoPilot apPgLeftPageNumberFontSize = new AutoPilot();
+		AutoPilot apPgLeftPageNumberBold = new AutoPilot();
+		AutoPilot apPgLeftPageNumberItalic = new AutoPilot();
+		AutoPilot apPgLeftPageNumberUnderline = new AutoPilot();
+		AutoPilot apPgLeftPageNumberColor = new AutoPilot();
+		AutoPilot apPgRightPageNumberLeft = new AutoPilot();
+		AutoPilot apPgRightPageNumberTop = new AutoPilot();
+		AutoPilot apPgRightPageNumberWidth = new AutoPilot();
+		AutoPilot apPgRightPageNumberHeight = new AutoPilot();
+		AutoPilot apPgRightPageNumberVisible = new AutoPilot();
+		AutoPilot apPgRightPageNumberValign = new AutoPilot();
+		AutoPilot apPgRightPageNumberFontName = new AutoPilot();
+		AutoPilot apPgRightPageNumberFontSize = new AutoPilot();
+		AutoPilot apPgRightPageNumberBold = new AutoPilot();
+		AutoPilot apPgRightPageNumberItalic = new AutoPilot();
+		AutoPilot apPgRightPageNumberUnderline = new AutoPilot();
+		AutoPilot apPgRightPageNumberColor = new AutoPilot();
+
 		AutoPilot apGo = new AutoPilot();
 		AutoPilot apIm = new AutoPilot();
 		AutoPilot apImQuality = new AutoPilot();
@@ -66,6 +97,38 @@ public class IfolorLoader {
 		AutoPilot apShapeColorPos = new AutoPilot();
 
 		apPg.selectXPath("/UserProject/Pages/ProjectPage");
+		apPgLeftEnabled.selectXPath("LeftPageEnabled");// <LeftPageEnabled>False</LeftPageEnabled>
+		apPgRightEnabled.selectXPath("RightPageEnabled");// <RightPageEnabled>True</RightPageEnabled>
+
+		apPgLeftPageNumberLeft.selectXPath("LeftPageNumber/@left");
+		apPgLeftPageNumberTop.selectXPath("LeftPageNumber/@top");
+		apPgLeftPageNumberWidth.selectXPath("LeftPageNumber/@width");
+		apPgLeftPageNumberHeight.selectXPath("LeftPageNumber/@height");
+		apPgLeftPageNumberVisible.selectXPath("LeftPageNumber/@visible");
+		apPgLeftPageNumberValign.selectXPath("LeftPageNumber/@valign");
+		apPgLeftPageNumberFontName.selectXPath("LeftPageNumber/@fontName");
+		apPgLeftPageNumberFontSize.selectXPath("LeftPageNumber/@fontSize");
+		apPgLeftPageNumberBold.selectXPath("LeftPageNumber/@bold");
+		apPgLeftPageNumberItalic.selectXPath("LeftPageNumber/@italic");
+		apPgLeftPageNumberUnderline.selectXPath("LeftPageNumber/@underline");
+		apPgLeftPageNumberColor.selectXPath("LeftPageNumber/@color");
+		apPgRightPageNumberLeft.selectXPath("RightPageNumber/@left");
+		apPgRightPageNumberTop.selectXPath("RightPageNumber/@top");
+		apPgRightPageNumberWidth.selectXPath("RightPageNumber/@width");
+		apPgRightPageNumberHeight.selectXPath("RightPageNumber/@height");
+		apPgRightPageNumberVisible.selectXPath("RightPageNumber/@visible");
+		apPgRightPageNumberValign.selectXPath("RightPageNumber/@valign");
+		apPgRightPageNumberFontName.selectXPath("RightPageNumber/@fontName");
+		apPgRightPageNumberFontSize.selectXPath("RightPageNumber/@fontSize");
+		apPgRightPageNumberBold.selectXPath("RightPageNumber/@bold");
+		apPgRightPageNumberItalic.selectXPath("RightPageNumber/@italic");
+		apPgRightPageNumberUnderline.selectXPath("RightPageNumber/@underline");
+		apPgRightPageNumberColor.selectXPath("RightPageNumber/@color");
+		// <RightPageNumber left="3631" top="2304" width="3331"
+		// height="200" visible="1" align="outer" valign="bottom"
+		// fontName="Arial"
+		// fontSize="10" bold="0" italic="0" underline="0" color="Black" />
+
 		apGo.selectXPath("GuiObjects/*"); // Image, ColorRectangle, Text
 		apIm.selectXPath("GuiObjects/Image");
 		apImQuality.selectXPath("@quality");// ="Good"
@@ -111,6 +174,36 @@ public class IfolorLoader {
 		 */
 		VTDNav vn = vg.getNav();
 		apPg.bind(vn);
+		apPgLeftEnabled.bind(vn);
+		apPgRightEnabled.bind(vn);
+		apPgLeftPageNumberLabel.bind(vn);
+		apPgRightPageNumberLabel.bind(vn);
+
+		apPgLeftPageNumberLeft.bind(vn);
+		apPgLeftPageNumberTop.bind(vn);
+		apPgLeftPageNumberWidth.bind(vn);
+		apPgLeftPageNumberHeight.bind(vn);
+		apPgLeftPageNumberVisible.bind(vn);
+		apPgLeftPageNumberValign.bind(vn);
+		apPgLeftPageNumberFontName.bind(vn);
+		apPgLeftPageNumberFontSize.bind(vn);
+		apPgLeftPageNumberBold.bind(vn);
+		apPgLeftPageNumberItalic.bind(vn);
+		apPgLeftPageNumberUnderline.bind(vn);
+		apPgLeftPageNumberColor.bind(vn);
+		apPgRightPageNumberLeft.bind(vn);
+		apPgRightPageNumberTop.bind(vn);
+		apPgRightPageNumberWidth.bind(vn);
+		apPgRightPageNumberHeight.bind(vn);
+		apPgRightPageNumberVisible.bind(vn);
+		apPgRightPageNumberValign.bind(vn);
+		apPgRightPageNumberFontName.bind(vn);
+		apPgRightPageNumberFontSize.bind(vn);
+		apPgRightPageNumberBold.bind(vn);
+		apPgRightPageNumberItalic.bind(vn);
+		apPgRightPageNumberUnderline.bind(vn);
+		apPgRightPageNumberColor.bind(vn);
+
 		apGo.bind(vn);
 		apImQuality.bind(vn);
 		apImModified.bind(vn);
@@ -142,18 +235,26 @@ public class IfolorLoader {
 		 * now read the file contents
 		 */
 		Book book = new Book(path);
-		log.trace("Doc root");
+		log.info("Loading Ifolor file");
 		apPg.resetXPath();
+		int pgnum = -2;
 		while (apPg.evalXPath() != -1) {
-			System.out.println("  page");
+			pgnum += 2;
+			log.debug("Loading:   pages " + pgnum + "+" + (pgnum + 1));
 
-			BookPage page = new BookPage();
+			final boolean leftPageEnabled = "True".equals(apPgLeftEnabled
+					.evalXPathToString());
+			final boolean rightPageEnabled = "True".equals(apPgRightEnabled
+					.evalXPathToString());
+
+			BookPage page = new BookPage(pgnum, leftPageEnabled,
+					rightPageEnabled);
 			book.add(page);
 
 			apGo.resetXPath();
 			while (apGo.evalXPath() != -1) {
 				String type = vn.toString(vn.getCurrentIndex());
-				System.out.printf("    element:%s\n", type);
+				log.debug("Loading:     element:" + type);
 
 				int left = atoi(apImLeft.evalXPathToString());
 				int top = atoi(apImTop.evalXPathToString());
@@ -180,9 +281,10 @@ public class IfolorLoader {
 					ImageCutCoords alpha = s2alpha(apImAlphaType
 							.evalXPathToString());
 
-					System.out.printf("    %d,%d\t%s\t\t%f %f %f %f\t%s %s\n",
-							left, top, origFile, cropX, cropY, cropW, cropH,
-							bs.border, bs.shadow);
+					log.trace(String.format(
+							"    %d,%d\t%s\t\t%f %f %f %f\t%s %s", left, top,
+							origFile, cropX, cropY, cropW, cropH, bs.border,
+							bs.shadow));
 
 					BookPicture pic = new BookPicture(left, top, width, height,
 							angleDegrees, dragable, origFile, previewFile,
@@ -207,19 +309,14 @@ public class IfolorLoader {
 					}
 
 					BookShape shape = new BookShape(left, top, width, height,
-							angleDegrees, dragable,
-							colors.toArray(new ShapeColor[0]));
+							angleDegrees, colors.toArray(new ShapeColor[0]));
 					page.add(shape);
-
-					System.out.printf("    %d,%d\n", left, top);
 				} else if ("Text".equals(type)) {
 					String origFile = apImOrigFilePath.evalXPathToString();
 
-					BookText pic = new BookText(left, top, width, height,
-							angleDegrees, dragable, origFile);
+					BookRtfText pic = new BookRtfText(left, top, width, height,
+							angleDegrees, origFile);
 					page.add(pic);
-
-					System.out.printf("    %d,%d\n", left, top);
 				} else if ("MetaFile".equals(type)) {
 					// keine Ahnung, was das ist. Kommt immer wieder vor
 				} else {
@@ -227,10 +324,29 @@ public class IfolorLoader {
 							+ " nicht bekannt in XML");
 				}
 			}
+
+			// page numbers
+			if (apPgLeftPageNumberVisible.evalXPathToNumber() == 1) {
+				int left = atoi(apPgLeftPageNumberLeft.evalXPathToString());
+				int top = atoi(apPgLeftPageNumberTop.evalXPathToString());
+				int width = atoi(apPgLeftPageNumberWidth.evalXPathToString());
+				int height = atoi(apPgLeftPageNumberHeight.evalXPathToString());
+				// TODO apPgLeftPageNumberAlign == outer|inner
+				page.add(new PageNumberElement(left, top, width, height, pgnum));
+			}
+			if (apPgRightPageNumberVisible.evalXPathToNumber() == 1) {
+				int left = atoi(apPgRightPageNumberLeft.evalXPathToString());
+				int top = atoi(apPgRightPageNumberTop.evalXPathToString());
+				int width = atoi(apPgRightPageNumberWidth.evalXPathToString());
+				int height = atoi(apPgRightPageNumberHeight.evalXPathToString());
+				// TODO apPgRightPageNumberAlign == outer|inner
+				page.add(new PageNumberElement(left, top, width, height,
+						pgnum + 1));
+			}
 		}
 		apIm.resetXPath();
 
-		System.out.println();
+		log.info("Finished loading");
 		return book;
 	}
 
