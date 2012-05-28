@@ -21,9 +21,9 @@ import com.ximpleware.AutoPilot;
 import com.ximpleware.VTDGen;
 import com.ximpleware.VTDNav;
 
-public class Loader {
+public class IfolorLoader {
 
-	private final Log log = LogFactory.getLog(Loader.class);
+	private final Log log = LogFactory.getLog(IfolorLoader.class);
 
 	public Book load(ProjectPath path) throws Exception {
 		log.info("Loading Layout for " + path);

@@ -17,4 +17,9 @@ public class Book {
 		pages.add(pic);
 	}
 
+	public void reducePagesForTesting() {
+		while (pages.size() > 10)
+			pages.remove(pages.size() - 1);
+	}
+
 }

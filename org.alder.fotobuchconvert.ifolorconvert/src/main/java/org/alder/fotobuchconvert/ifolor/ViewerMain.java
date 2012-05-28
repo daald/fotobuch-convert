@@ -27,7 +27,7 @@ public class ViewerMain extends JFrame {
 
 	public static void main(String[] args) throws Exception {
 
-		Loader loader = new Loader();
+		IfolorLoader loader = new IfolorLoader();
 		ProjectPath path = TestData.getTestProject();
 		Book book = loader.load(path);
 

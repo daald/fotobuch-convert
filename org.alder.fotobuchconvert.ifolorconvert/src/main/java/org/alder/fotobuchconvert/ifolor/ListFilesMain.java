@@ -10,7 +10,7 @@ import org.alder.fotobuchconvert.objects.BookPicture;
 public class ListFilesMain {
 	public static void main(String[] args) throws Exception {
 
-		Loader loader = new Loader();
+		IfolorLoader loader = new IfolorLoader();
 		ProjectPath path = TestData.getTestProject();
 		Book book = loader.load(path);
 
