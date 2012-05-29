@@ -17,8 +17,6 @@ import org.apache.commons.logging.LogFactory;
 
 public class RtfToScribusConverter {
 
-	private static boolean debug = true;
-
 	protected final Log log = LogFactory.getLog(RtfToScribusConverter.class);
 
 	public void convert(XmlBuilder xml, String input, ScribusWriter scribus)

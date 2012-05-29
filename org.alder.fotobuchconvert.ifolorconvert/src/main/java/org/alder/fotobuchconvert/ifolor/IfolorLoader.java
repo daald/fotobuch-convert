@@ -304,10 +304,6 @@ public class IfolorLoader {
 		return new Shadow.HardShadow(5, 5, 1, .6);
 	}
 
-	private int atoi(String s) {
-		return Integer.valueOf(s);
-	}
-
 	private byte[] loadFile(File projectFile) throws IOException {
 		Decryptor decryptor = new Decryptor();
 		byte[] bytes = decryptor.loadBinaryFile(projectFile, "DPP");

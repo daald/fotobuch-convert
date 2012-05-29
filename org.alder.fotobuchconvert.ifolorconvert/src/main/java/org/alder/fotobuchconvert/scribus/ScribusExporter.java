@@ -53,7 +53,7 @@ public class ScribusExporter {
 
 		// next is a fix formula. only change it if you know the unit of scribus
 		// Pts
-		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d);
+		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d * 300d / ifolorDPI);
 
 		double pageW = (ifolorDoubleWidth / 2) * ifolorPt2scribusPtFactor;
 		double pageH = ifolorHeight * ifolorPt2scribusPtFactor;
