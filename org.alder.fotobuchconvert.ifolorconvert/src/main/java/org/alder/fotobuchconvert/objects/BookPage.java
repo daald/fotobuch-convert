@@ -6,7 +6,7 @@ public class BookPage {
 
 	public final Vector<BookElement> pics = new Vector<BookElement>();
 
-	private final int lowerPageNumber;
+	public final int lowerPageNumber;
 	private final boolean leftPageEnabled, rightPageEnabled;
 
 	public BookPage(int lowerPageNumber, boolean leftPageEnabled,

@@ -19,11 +19,11 @@ public class IfolorToScribusMain {
 
 		book.reducePagesForTesting();
 
-		ScribusExporter f = new ScribusExporter(book);
+		ScribusExporter f = new ScribusExporter();
 
 		File outFile = TestData.getTestOutputPath();
 
-		f.process(outFile);
+		f.export(outFile, book);
 	}
 
 }
