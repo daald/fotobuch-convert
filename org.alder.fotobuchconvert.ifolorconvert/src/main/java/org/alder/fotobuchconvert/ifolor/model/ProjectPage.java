@@ -19,8 +19,6 @@ public class ProjectPage {
 	public PageNumber LeftPageNumber, RightPageNumber;
 
 	@XmlElementWrapper(name = "GuiObjects")
-	// @XmlElementRefs({ @XmlElementRef(name = "Image", type = Image.class),
-	// @XmlElementRef(name = "Text", type = Text.class) })
 	@XmlElements({ @XmlElement(name = "Image", type = Image.class),
 			@XmlElement(name = "Text", type = Text.class),
 			@XmlElement(name = "ColorRectangle", type = ColorRectangle.class)
