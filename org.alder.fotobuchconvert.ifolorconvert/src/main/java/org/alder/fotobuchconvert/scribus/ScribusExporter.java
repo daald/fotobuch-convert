@@ -74,134 +74,148 @@ public class ScribusExporter {
 			double oX = pd.docbaseX - bleed;
 			double oY = pd.docbaseY - bleed;
 
-			for (BookElement _el : _page.pics) {
-				if (_el.isInternalObject())
-					continue;
+			exportPage(wr, _book, oF, _page, wrpg, oX, oY);
+		}
 
-				log.info("  Exporting element " + _el);
+		{
+			log.info("Exporting cover page");
 
-				boolean placeHolder = true;
+			PageDims pd = wr.addPage("Cover", pageW, pageH);// left
+			wr.addPage("Cover", pageW, pageH);// right
 
-				final double elX = oX + oF * _el.left;
-				final double elY = oY + oF * _el.top;
-				final double elW = oF * _el.width;
-				final double elH = oF * _el.height;
+			double oX = pd.docbaseX - bleed;
+			double oY = pd.docbaseY - bleed;
 
-				if (_el instanceof BookPicture) {
-					BookPicture _pic = (BookPicture) _el;
-
-					File imgFile = _pic.getImageFile(_book);
-
-					if (_pic.shadow != null)
-						addShadow(wr, _pic.shadow, elX, elY, elW, elH,
-								_el.angleDegrees);
-
-					try {
-						String imgFilePath = imgFile != null ? imgFile
-								.getAbsolutePath() : null;
-						ScribusImg scrimg = wr.addImage(imgFilePath);
-
-						if (_pic.alpha != null)
-							scrimg.setPOCoords(_pic.alpha.get(elW, elH));
-
-						scrimg.setPositionCenterRot(elX, elY, elW, elH,
-								_el.angleDegrees);
-						if (imgFilePath != null)
-							scrimg.setCropPct(_pic.cropX, _pic.cropY,
-									_pic.cropW, _pic.cropH);
-
-						if (_pic.border instanceof Border.LineBorder) {
-							Border.LineBorder border = (LineBorder) _pic.border;
-							scrimg.setBorder(border.width, border.color);
-						} else if (_pic.border instanceof Border.HeavyBorder) {
-							Border.HeavyBorder border = (HeavyBorder) _pic.border;
-
-							ScribusImgFrame frame = scrimg.addPictureFrame(elX,
-									elY, elW, elH, _el.angleDegrees,
-									border.width, 0);
-
-							frame.setBorder(2, Color.GRAY);
-							frame.setFill(border.color);
-							frame.setTransparency(border.transparency);
-						} else if (_pic.border instanceof Border.ScratchBorder) {
-							Border.ScratchBorder border = (ScratchBorder) _pic.border;
-
-							ScribusImgScratchFrame frame = scrimg
-									.addScratchFrame(elX, elY, elW, elH,
-											_el.angleDegrees,
-											border.innerWidth,
-											border.outerWidth);
-
-							frame.setBorder(0, Color.GRAY);
-							frame.setFill(Color.WHITE);
-						}
-
-						if (imgFile == null)
-							log.warn("Empty picture in page " + wrpg);
-
-						placeHolder = false;
-					} catch (IOException e) {
-						log.error(
-								"Cannot load Image " + imgFile + " ("
-										+ _pic.getSourceName(_book)
-										+ "). Drawing not possible", e);
-					}
-
-				} else if (_el instanceof BookText) {
-					BookText _text = (BookText) _el;
-
-					ScribusText scrtext = wr.addText();
-
-					scrtext.setPositionCenterRot(elX, elY, elW, elH,
-							_el.angleDegrees);
-
-					if (_el instanceof BookRtfText) {
-						String rtftxt = ((BookRtfText) _text).getRtfText(_book);
-						if (rtftxt != null) {
-							RtfToScribusConverter rtfConv = new RtfToScribusConverter();
-							rtfConv.convert(scrtext.getElement(), rtftxt, wr);
-						} else
-							log.warn("Empty RTF text in page " + wrpg);
-					} else {
-						String txt = _text.getText(_book);
-						scrtext.setText(txt);
-					}
-
-					placeHolder = false;
-
-				} else if (_el instanceof BookShape) {
-					BookShape _shape = (BookShape) _el;
-
-					ScribusShape out = wr.addShape();
-
-					out.setPositionCenterRot(elX, elY, elW, elH,
-							_el.angleDegrees);
-					if (_shape.colors.length == 1)
-						out.setFill(wr.colorManager
-								.getColorName(_shape.colors[0].color));
-					else
-						out.setGradient(_shape.colors);
-
-					placeHolder = false;
-				}
-
-				if (placeHolder) {
-					ScribusShape shape = wr.addShape();
-					shape.setPositionCenterRot(elX, elY, elW, elH,
-							_el.angleDegrees);
-					shape.setBorder(0, Color.BLACK);
-
-					final double bw = 5;
-
-					shape = wr.addShape();
-					shape.setPositionCenterRot(elX + bw, elY + bw,
-							elW - 2 * bw, elH - 2 * bw, _el.angleDegrees);
-					shape.setBorder(0, Color.BLACK);
-				}
-			}
+			exportPage(wr, _book, oF, _book.cover, -1, oX, oY);
 		}
 
 		wr.finish();
+	}
+
+	private void exportPage(ScribusWriter wr, Book _book, double oF,
+			BookPage _page, int wrpg, double oX, double oY) throws IOException,
+			BadLocationException {
+		for (BookElement _el : _page.pics) {
+			if (_el.isInternalObject())
+				continue;
+
+			log.info("  Exporting element " + _el);
+
+			boolean placeHolder = true;
+
+			final double elX = oX + oF * _el.left;
+			final double elY = oY + oF * _el.top;
+			final double elW = oF * _el.width;
+			final double elH = oF * _el.height;
+
+			if (_el instanceof BookPicture) {
+				BookPicture _pic = (BookPicture) _el;
+
+				File imgFile = _pic.getImageFile(_book);
+
+				if (_pic.shadow != null)
+					addShadow(wr, _pic.shadow, elX, elY, elW, elH,
+							_el.angleDegrees);
+
+				try {
+					String imgFilePath = imgFile != null ? imgFile
+							.getAbsolutePath() : null;
+					ScribusImg scrimg = wr.addImage(imgFilePath);
+
+					if (_pic.alpha != null)
+						scrimg.setPOCoords(_pic.alpha.get(elW, elH));
+
+					scrimg.setPositionCenterRot(elX, elY, elW, elH,
+							_el.angleDegrees);
+					if (imgFilePath != null)
+						scrimg.setCropPct(_pic.cropX, _pic.cropY, _pic.cropW,
+								_pic.cropH);
+
+					if (_pic.border instanceof Border.LineBorder) {
+						Border.LineBorder border = (LineBorder) _pic.border;
+						scrimg.setBorder(border.width, border.color);
+					} else if (_pic.border instanceof Border.HeavyBorder) {
+						Border.HeavyBorder border = (HeavyBorder) _pic.border;
+
+						ScribusImgFrame frame = scrimg.addPictureFrame(elX,
+								elY, elW, elH, _el.angleDegrees, border.width,
+								0);
+
+						frame.setBorder(2, Color.GRAY);
+						frame.setFill(border.color);
+						frame.setTransparency(border.transparency);
+					} else if (_pic.border instanceof Border.ScratchBorder) {
+						Border.ScratchBorder border = (ScratchBorder) _pic.border;
+
+						ScribusImgScratchFrame frame = scrimg.addScratchFrame(
+								elX, elY, elW, elH, _el.angleDegrees,
+								border.innerWidth, border.outerWidth);
+
+						frame.setBorder(0, Color.GRAY);
+						frame.setFill(Color.WHITE);
+					}
+
+					if (imgFile == null)
+						log.warn("Empty picture in page " + wrpg);
+
+					placeHolder = false;
+				} catch (IOException e) {
+					log.error(
+							"Cannot load Image " + imgFile + " ("
+									+ _pic.getSourceName(_book)
+									+ "). Drawing not possible", e);
+				}
+
+			} else if (_el instanceof BookText) {
+				BookText _text = (BookText) _el;
+
+				ScribusText scrtext = wr.addText();
+
+				scrtext.setPositionCenterRot(elX, elY, elW, elH,
+						_el.angleDegrees);
+
+				if (_el instanceof BookRtfText) {
+					String rtftxt = ((BookRtfText) _text).getRtfText(_book);
+					if (rtftxt != null) {
+						RtfToScribusConverter rtfConv = new RtfToScribusConverter();
+						rtfConv.convert(scrtext.getElement(), rtftxt, wr);
+					} else
+						log.warn("Empty RTF text in page " + wrpg);
+				} else {
+					String txt = _text.getText(_book);
+					scrtext.setText(txt);
+				}
+
+				placeHolder = false;
+
+			} else if (_el instanceof BookShape) {
+				BookShape _shape = (BookShape) _el;
+
+				ScribusShape out = wr.addShape();
+
+				out.setPositionCenterRot(elX, elY, elW, elH, _el.angleDegrees);
+				if (_shape.colors.length == 1)
+					out.setFill(wr.colorManager
+							.getColorName(_shape.colors[0].color));
+				else
+					out.setGradient(_shape.colors);
+
+				placeHolder = false;
+			}
+
+			if (placeHolder) {
+				ScribusShape shape = wr.addShape();
+				shape.setPositionCenterRot(elX, elY, elW, elH, _el.angleDegrees);
+				shape.setBorder(0, Color.BLACK);
+
+				final double bw = 5;
+
+				shape = wr.addShape();
+				shape.setPositionCenterRot(elX + bw, elY + bw, elW - 2 * bw,
+						elH - 2 * bw, _el.angleDegrees);
+				shape.setBorder(0, Color.BLACK);
+			}
+		}
 	}
 
 	private void addShadow(ScribusWriter wr, Shadow shadow, double elX,

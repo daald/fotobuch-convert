@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class Sheet {
 	@XmlElement
-	double Width, Height;
+	public double Width, Height;
 	@XmlElement
-	int Dpi = 300;
+	public int Dpi = 300;
 }

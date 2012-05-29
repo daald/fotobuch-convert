@@ -55,13 +55,39 @@ public class IfolorLoader {
 			final boolean rightPageEnabled = "True"
 					.equals(_page.RightPageEnabled);
 
-			BookPage page = new BookPage(pgnum, leftPageEnabled,
-					rightPageEnabled);
+			double width = _page.Sheet.Width;
+			double height = _page.Sheet.Height;
+			int dpi = _page.Sheet.Dpi;
+
+			BookPage page = new BookPage(pgnum, width, height, dpi,
+					leftPageEnabled, rightPageEnabled);
 			book.add(page);
 
 			handlePage(page, _page, pgnum);
 
 			pgnum += 2;
+		}
+
+		{
+			final ProjectPage _page = _project.Cover.ProjectPage;
+			pgnum = -1;
+
+			log.debug("Loading:   cover page");
+
+			final boolean leftPageEnabled = "True"
+					.equals(_page.LeftPageEnabled);
+			final boolean rightPageEnabled = "True"
+					.equals(_page.RightPageEnabled);
+
+			double width = _page.Sheet.Width;
+			double height = _page.Sheet.Height;
+			int dpi = _page.Sheet.Dpi;
+
+			BookPage page = new BookPage(pgnum, width, height, dpi,
+					leftPageEnabled, rightPageEnabled);
+			book.cover = page;
+
+			handlePage(page, _page, pgnum);
 		}
 
 		log.info("Finished loading");

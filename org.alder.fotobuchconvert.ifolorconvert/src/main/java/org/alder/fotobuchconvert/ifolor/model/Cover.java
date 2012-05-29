@@ -4,5 +4,5 @@ import javax.xml.bind.annotation.XmlElement;
 
 public class Cover {
 	@XmlElement
-	ProjectPage ProjectPage;
+	public ProjectPage ProjectPage;
 }

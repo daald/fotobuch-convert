@@ -8,6 +8,7 @@ public class Book {
 
 	public final Vector<BookPage> pages = new Vector<BookPage>();
 	final ProjectPath pathInfo;
+	public BookPage cover;
 
 	public Book(ProjectPath pathInfo) {
 		this.pathInfo = pathInfo;
