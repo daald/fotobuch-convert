@@ -20,10 +20,9 @@ public class BookPicture extends BookElement {
 	public final ImageCutCoords alpha;
 
 	public BookPicture(int left, int top, int width, int height,
-			int angleDegrees, boolean dragable, String origFile,
-			String previewFile, String sourceFile, double cropX, double cropY,
-			double cropW, double cropH, Border border, Shadow shadow,
-			ImageCutCoords alpha) {
+			int angleDegrees, String origFile, String previewFile,
+			String sourceFile, double cropX, double cropY, double cropW,
+			double cropH, Border border, Shadow shadow, ImageCutCoords alpha) {
 		super(left, top, width, height, angleDegrees);
 
 		if (origFile.isEmpty() && previewFile.isEmpty() && sourceFile.isEmpty()) {
