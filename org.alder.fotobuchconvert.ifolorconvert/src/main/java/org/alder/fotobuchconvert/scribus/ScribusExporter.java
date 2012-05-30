@@ -23,6 +23,7 @@ import org.alder.fotobuchconvert.scribus.ScribusWriter.PageDims;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImg;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImgFrame;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusImgScratchFrame;
+import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusObject;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusShape;
 import org.alder.fotobuchconvert.scribus.ScribusWriter.ScribusText;
 import org.apache.commons.logging.Log;
@@ -113,14 +114,19 @@ public class ScribusExporter {
 
 				File imgFile = _pic.getImageFile(_book);
 
+				ScribusObject group = null;
+
 				if (_pic.shadow != null)
-					addShadow(wr, _pic.shadow, elX, elY, elW, elH,
+					group = addShadow(wr, _pic.shadow, elX, elY, elW, elH,
 							_el.angleDegrees);
 
 				try {
 					String imgFilePath = imgFile != null ? imgFile
 							.getAbsolutePath() : null;
 					ScribusImg scrimg = wr.addImage(imgFilePath);
+
+					if (group != null)
+						scrimg.setGroup(group.getGroup());
 
 					if (_pic.alpha != null)
 						scrimg.setPOCoords(_pic.alpha.get(elW, elH));
@@ -218,23 +224,25 @@ public class ScribusExporter {
 		}
 	}
 
-	private void addShadow(ScribusWriter wr, Shadow shadow, double elX,
-			double elY, double elW, double elH, int angleDegrees)
+	private ScribusObject addShadow(ScribusWriter wr, Shadow _shadow,
+			double elX, double elY, double elW, double elH, int angleDegrees)
 			throws IOException {
 
 		final double cx = elX + elW / 2, cy = elY + elH / 2;
 
-		elX = ((elX - cx) * shadow.scale + cx) + shadow.rx;
-		elY = ((elY - cy) * shadow.scale + cy) + shadow.ry;
-		elW = elW * shadow.scale;
-		elH = elH * shadow.scale;
+		elX = ((elX - cx) * _shadow.scale + cx) + _shadow.rx;
+		elY = ((elY - cy) * _shadow.scale + cy) + _shadow.ry;
+		elW = elW * _shadow.scale;
+		elH = elH * _shadow.scale;
 
-		if (shadow instanceof Shadow.HardShadow) {
+		if (_shadow instanceof Shadow.HardShadow) {
 			ScribusShape scshadow = wr.addShape();
 			scshadow.setPositionCenterRot(elX, elY, elW, elH, angleDegrees);
 			scshadow.setFill(Color.BLACK);// , shadow.transparency);
-		} else if (shadow instanceof Shadow.SoftShadow) {
-			Shadow.SoftShadow sshadow = (SoftShadow) shadow;
+
+			return scshadow;
+		} else if (_shadow instanceof Shadow.SoftShadow) {
+			Shadow.SoftShadow sshadow = (SoftShadow) _shadow;
 
 			File file = SVGShadowManager.getInstance().get((int) elW,
 					(int) elH, sshadow.softedge);
@@ -242,7 +250,11 @@ public class ScribusExporter {
 			ScribusImg scshadow = wr.addImage(file.getAbsolutePath());
 			scshadow.setPositionCenterRot(elX, elY, elW, elH, angleDegrees);
 			scshadow.setAutoScale(false);
+
+			return scshadow;
 		}
+
+		return null;
 	}
 
 }
