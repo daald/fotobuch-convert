@@ -13,7 +13,6 @@ import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.helpers.Loader;
 
 public class Decryptor {
 	private static final String UNEXPECTED_END_OF_FILE = "Unexpected end of file";
@@ -21,7 +20,7 @@ public class Decryptor {
 	// private static final String CHARSET_ISO_8859_1 = "ISO_8859_1";
 	public static final String CHARSET_cp1252 = "Windows-1252";
 
-	private final Log log = LogFactory.getLog(Loader.class);
+	private final Log log = LogFactory.getLog(Decryptor.class);
 
 	private boolean dumpData = false;
 

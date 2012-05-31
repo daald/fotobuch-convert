@@ -321,7 +321,7 @@ public class IfolorLoader {
 		// return new BorderShadow(new Border.LineBorder(20,
 		// Color.GRAY.brighter()), null);
 
-		System.err.println("Unknown border: " + id);
+		log.warn("Unknown border: " + id);
 		return null;
 	}
 
