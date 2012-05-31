@@ -123,10 +123,13 @@ public class IfolorLoader {
 				String origFile = _image.OrigFilePath;
 				String previewFile = _image.PreviewFilePath;
 				String sourceFile = _image.SourceFilePath;
-				double cropX = _image.VisiblePart.left / 100d;
-				double cropY = _image.VisiblePart.top / 100d;
-				double cropW = _image.VisiblePart.width / 100d;
-				double cropH = _image.VisiblePart.height / 100d;
+				double cropX = 0, cropY = 0, cropW = 0, cropH = 0;
+				if (_image.VisiblePart != null) {
+					cropX = _image.VisiblePart.left / 100d;
+					cropY = _image.VisiblePart.top / 100d;
+					cropW = _image.VisiblePart.width / 100d;
+					cropH = _image.VisiblePart.height / 100d;
+				}
 				BorderShadow bs = s2border(_image.Border);
 				if (bs == null)
 					bs = new BorderShadow(null, null);

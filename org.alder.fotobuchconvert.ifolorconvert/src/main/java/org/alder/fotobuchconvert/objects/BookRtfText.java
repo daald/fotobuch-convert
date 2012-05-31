@@ -14,7 +14,7 @@ public class BookRtfText extends BookText {
 			int angleDegrees, String dataFile) {
 		super(left, top, width, height, angleDegrees);
 
-		if (dataFile.isEmpty())
+		if (dataFile == null || dataFile.isEmpty())
 			dataFile = null;
 
 		this.dataFile = dataFile;

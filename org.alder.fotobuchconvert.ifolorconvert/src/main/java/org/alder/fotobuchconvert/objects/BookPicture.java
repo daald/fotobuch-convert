@@ -25,7 +25,9 @@ public class BookPicture extends BookElement {
 			double cropH, Border border, Shadow shadow, ImageCutCoords alpha) {
 		super(left, top, width, height, angleDegrees);
 
-		if (origFile.isEmpty() && previewFile.isEmpty() && sourceFile.isEmpty()) {
+		if ((origFile == null || origFile.isEmpty())
+				&& (previewFile == null || previewFile.isEmpty())
+				&& (sourceFile == null || sourceFile.isEmpty())) {
 			origFile = null;
 			previewFile = null;
 			sourceFile = null;
