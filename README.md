@@ -16,7 +16,7 @@ Current state is alpha. You can try out my prototype. It might be good enough fo
 
 A brief how-to: [[HowToUse]]
 
-See the project page: http://sourceforge.net/projects/fotobuchconvert/
+See the project page: https://github.com/daald/fotobuch-convert
 
 
 
