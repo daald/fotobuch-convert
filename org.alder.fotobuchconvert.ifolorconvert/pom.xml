@@ -4,7 +4,7 @@
 
 	<groupId>org.alder.fotobuchconvert</groupId>
 	<artifactId>ifolorconvert</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>ifolorconvert</name>
@@ -26,6 +26,24 @@
 					<optimize>true</optimize>
 				</configuration>
 			</plugin>
+
+			<!-- build jar command: mvn clean compile assembly:single -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<!-- <version>2.4</version>  -->
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.alder.fotobuchconvert.ifolor.IfolorToScribusMain</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<finalName>${pom.artifactId}-${pom.version}</finalName>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
