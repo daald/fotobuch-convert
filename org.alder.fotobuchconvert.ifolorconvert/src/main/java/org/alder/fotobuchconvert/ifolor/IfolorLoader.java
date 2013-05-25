@@ -69,6 +69,9 @@ public class IfolorLoader {
 			double height = _page.Sheet.Height;
 			int dpi = _page.Sheet.Dpi;
 
+			log.debug("ifolor dims: w:" + width + ", h:" + height + ", dpi:"
+					+ dpi);
+
 			BookPage page = new BookPage(pgnum, width, height, dpi,
 					leftPageEnabled, rightPageEnabled);
 			book.add(page);

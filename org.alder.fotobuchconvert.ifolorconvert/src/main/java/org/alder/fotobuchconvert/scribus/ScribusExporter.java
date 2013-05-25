@@ -49,28 +49,26 @@ public class ScribusExporter {
 		// int pageW = (int) (f * 3530);
 		// int pageH = (int) (f * 2500);
 
-		double margin = 9.33;
-		double bleed = 9.33;
 		String pageFormat = "Custom";
 
-		int ifolorDoubleWidth = 7062;// width of a double page
-		int ifolorHeight = 2504;
-		int ifolorDPI = 300;
+		PaperSize paper;
+		// Daniel: paper= new PaperSize.A4_Landscape();
+		paper = new PaperSize.A4_Portrait();
 
 		// next is a fix formula. only change it if you know the unit of scribus
 		// Pts
-		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d * 300d / ifolorDPI);
+		double ifolorPt2scribusPtFactor = 1 / (7062d / 2d / 847.44d * 300d / paper.ifolorDPI);
 
-		double pageW = (ifolorDoubleWidth / 2) * ifolorPt2scribusPtFactor;
-		double pageH = ifolorHeight * ifolorPt2scribusPtFactor;
+		double pageW = (paper.ifolorDoubleWidth / 2) * ifolorPt2scribusPtFactor;
+		double pageH = paper.ifolorHeight * ifolorPt2scribusPtFactor;
 		double oF = ifolorPt2scribusPtFactor;
 
 		// adjust for bleeding
-		pageW -= bleed;
-		pageH -= bleed * 2;
+		pageW -= paper.bleed;
+		pageH -= paper.bleed * 2;
 
-		ScribusWriter wr = new ScribusWriter(outFile, margin, bleed,
-				pageFormat, pageW, pageH);
+		ScribusWriter wr = new ScribusWriter(outFile, paper.margin,
+				paper.bleed, pageFormat, pageW, pageH);
 
 		wr.addPage("Front", pageW, pageH);
 
@@ -82,8 +80,8 @@ public class ScribusExporter {
 			PageDims pd = wr.addPage("Normal", pageW, pageH);// left
 			wr.addPage("Normal", pageW, pageH);// right
 
-			double oX = pd.docbaseX - bleed;
-			double oY = pd.docbaseY - bleed;
+			double oX = pd.docbaseX - paper.bleed;
+			double oY = pd.docbaseY - paper.bleed;
 
 			exportPage(wr, _book, oF, _page, wrpg, oX, oY);
 		}
@@ -94,8 +92,8 @@ public class ScribusExporter {
 			PageDims pd = wr.addPage("Cover", pageW, pageH);// left
 			wr.addPage("Cover", pageW, pageH);// right
 
-			double oX = pd.docbaseX - bleed;
-			double oY = pd.docbaseY - bleed;
+			double oX = pd.docbaseX - paper.bleed;
+			double oY = pd.docbaseY - paper.bleed;
 
 			exportPage(wr, _book, oF, _book.cover, -1, oX, oY);
 		}

@@ -31,6 +31,7 @@ import org.alder.fotobuchconvert.objects.BookElement;
 import org.alder.fotobuchconvert.objects.BookPage;
 import org.alder.fotobuchconvert.objects.BookPicture;
 import org.alder.fotobuchconvert.objects.BookText;
+import org.alder.fotobuchconvert.scribus.PaperSize;
 
 public class ViewerMain extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -119,6 +120,9 @@ public class ViewerMain extends JFrame {
 										r((pic.cropY + pic.cropH) * h), null);
 							} else
 								img = null;
+
+							g.setFont(g.getFont().deriveFont(0).deriveFont(70f));
+							g.drawString(pic.getOrigName(), 0, 0);
 						}
 					} else if (el instanceof BookText) {
 						BookText text = (BookText) el;
@@ -181,11 +185,21 @@ public class ViewerMain extends JFrame {
 				// <RightPageOffset>102</RightPageOffset>
 				// <Width>7062</Width>
 				// <Height>2504</Height>
-				g.drawRect(ox + 0, oy + 0, ox + 7062, oy + 2504);
+
+				// /* dpi */300,
+				// /* width */7062, /* height */2504,
+				// /* margin */9.33d, /* bleed */9.33d);
+
+				PaperSize p = new PaperSize.A4_Portrait();
+
+				g.drawRect(ox + 0, oy + 0, ox + p.ifolorDoubleWidth, oy
+						+ p.ifolorHeight);
 				// <GuideLine x1="3531" y1="0" x2="3531" y2="2504" />
-				g.drawLine(ox + 3531, oy + 0, ox + 3531, oy + 2504);
+				g.drawLine(ox + p.ifolorDoubleWidth / 2, oy + 0, ox
+						+ p.ifolorDoubleWidth / 2, oy + p.ifolorHeight);
 				// <GuideBox left="40" top="40" width="6982" height="2424" />
-				g.drawRect(ox + 40, oy + 40, ox + 6982, oy + 2424);
+				g.drawRect(ox + 40, oy + 40, ox + p.ifolorDoubleWidth - 80, oy
+						+ p.ifolorHeight - 80);
 			}
 
 			private int r(double d) {

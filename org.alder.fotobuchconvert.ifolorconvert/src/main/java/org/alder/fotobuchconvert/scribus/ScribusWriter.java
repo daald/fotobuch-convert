@@ -440,7 +440,10 @@ public class ScribusWriter {
 			double localscy = h / (imgH * cropH);
 
 			// ifolor Designer only allows proportionally scaled images.
-			assert localscx / localscy > 0.999d && localscx / localscy < 1.001d;
+			System.out.printf("%f %f %f %f\n", localscx, localscy, localscx,
+					localscy);
+			if (localscx / localscy < 0.99d || localscx / localscy > 1.01d)
+				log.warn("Asymmetrically scaled image: " + localscx / localscy);
 			log.debug("Scale h/v factor: " + localscx / localscy
 					+ "  (1.000 is best)");
 

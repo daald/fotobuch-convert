@@ -83,6 +83,10 @@ public class BookPicture extends BookElement {
 		return sourceFile;
 	}
 
+	public String getOrigName() {
+		return origFile;
+	}
+
 	@Override
 	public boolean isInternalObject() {
 		return "Images::binding.png".equals(origFile);
